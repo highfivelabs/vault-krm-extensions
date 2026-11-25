@@ -1,0 +1,10 @@
+# Copyright 2026 High Five Labs
+# SPDX-License-Identifier: Apache-2.0
+# Everything: every CRD, the manager's RBAC, and the manager.
+#   kubectl kustomize config/default | KO_DOCKER_REPO=<registry> ko resolve -f - | kubectl apply --server-side -f -
+# For only some API groups, install those groups' CRDs from config/crds and
+# run the manager with --groups=<group>,<group>.
+resources:
+  - ../crds
+  - ../rbac
+  - ../manager

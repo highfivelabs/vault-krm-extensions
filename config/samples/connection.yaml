@@ -1,0 +1,19 @@
+# Copyright 2026 High Five Labs
+# SPDX-License-Identifier: Apache-2.0
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vault-credentials
+  namespace: team-a
+stringData:
+  token: <token>
+---
+apiVersion: core.vault.hfl.dev/v1alpha1
+kind: Connection
+metadata:
+  name: default
+  namespace: team-a
+spec:
+  baseURL: https://vault.example.com:8200/v1
+  secretRef:
+    name: vault-credentials

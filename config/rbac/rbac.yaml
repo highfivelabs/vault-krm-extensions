@@ -1,0 +1,198 @@
+# Copyright 2026 High Five Labs
+# SPDX-License-Identifier: Apache-2.0
+# The manager reads Connections and their Secrets in every namespace it
+# reconciles; narrow the binding per namespace if that is too broad.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: manager
+  namespace: vault-krm-extensions-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: vault-krm-extensions-manager
+rules:
+- apiGroups: &id001
+  - aws.vault.hfl.dev
+  - config.vault.hfl.dev
+  - egp.vault.hfl.dev
+  - gcp.vault.hfl.dev
+  - identity.vault.hfl.dev
+  - kv.vault.hfl.dev
+  - managed.vault.hfl.dev
+  - mfa.vault.hfl.dev
+  - pki.vault.hfl.dev
+  - plugin.vault.hfl.dev
+  - rgp.vault.hfl.dev
+  - sys.vault.hfl.dev
+  - token.vault.hfl.dev
+  - transit.vault.hfl.dev
+  - userpass.vault.hfl.dev
+  resources:
+  - awsauthbackendcerts
+  - awsauthbackendidentitywhitelists
+  - awsauthbackendroletagblacklists
+  - awsauthbackendstsroles
+  - configcontrolgroups
+  - configgrouppolicyapplications
+  - configuiheaders
+  - egppolicies
+  - gcpsecretimpersonatedaccounts
+  - identitymfaduos
+  - identitymfaloginenforcements
+  - identitymfaoktas
+  - identitymfapingids
+  - identitymfatotps
+  - kvsecrets
+  - managedkeyses
+  - mfaduos
+  - mfaoktas
+  - mfapingids
+  - mfatotps
+  - pkisecretbackendconfigacmes
+  - pkisecretbackendconfigautotidies
+  - pkisecretbackendconfigclusters
+  - pkisecretbackendconfigissuerses
+  - pkisecretbackendcrlconfigs
+  - pkisecretbackendissuers
+  - pkisecretbackendkeys
+  - pluginruntimes
+  - plugins
+  - rgppolicies
+  - sysconfigcorses
+  - tokenauthbackendroles
+  - transitsecretbackendcacheconfigs
+  - userpassauthbackendusers
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+  - patch
+- apiGroups: *id001
+  resources:
+  - awsauthbackendcerts/status
+  - awsauthbackendidentitywhitelists/status
+  - awsauthbackendroletagblacklists/status
+  - awsauthbackendstsroles/status
+  - configcontrolgroups/status
+  - configgrouppolicyapplications/status
+  - configuiheaders/status
+  - egppolicies/status
+  - gcpsecretimpersonatedaccounts/status
+  - identitymfaduos/status
+  - identitymfaloginenforcements/status
+  - identitymfaoktas/status
+  - identitymfapingids/status
+  - identitymfatotps/status
+  - kvsecrets/status
+  - managedkeyses/status
+  - mfaduos/status
+  - mfaoktas/status
+  - mfapingids/status
+  - mfatotps/status
+  - pkisecretbackendconfigacmes/status
+  - pkisecretbackendconfigautotidies/status
+  - pkisecretbackendconfigclusters/status
+  - pkisecretbackendconfigissuerses/status
+  - pkisecretbackendcrlconfigs/status
+  - pkisecretbackendissuers/status
+  - pkisecretbackendkeys/status
+  - pluginruntimes/status
+  - plugins/status
+  - rgppolicies/status
+  - sysconfigcorses/status
+  - tokenauthbackendroles/status
+  - transitsecretbackendcacheconfigs/status
+  - userpassauthbackendusers/status
+  verbs:
+  - get
+  - update
+  - patch
+- apiGroups: *id001
+  resources:
+  - awsauthbackendcerts/finalizers
+  - awsauthbackendidentitywhitelists/finalizers
+  - awsauthbackendroletagblacklists/finalizers
+  - awsauthbackendstsroles/finalizers
+  - configcontrolgroups/finalizers
+  - configgrouppolicyapplications/finalizers
+  - configuiheaders/finalizers
+  - egppolicies/finalizers
+  - gcpsecretimpersonatedaccounts/finalizers
+  - identitymfaduos/finalizers
+  - identitymfaloginenforcements/finalizers
+  - identitymfaoktas/finalizers
+  - identitymfapingids/finalizers
+  - identitymfatotps/finalizers
+  - kvsecrets/finalizers
+  - managedkeyses/finalizers
+  - mfaduos/finalizers
+  - mfaoktas/finalizers
+  - mfapingids/finalizers
+  - mfatotps/finalizers
+  - pkisecretbackendconfigacmes/finalizers
+  - pkisecretbackendconfigautotidies/finalizers
+  - pkisecretbackendconfigclusters/finalizers
+  - pkisecretbackendconfigissuerses/finalizers
+  - pkisecretbackendcrlconfigs/finalizers
+  - pkisecretbackendissuers/finalizers
+  - pkisecretbackendkeys/finalizers
+  - pluginruntimes/finalizers
+  - plugins/finalizers
+  - rgppolicies/finalizers
+  - sysconfigcorses/finalizers
+  - tokenauthbackendroles/finalizers
+  - transitsecretbackendcacheconfigs/finalizers
+  - userpassauthbackendusers/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - core.vault.hfl.dev
+  resources:
+  - connections
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ''
+  resources:
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - ''
+  resources:
+  - events
+  verbs:
+  - create
+  - patch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: vault-krm-extensions-manager
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: vault-krm-extensions-manager
+subjects:
+- kind: ServiceAccount
+  name: manager
+  namespace: vault-krm-extensions-system
