@@ -21,12 +21,12 @@ concurrency:
 
 jobs:
   krm:
-    uses: highfivelabs/krm-ci/.github/workflows/krm-security.yml@ee055464ad3278a1293efc921fe668f055a12b72 # v1.2.0
+    uses: highfivelabs/krm-ci/.github/workflows/krm-security.yml@be81e851d513167fd0dae655e8f15583131edd10 # v1.2.1
     permissions:
       contents: read
       id-token: write
       issues: write
       security-events: write
     with:
-      ci-ref: ee055464ad3278a1293efc921fe668f055a12b72
+      ci-ref: be81e851d513167fd0dae655e8f15583131edd10
       setup-command: ""
