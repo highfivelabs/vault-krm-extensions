@@ -1,0 +1,85 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/sys/config/cors",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/cors",
+      "body": "{\"allowed_origins\":[\"https://hfl-live.example\"],\"enable\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"allowed_origins\":[\"https://hfl-live.example\"],\"enabled\":true}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/cors",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"allowed_origins\":[\"https://hfl-live.example\"],\"enabled\":true}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/cors",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"allowed_origins\":[\"https://hfl-live.example\"],\"enabled\":true}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/cors",
+      "body": "{\"allowed_origins\":[\"https://hfl-live-2.example\"],\"enable\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"allowed_origins\":[\"https://hfl-live-2.example\"],\"enabled\":true}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/cors",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"allowed_origins\":[\"https://hfl-live-2.example\"],\"enabled\":true}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/cors",
+      "body": "{\"allowed_origins\":[\"https://drift.example\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"allowed_origins\":[\"https://drift.example\"],\"enabled\":true}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/cors",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"allowed_origins\":[\"https://drift.example\"],\"enabled\":true}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/cors",
+      "body": "{\"allowed_origins\":[\"https://hfl-live-2.example\"],\"enable\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"allowed_origins\":[\"https://hfl-live-2.example\"],\"enabled\":true}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/cors",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"allowed_origins\":[\"https://hfl-live-2.example\"],\"enabled\":true}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/config/cors",
+      "status": 204
+    }
+  ]
+}

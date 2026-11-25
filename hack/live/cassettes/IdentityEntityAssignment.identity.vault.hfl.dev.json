@@ -1,0 +1,137 @@
+{
+  "recorded": "2026-11-22T20:07:18Z",
+  "target": "Vault dev server 2.2.2",
+  "vars": {
+    "entity": "481b74bb-be75-5b1c-cfbc-c270f27b8407",
+    "issuer": "b2145452-73da-a16b-353f-8eeb465fb9be",
+    "key": "9f1c47da-2a22-4676-4b02-f6000a2184f9",
+    "mfa": "f3f83141-6a0d-ba15-5a8f-38b659d5cc4a",
+    "tag": "v1:noSQyMKvvgg=:r={{run}}-19:d=false:m=false:gXpjsFnRfjn0SwzqsluE/m/25kwAo+VIoEj2Blnb8mQ="
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/identity/entity",
+      "body": "{\"name\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"eb1be39d-e9e8-82cc-5bf5-6adda866415e\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"aliases\":null,\"id\":\"481b74bb-be75-5b1c-cfbc-c270f27b8407\",\"name\":\"{{name}}\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/entity/id/481b74bb-be75-5b1c-cfbc-c270f27b8407",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"6b60a947-c634-a8d8-a47a-fbd57db1c2f5\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"aliases\":[],\"creation_time\":\"2026-11-22T20:07:18.734040311Z\",\"direct_group_ids\":[],\"disabled\":false,\"group_ids\":[],\"id\":\"481b74bb-be75-5b1c-cfbc-c270f27b8407\",\"inherited_group_ids\":[],\"last_update_time\":\"2026-11-22T20:07:18.734040311Z\",\"merged_entity_ids\":null,\"metadata\":null,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"policies\":[],\"scim_client_id\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/entity/id/481b74bb-be75-5b1c-cfbc-c270f27b8407",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"3e8c7f29-955a-0373-6e43-ad6c1702be78\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"aliases\":[],\"creation_time\":\"2026-11-22T20:07:18.734040311Z\",\"direct_group_ids\":[],\"disabled\":false,\"group_ids\":[],\"id\":\"481b74bb-be75-5b1c-cfbc-c270f27b8407\",\"inherited_group_ids\":[],\"last_update_time\":\"2026-11-22T20:07:18.734040311Z\",\"merged_entity_ids\":null,\"metadata\":null,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"policies\":[],\"scim_client_id\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/identity/entity/id/481b74bb-be75-5b1c-cfbc-c270f27b8407",
+      "body": "{\"policies\":[\"default\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"e5c7fd65-e879-e937-83bb-b00542abf34a\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":null,\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/entity/id/481b74bb-be75-5b1c-cfbc-c270f27b8407",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"736efdf1-db72-8807-b9b0-a65a9f719207\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"aliases\":[],\"creation_time\":\"2026-11-22T20:07:18.734040311Z\",\"direct_group_ids\":[],\"disabled\":false,\"group_ids\":[],\"id\":\"481b74bb-be75-5b1c-cfbc-c270f27b8407\",\"inherited_group_ids\":[],\"last_update_time\":\"2026-11-22T20:07:18.740436973Z\",\"merged_entity_ids\":null,\"metadata\":null,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"policies\":[\"default\"],\"scim_client_id\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/entity/id/481b74bb-be75-5b1c-cfbc-c270f27b8407",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"f92af819-d5f3-0bf0-4dbc-5026f7b65907\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"aliases\":[],\"creation_time\":\"2026-11-22T20:07:18.734040311Z\",\"direct_group_ids\":[],\"disabled\":false,\"group_ids\":[],\"id\":\"481b74bb-be75-5b1c-cfbc-c270f27b8407\",\"inherited_group_ids\":[],\"last_update_time\":\"2026-11-22T20:07:18.740436973Z\",\"merged_entity_ids\":null,\"metadata\":null,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"policies\":[\"default\"],\"scim_client_id\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/entity/id/481b74bb-be75-5b1c-cfbc-c270f27b8407",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"65859250-632f-4b1d-58e1-67df3aada2c3\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"aliases\":[],\"creation_time\":\"2026-11-22T20:07:18.734040311Z\",\"direct_group_ids\":[],\"disabled\":false,\"group_ids\":[],\"id\":\"481b74bb-be75-5b1c-cfbc-c270f27b8407\",\"inherited_group_ids\":[],\"last_update_time\":\"2026-11-22T20:07:18.740436973Z\",\"merged_entity_ids\":null,\"metadata\":null,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"policies\":[\"default\"],\"scim_client_id\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/identity/entity/id/481b74bb-be75-5b1c-cfbc-c270f27b8407",
+      "body": "{\"policies\":[\"default\",\"hfl-live\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"1dede5f0-12da-9493-bd7b-849e75560798\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":null,\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/entity/id/481b74bb-be75-5b1c-cfbc-c270f27b8407",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"dee28ebf-c371-18e5-da62-0ce3ca700bd6\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"aliases\":[],\"creation_time\":\"2026-11-22T20:07:18.734040311Z\",\"direct_group_ids\":[],\"disabled\":false,\"group_ids\":[],\"id\":\"481b74bb-be75-5b1c-cfbc-c270f27b8407\",\"inherited_group_ids\":[],\"last_update_time\":\"2026-11-22T20:07:18.744273308Z\",\"merged_entity_ids\":null,\"metadata\":null,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"policies\":[\"default\",\"hfl-live\"],\"scim_client_id\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/entity/id/481b74bb-be75-5b1c-cfbc-c270f27b8407",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"1ec84ddf-29a0-58df-b7d1-c88186bcd5f1\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"aliases\":[],\"creation_time\":\"2026-11-22T20:07:18.734040311Z\",\"direct_group_ids\":[],\"disabled\":false,\"group_ids\":[],\"id\":\"481b74bb-be75-5b1c-cfbc-c270f27b8407\",\"inherited_group_ids\":[],\"last_update_time\":\"2026-11-22T20:07:18.744273308Z\",\"merged_entity_ids\":null,\"metadata\":null,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"policies\":[\"default\",\"hfl-live\"],\"scim_client_id\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/identity/entity/id/481b74bb-be75-5b1c-cfbc-c270f27b8407",
+      "body": "{\"policies\":[\"hfl-live-drift\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"6a642b34-9064-302d-7444-9cb886000e6b\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":null,\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/entity/id/481b74bb-be75-5b1c-cfbc-c270f27b8407",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"488dfd06-15e9-a2a1-5c29-ac5f94364701\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"aliases\":[],\"creation_time\":\"2026-11-22T20:07:18.734040311Z\",\"direct_group_ids\":[],\"disabled\":false,\"group_ids\":[],\"id\":\"481b74bb-be75-5b1c-cfbc-c270f27b8407\",\"inherited_group_ids\":[],\"last_update_time\":\"2026-11-22T20:07:18.751122467Z\",\"merged_entity_ids\":null,\"metadata\":null,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"policies\":[\"hfl-live-drift\"],\"scim_client_id\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/identity/entity/id/481b74bb-be75-5b1c-cfbc-c270f27b8407",
+      "body": "{\"policies\":[\"default\",\"hfl-live\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"0d5eddb0-e773-c2ad-c736-8fd139b0c127\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":null,\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/entity/id/481b74bb-be75-5b1c-cfbc-c270f27b8407",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"b3aa85d8-043a-a323-5d28-b3bbd9c1b23d\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"aliases\":[],\"creation_time\":\"2026-11-22T20:07:18.734040311Z\",\"direct_group_ids\":[],\"disabled\":false,\"group_ids\":[],\"id\":\"481b74bb-be75-5b1c-cfbc-c270f27b8407\",\"inherited_group_ids\":[],\"last_update_time\":\"2026-11-22T20:07:18.752933249Z\",\"merged_entity_ids\":null,\"metadata\":null,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"policies\":[\"default\",\"hfl-live\"],\"scim_client_id\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/entity/id/481b74bb-be75-5b1c-cfbc-c270f27b8407",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"a25fff0c-bb7b-84b0-b5d2-ab73f7dd53cd\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"aliases\":[],\"creation_time\":\"2026-11-22T20:07:18.734040311Z\",\"direct_group_ids\":[],\"disabled\":false,\"group_ids\":[],\"id\":\"481b74bb-be75-5b1c-cfbc-c270f27b8407\",\"inherited_group_ids\":[],\"last_update_time\":\"2026-11-22T20:07:18.752933249Z\",\"merged_entity_ids\":null,\"metadata\":null,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"policies\":[\"default\",\"hfl-live\"],\"scim_client_id\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/identity/entity/id/481b74bb-be75-5b1c-cfbc-c270f27b8407",
+      "body": "{\"policies\":[]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"ca5263af-74d4-aea4-8d53-d77a155848e1\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":null,\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/identity/entity/id/481b74bb-be75-5b1c-cfbc-c270f27b8407",
+      "status": 204,
+      "contentType": "application/json"
+    }
+  ]
+}

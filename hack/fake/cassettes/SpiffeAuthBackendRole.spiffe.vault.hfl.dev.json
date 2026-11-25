@@ -1,0 +1,103 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "caCert": "rehearsal-caCert",
+    "csr": "rehearsal-csr",
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "signed": "rehearsal-signed",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/auth/example-spiffe-mount-path/role/example-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-spiffe-mount-path/role/example-name",
+      "body": "{\"display_name\":\"example-display-name\",\"workload_id_patterns\":[]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"display_name\":\"example-display-name\",\"workload_id_patterns\":[]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-spiffe-mount-path/role/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"display_name\":\"example-display-name\",\"workload_id_patterns\":[]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-spiffe-mount-path/role/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"display_name\":\"example-display-name\",\"workload_id_patterns\":[]}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-spiffe-mount-path/role/example-name",
+      "body": "{\"display_name\":\"changed-display_name\",\"workload_id_patterns\":[]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"display_name\":\"changed-display_name\",\"workload_id_patterns\":[]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-spiffe-mount-path/role/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"display_name\":\"changed-display_name\",\"workload_id_patterns\":[]}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-spiffe-mount-path/role/example-name",
+      "body": "{\"display_name\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"display_name\":\"hfl-live-drift\",\"workload_id_patterns\":[]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-spiffe-mount-path/role/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"display_name\":\"hfl-live-drift\",\"workload_id_patterns\":[]}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-spiffe-mount-path/role/example-name",
+      "body": "{\"display_name\":\"changed-display_name\",\"workload_id_patterns\":[]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"display_name\":\"changed-display_name\",\"workload_id_patterns\":[]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-spiffe-mount-path/role/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"display_name\":\"changed-display_name\",\"workload_id_patterns\":[]}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/example-spiffe-mount-path/role/example-name",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-spiffe-mount-path/role/example-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

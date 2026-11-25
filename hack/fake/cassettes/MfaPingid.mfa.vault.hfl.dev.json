@@ -1,0 +1,103 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "caCert": "rehearsal-caCert",
+    "csr": "rehearsal-csr",
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "signed": "rehearsal-signed",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/sys/mfa/method/pingid/example-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/mfa/method/pingid/example-name",
+      "body": "{\"mount_accessor\":\"example-mount-accessor\",\"settings_file_base64\":\"example-settings-file-base64\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"mount_accessor\":\"example-mount-accessor\",\"settings_file_base64\":\"example-settings-file-base64\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/mfa/method/pingid/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"mount_accessor\":\"example-mount-accessor\",\"settings_file_base64\":\"example-settings-file-base64\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/mfa/method/pingid/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"mount_accessor\":\"example-mount-accessor\",\"settings_file_base64\":\"example-settings-file-base64\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/mfa/method/pingid/example-name",
+      "body": "{\"mount_accessor\":\"changed-mount_accessor\",\"settings_file_base64\":\"example-settings-file-base64\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"mount_accessor\":\"changed-mount_accessor\",\"settings_file_base64\":\"example-settings-file-base64\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/mfa/method/pingid/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"mount_accessor\":\"changed-mount_accessor\",\"settings_file_base64\":\"example-settings-file-base64\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/mfa/method/pingid/example-name",
+      "body": "{\"mount_accessor\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"mount_accessor\":\"hfl-live-drift\",\"settings_file_base64\":\"example-settings-file-base64\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/mfa/method/pingid/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"mount_accessor\":\"hfl-live-drift\",\"settings_file_base64\":\"example-settings-file-base64\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/mfa/method/pingid/example-name",
+      "body": "{\"mount_accessor\":\"changed-mount_accessor\",\"settings_file_base64\":\"example-settings-file-base64\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"mount_accessor\":\"changed-mount_accessor\",\"settings_file_base64\":\"example-settings-file-base64\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/mfa/method/pingid/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"mount_accessor\":\"changed-mount_accessor\",\"settings_file_base64\":\"example-settings-file-base64\"}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/mfa/method/pingid/example-name",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/sys/mfa/method/pingid/example-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

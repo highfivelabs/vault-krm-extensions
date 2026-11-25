@@ -1,0 +1,103 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "caCert": "rehearsal-caCert",
+    "csr": "rehearsal-csr",
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "signed": "rehearsal-signed",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/sys/storage/raft/snapshot-auto/config/example-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/storage/raft/snapshot-auto/config/example-name",
+      "body": "{\"interval\":\"example-interval\",\"path_prefix\":\"example-path-prefix\",\"storage_type\":\"local\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"interval\":\"example-interval\",\"path_prefix\":\"example-path-prefix\",\"storage_type\":\"local\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/storage/raft/snapshot-auto/config/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"interval\":\"example-interval\",\"path_prefix\":\"example-path-prefix\",\"storage_type\":\"local\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/storage/raft/snapshot-auto/config/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"interval\":\"example-interval\",\"path_prefix\":\"example-path-prefix\",\"storage_type\":\"local\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/storage/raft/snapshot-auto/config/example-name",
+      "body": "{\"interval\":\"changed-interval\",\"path_prefix\":\"example-path-prefix\",\"storage_type\":\"local\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"interval\":\"changed-interval\",\"path_prefix\":\"example-path-prefix\",\"storage_type\":\"local\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/storage/raft/snapshot-auto/config/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"interval\":\"changed-interval\",\"path_prefix\":\"example-path-prefix\",\"storage_type\":\"local\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/storage/raft/snapshot-auto/config/example-name",
+      "body": "{\"interval\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"interval\":\"hfl-live-drift\",\"path_prefix\":\"example-path-prefix\",\"storage_type\":\"local\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/storage/raft/snapshot-auto/config/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"interval\":\"hfl-live-drift\",\"path_prefix\":\"example-path-prefix\",\"storage_type\":\"local\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/storage/raft/snapshot-auto/config/example-name",
+      "body": "{\"interval\":\"changed-interval\",\"path_prefix\":\"example-path-prefix\",\"storage_type\":\"local\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"interval\":\"changed-interval\",\"path_prefix\":\"example-path-prefix\",\"storage_type\":\"local\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/storage/raft/snapshot-auto/config/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"interval\":\"changed-interval\",\"path_prefix\":\"example-path-prefix\",\"storage_type\":\"local\"}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/storage/raft/snapshot-auto/config/example-name",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/sys/storage/raft/snapshot-auto/config/example-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

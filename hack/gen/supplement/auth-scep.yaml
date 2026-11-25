@@ -1,0 +1,90 @@
+openapi: 3.0.2
+info:
+  title: Vault SCEP auth method (Vault Enterprise)
+  version: 1.0.0
+  description: Hand-made supplement to the Vault OpenAPI document; see the comment at the top.
+paths:
+  /auth/{scep_mount_path}/role/{name}:
+    parameters:
+    - name: scep_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: scep
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a SCEP auth role.
+      operationId: read-scep-role
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create or update a SCEP auth role.
+      operationId: write-scep-role
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScepRoleRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a SCEP auth role.
+      operationId: delete-scep-role
+      responses:
+        '204':
+          description: empty body
+components:
+  schemas:
+    ScepRoleRequest:
+      type: object
+      properties:
+        display_name:
+          type: string
+        auth_type:
+          type: string
+          enum:
+          - static-challenge
+          - intune
+        challenge:
+          type: string
+        token_ttl:
+          type: string
+          format: duration
+          description: The initial ttl of the token to generate.
+        token_max_ttl:
+          type: string
+          format: duration
+          description: The maximum lifetime of the generated token.
+        token_policies:
+          type: array
+          items:
+            type: string
+        token_bound_cidrs:
+          type: array
+          items:
+            type: string
+        token_explicit_max_ttl:
+          type: string
+          format: duration
+        token_no_default_policy:
+          type: boolean
+        token_num_uses:
+          type: integer
+        token_period:
+          type: string
+          format: duration
+        token_type:
+          type: string
+      required:
+      - auth_type

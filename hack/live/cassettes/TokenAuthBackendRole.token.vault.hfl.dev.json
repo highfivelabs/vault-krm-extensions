@@ -1,0 +1,110 @@
+{
+  "recorded": "2026-11-22T20:07:17Z",
+  "target": "Vault dev server 2.2.2",
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/auth/token/roles/{{name}}",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[]}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/token/roles/{{name}}",
+      "body": "{\"allowed_policies\":[\"default\"],\"explicit_max_ttl\":\"1h\",\"orphan\":true,\"path_suffix\":\"{{name}}\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/token/roles/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"3017ac2b-34a9-9bef-be08-0a3a4b749dd3\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"allowed_entity_aliases\":null,\"allowed_policies\":[\"default\"],\"allowed_policies_glob\":[],\"disallowed_policies\":[],\"disallowed_policies_glob\":[],\"explicit_max_ttl\":3600,\"name\":\"{{name}}\",\"orphan\":true,\"path_suffix\":\"{{name}}\",\"period\":0,\"renewable\":true,\"token_explicit_max_ttl\":3600,\"token_no_default_policy\":false,\"token_period\":0,\"token_type\":\"default-service\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"token\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/token/roles/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"bcbac0d8-ef88-735c-0711-5e03703413d8\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"allowed_entity_aliases\":null,\"allowed_policies\":[\"default\"],\"allowed_policies_glob\":[],\"disallowed_policies\":[],\"disallowed_policies_glob\":[],\"explicit_max_ttl\":3600,\"name\":\"{{name}}\",\"orphan\":true,\"path_suffix\":\"{{name}}\",\"period\":0,\"renewable\":true,\"token_explicit_max_ttl\":3600,\"token_no_default_policy\":false,\"token_period\":0,\"token_type\":\"default-service\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"token\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/token/roles/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"14bb0cd9-c1b5-a380-e338-3efc33ad5e08\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"allowed_entity_aliases\":null,\"allowed_policies\":[\"default\"],\"allowed_policies_glob\":[],\"disallowed_policies\":[],\"disallowed_policies_glob\":[],\"explicit_max_ttl\":3600,\"name\":\"{{name}}\",\"orphan\":true,\"path_suffix\":\"{{name}}\",\"period\":0,\"renewable\":true,\"token_explicit_max_ttl\":3600,\"token_no_default_policy\":false,\"token_period\":0,\"token_type\":\"default-service\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"token\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/token/roles/{{name}}",
+      "body": "{\"allowed_policies\":[\"default\"],\"explicit_max_ttl\":\"1h\",\"orphan\":true,\"path_suffix\":\"{{name}}-changed\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/token/roles/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"ff836732-c560-a1e1-833f-0277ac797fdf\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"allowed_entity_aliases\":null,\"allowed_policies\":[\"default\"],\"allowed_policies_glob\":[],\"disallowed_policies\":[],\"disallowed_policies_glob\":[],\"explicit_max_ttl\":3600,\"name\":\"{{name}}\",\"orphan\":true,\"path_suffix\":\"{{name}}-changed\",\"period\":0,\"renewable\":true,\"token_explicit_max_ttl\":3600,\"token_no_default_policy\":false,\"token_period\":0,\"token_type\":\"default-service\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"token\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/token/roles/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"362b1670-f4f0-0659-e45e-452fc30bde6f\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"allowed_entity_aliases\":null,\"allowed_policies\":[\"default\"],\"allowed_policies_glob\":[],\"disallowed_policies\":[],\"disallowed_policies_glob\":[],\"explicit_max_ttl\":3600,\"name\":\"{{name}}\",\"orphan\":true,\"path_suffix\":\"{{name}}-changed\",\"period\":0,\"renewable\":true,\"token_explicit_max_ttl\":3600,\"token_no_default_policy\":false,\"token_period\":0,\"token_type\":\"default-service\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"token\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/token/roles/{{name}}",
+      "body": "{\"path_suffix\":\"hfl-live-drift\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/token/roles/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"e31f9322-a241-c6fc-d05b-d414b71e59a5\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"allowed_entity_aliases\":null,\"allowed_policies\":[\"default\"],\"allowed_policies_glob\":[],\"disallowed_policies\":[],\"disallowed_policies_glob\":[],\"explicit_max_ttl\":3600,\"name\":\"{{name}}\",\"orphan\":true,\"path_suffix\":\"hfl-live-drift\",\"period\":0,\"renewable\":true,\"token_explicit_max_ttl\":3600,\"token_no_default_policy\":false,\"token_period\":0,\"token_type\":\"default-service\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"token\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/token/roles/{{name}}",
+      "body": "{\"allowed_policies\":[\"default\"],\"explicit_max_ttl\":\"1h\",\"orphan\":true,\"path_suffix\":\"{{name}}-changed\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/token/roles/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"6ab6a390-3fb0-192a-afb5-ad2e3063b837\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"allowed_entity_aliases\":null,\"allowed_policies\":[\"default\"],\"allowed_policies_glob\":[],\"disallowed_policies\":[],\"disallowed_policies_glob\":[],\"explicit_max_ttl\":3600,\"name\":\"{{name}}\",\"orphan\":true,\"path_suffix\":\"{{name}}-changed\",\"period\":0,\"renewable\":true,\"token_explicit_max_ttl\":3600,\"token_no_default_policy\":false,\"token_period\":0,\"token_type\":\"default-service\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"token\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/token/roles/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"b3583955-7420-f562-7a74-60d3b1bfe511\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"allowed_entity_aliases\":null,\"allowed_policies\":[\"default\"],\"allowed_policies_glob\":[],\"disallowed_policies\":[],\"disallowed_policies_glob\":[],\"explicit_max_ttl\":3600,\"name\":\"{{name}}\",\"orphan\":true,\"path_suffix\":\"{{name}}-changed\",\"period\":0,\"renewable\":true,\"token_explicit_max_ttl\":3600,\"token_no_default_policy\":false,\"token_period\":0,\"token_type\":\"default-service\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"token\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/token/roles/{{name}}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/token/roles/{{name}}",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[]}\n"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+openapi: 3.0.2
+info:
+  title: 'Vault identity: policies and members of an existing group or entity'
+  version: 1.0.0
+  description: Hand-made supplement to the Vault OpenAPI document; see the comment at the top.
+paths:
+  /identity/group/id/{group_id}:
+    parameters:
+    - name: group_id
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read the policies and members of an identity group.
+      operationId: read-identity-group-id-parts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityGroupIdPartsResponse'
+    put:
+      summary: Update the policies and members of an identity group.
+      operationId: write-identity-group-id-parts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityGroupIdPartsRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+  /identity/entity/id/{entity_id}:
+    parameters:
+    - name: entity_id
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read the policies of an identity entity.
+      operationId: read-identity-entity-id-parts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityEntityIdPartsResponse'
+    put:
+      summary: Update the policies of an identity entity.
+      operationId: write-identity-entity-id-parts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityEntityIdPartsRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+components:
+  schemas:
+    IdentityGroupIdPartsRequest:
+      type: object
+      properties:
+        policies:
+          type: array
+          items:
+            type: string
+        member_entity_ids:
+          type: array
+          items:
+            type: string
+        member_group_ids:
+          type: array
+          items:
+            type: string
+    IdentityGroupIdPartsResponse:
+      type: object
+      properties:
+        policies:
+          type: array
+          items:
+            type: string
+        member_entity_ids:
+          type: array
+          items:
+            type: string
+        member_group_ids:
+          type: array
+          items:
+            type: string
+    IdentityEntityIdPartsRequest:
+      type: object
+      properties:
+        policies:
+          type: array
+          items:
+            type: string
+      required:
+      - policies
+    IdentityEntityIdPartsResponse:
+      type: object
+      properties:
+        policies:
+          type: array
+          items:
+            type: string

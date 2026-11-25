@@ -1,0 +1,61 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/pingid",
+      "body": "{\"method_name\":\"{{name}}\",\"settings_file_base64\":\"dXNlX2Jhc2U2NF9rZXk9WUVTCnVzZV9zaWduYXR1cmU9dHJ1ZQp0b2tlbj1hR1pzTFd4cGRtVT0KaWRwX3VybD1odHRwczovL2lkcHhueWwzbS5waW5naWRlbnRpdHkuY29tL3BpbmdpZApvcmdfYWxpYXM9aGZsLWxpdmUKYWRtaW5fdXJsPWh0dHBzOi8vaWRweG55bDNtLnBpbmdpZGVudGl0eS5jb20vcGluZ2lkCmF1dGhlbnRpY2F0b3JfdXJsPWh0dHBzOi8vYXV0aGVudGljYXRvci5waW5nb25lLmNvbS9waW5naWQvcHBtCg==\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"id\":270000004,\"method_name\":\"{{name}}\",\"settings_file_base64\":\"dXNlX2Jhc2U2NF9rZXk9WUVTCnVzZV9zaWduYXR1cmU9dHJ1ZQp0b2tlbj1hR1pzTFd4cGRtVT0KaWRwX3VybD1odHRwczovL2lkcHhueWwzbS5waW5naWRlbnRpdHkuY29tL3BpbmdpZApvcmdfYWxpYXM9aGZsLWxpdmUKYWRtaW5fdXJsPWh0dHBzOi8vaWRweG55bDNtLnBpbmdpZGVudGl0eS5jb20vcGluZ2lkCmF1dGhlbnRpY2F0b3JfdXJsPWh0dHBzOi8vYXV0aGVudGljYXRvci5waW5nb25lLmNvbS9waW5naWQvcHBtCg==\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/pingid/270000004",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"id\":270000004,\"method_name\":\"{{name}}\",\"settings_file_base64\":\"dXNlX2Jhc2U2NF9rZXk9WUVTCnVzZV9zaWduYXR1cmU9dHJ1ZQp0b2tlbj1hR1pzTFd4cGRtVT0KaWRwX3VybD1odHRwczovL2lkcHhueWwzbS5waW5naWRlbnRpdHkuY29tL3BpbmdpZApvcmdfYWxpYXM9aGZsLWxpdmUKYWRtaW5fdXJsPWh0dHBzOi8vaWRweG55bDNtLnBpbmdpZGVudGl0eS5jb20vcGluZ2lkCmF1dGhlbnRpY2F0b3JfdXJsPWh0dHBzOi8vYXV0aGVudGljYXRvci5waW5nb25lLmNvbS9waW5naWQvcHBtCg==\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/pingid/270000004",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"id\":270000004,\"method_name\":\"{{name}}\",\"settings_file_base64\":\"dXNlX2Jhc2U2NF9rZXk9WUVTCnVzZV9zaWduYXR1cmU9dHJ1ZQp0b2tlbj1hR1pzTFd4cGRtVT0KaWRwX3VybD1odHRwczovL2lkcHhueWwzbS5waW5naWRlbnRpdHkuY29tL3BpbmdpZApvcmdfYWxpYXM9aGZsLWxpdmUKYWRtaW5fdXJsPWh0dHBzOi8vaWRweG55bDNtLnBpbmdpZGVudGl0eS5jb20vcGluZ2lkCmF1dGhlbnRpY2F0b3JfdXJsPWh0dHBzOi8vYXV0aGVudGljYXRvci5waW5nb25lLmNvbS9waW5naWQvcHBtCg==\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/pingid/270000004",
+      "body": "{\"method_name\":\"{{name}}\",\"settings_file_base64\":\"dXNlX2Jhc2U2NF9rZXk9WUVTCnVzZV9zaWduYXR1cmU9dHJ1ZQp0b2tlbj1hR1pzTFd4cGRtVT0KaWRwX3VybD1odHRwczovL2lkcHhueWwzbS5waW5naWRlbnRpdHkuY29tL3BpbmdpZApvcmdfYWxpYXM9aGZsLWxpdmUtMgphZG1pbl91cmw9aHR0cHM6Ly9pZHB4bnlsM20ucGluZ2lkZW50aXR5LmNvbS9waW5naWQKYXV0aGVudGljYXRvcl91cmw9aHR0cHM6Ly9hdXRoZW50aWNhdG9yLnBpbmdvbmUuY29tL3BpbmdpZC9wcG0K\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"id\":270000004,\"method_name\":\"{{name}}\",\"settings_file_base64\":\"dXNlX2Jhc2U2NF9rZXk9WUVTCnVzZV9zaWduYXR1cmU9dHJ1ZQp0b2tlbj1hR1pzTFd4cGRtVT0KaWRwX3VybD1odHRwczovL2lkcHhueWwzbS5waW5naWRlbnRpdHkuY29tL3BpbmdpZApvcmdfYWxpYXM9aGZsLWxpdmUtMgphZG1pbl91cmw9aHR0cHM6Ly9pZHB4bnlsM20ucGluZ2lkZW50aXR5LmNvbS9waW5naWQKYXV0aGVudGljYXRvcl91cmw9aHR0cHM6Ly9hdXRoZW50aWNhdG9yLnBpbmdvbmUuY29tL3BpbmdpZC9wcG0K\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/pingid/270000004",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"id\":270000004,\"method_name\":\"{{name}}\",\"settings_file_base64\":\"dXNlX2Jhc2U2NF9rZXk9WUVTCnVzZV9zaWduYXR1cmU9dHJ1ZQp0b2tlbj1hR1pzTFd4cGRtVT0KaWRwX3VybD1odHRwczovL2lkcHhueWwzbS5waW5naWRlbnRpdHkuY29tL3BpbmdpZApvcmdfYWxpYXM9aGZsLWxpdmUtMgphZG1pbl91cmw9aHR0cHM6Ly9pZHB4bnlsM20ucGluZ2lkZW50aXR5LmNvbS9waW5naWQKYXV0aGVudGljYXRvcl91cmw9aHR0cHM6Ly9hdXRoZW50aWNhdG9yLnBpbmdvbmUuY29tL3BpbmdpZC9wcG0K\"}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/identity/mfa/method/pingid/270000004",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/pingid/270000004",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

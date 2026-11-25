@@ -1,0 +1,131 @@
+{
+  "recorded": "2026-11-22T20:07:18Z",
+  "target": "Vault dev server 2.2.2",
+  "vars": {
+    "entity": "824161f1-5a83-bf5d-2111-78ef4eabffba",
+    "group": "bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+    "issuer": "b2145452-73da-a16b-353f-8eeb465fb9be",
+    "key": "9f1c47da-2a22-4676-4b02-f6000a2184f9",
+    "mfa": "f3f83141-6a0d-ba15-5a8f-38b659d5cc4a",
+    "tag": "v1:noSQyMKvvgg=:r={{run}}-19:d=false:m=false:gXpjsFnRfjn0SwzqsluE/m/25kwAo+VIoEj2Blnb8mQ="
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/sys/auth/{{name}}-radius",
+      "body": "{\"type\":\"radius\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-radius/users/{{name}}",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[]}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{name}}-radius/users/{{name}}",
+      "body": "{\"policies\":[\"default\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-radius/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"a219237c-7920-0f10-1985-fdfffb13dd02\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"policies\":[\"default\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"radius\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-radius/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"3931d270-f2a8-25e1-a893-764bd1b21ed6\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"policies\":[\"default\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"radius\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-radius/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"0ffab935-aebe-2105-e397-3064e61ea0f3\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"policies\":[\"default\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"radius\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{name}}-radius/users/{{name}}",
+      "body": "{\"policies\":[\"default\",\"hfl-live\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-radius/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"5c0981a8-0ad6-9c0b-488b-fab80ed75804\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"policies\":[\"default\",\"hfl-live\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"radius\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-radius/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"8cac9535-0f38-d896-288c-f41417c578b6\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"policies\":[\"default\",\"hfl-live\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"radius\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{name}}-radius/users/{{name}}",
+      "body": "{\"policies\":[\"hfl-live-drift\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-radius/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"645c3de1-a42d-112a-6fbe-a44572eb67c2\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"policies\":[\"hfl-live-drift\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"radius\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{name}}-radius/users/{{name}}",
+      "body": "{\"policies\":[\"default\",\"hfl-live\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-radius/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"b0aa5bcf-341c-2e23-d3f5-3fd1574fce59\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"policies\":[\"default\",\"hfl-live\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"radius\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-radius/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"e3915809-d274-eef6-0a55-ac90a104737b\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"policies\":[\"default\",\"hfl-live\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"radius\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/{{name}}-radius/users/{{name}}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-radius/users/{{name}}",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[]}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/auth/{{name}}-radius",
+      "status": 204,
+      "contentType": "application/json"
+    }
+  ]
+}

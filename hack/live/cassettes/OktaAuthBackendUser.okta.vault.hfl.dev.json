@@ -1,0 +1,131 @@
+{
+  "recorded": "2026-11-22T20:07:18Z",
+  "target": "Vault dev server 2.2.2",
+  "vars": {
+    "entity": "824161f1-5a83-bf5d-2111-78ef4eabffba",
+    "group": "bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+    "issuer": "b2145452-73da-a16b-353f-8eeb465fb9be",
+    "key": "9f1c47da-2a22-4676-4b02-f6000a2184f9",
+    "mfa": "f3f83141-6a0d-ba15-5a8f-38b659d5cc4a",
+    "tag": "v1:noSQyMKvvgg=:r={{run}}-19:d=false:m=false:gXpjsFnRfjn0SwzqsluE/m/25kwAo+VIoEj2Blnb8mQ="
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/sys/auth/{{name}}-okta",
+      "body": "{\"type\":\"okta\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-okta/users/{{name}}",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[]}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{name}}-okta/users/{{name}}",
+      "body": "{\"groups\":[\"hfl-live\"],\"policies\":[\"default\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-okta/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"df49562c-1b6d-d8d3-1fb6-8789a9e7a9a4\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"groups\":[\"hfl-live\"],\"policies\":[\"default\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"okta\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-okta/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"560e6f12-a069-4df6-e77b-d9d6649347ec\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"groups\":[\"hfl-live\"],\"policies\":[\"default\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"okta\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-okta/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"81c9e5e1-10ed-928d-c89d-c266bc812a9e\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"groups\":[\"hfl-live\"],\"policies\":[\"default\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"okta\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{name}}-okta/users/{{name}}",
+      "body": "{\"groups\":[\"hfl-live\"],\"policies\":[\"default\",\"hfl-live\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-okta/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"a8c8a268-5037-cd67-6f83-6d12c9b7ed15\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"groups\":[\"hfl-live\"],\"policies\":[\"default\",\"hfl-live\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"okta\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-okta/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"86c64b4e-7893-0107-edf1-2bdb83813593\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"groups\":[\"hfl-live\"],\"policies\":[\"default\",\"hfl-live\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"okta\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{name}}-okta/users/{{name}}",
+      "body": "{\"policies\":[\"hfl-live-drift\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-okta/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"c95d4e2b-82ef-f159-8ff4-85eb73856f79\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"groups\":[],\"policies\":[\"hfl-live-drift\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"okta\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{name}}-okta/users/{{name}}",
+      "body": "{\"groups\":[\"hfl-live\"],\"policies\":[\"default\",\"hfl-live\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-okta/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"9c905da0-f40c-b683-02fb-293fc2abf293\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"groups\":[\"hfl-live\"],\"policies\":[\"default\",\"hfl-live\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"okta\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-okta/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"74adfdba-f07c-a77c-77c2-6e619f064fd6\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"groups\":[\"hfl-live\"],\"policies\":[\"default\",\"hfl-live\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"okta\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/{{name}}-okta/users/{{name}}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-okta/users/{{name}}",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[]}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/auth/{{name}}-okta",
+      "status": 204,
+      "contentType": "application/json"
+    }
+  ]
+}

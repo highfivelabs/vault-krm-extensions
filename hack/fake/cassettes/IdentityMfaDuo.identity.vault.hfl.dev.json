@@ -1,0 +1,98 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/duo",
+      "body": "{\"api_hostname\":\"api-hfl-live.duosecurity.com\",\"integration_key\":\"{{redacted}}\",\"method_name\":\"{{name}}\",\"secret_key\":\"{{redacted}}\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"api-hfl-live.duosecurity.com\",\"id\":270000002,\"integration_key\":\"{{redacted}}\",\"method_name\":\"{{name}}\",\"secret_key\":\"{{redacted}}\"}}"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/duo/270000002",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"api-hfl-live.duosecurity.com\",\"id\":270000002,\"integration_key\":\"{{redacted}}\",\"method_name\":\"{{name}}\",\"secret_key\":\"{{redacted}}\"}}"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/duo/270000002",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"api-hfl-live.duosecurity.com\",\"id\":270000002,\"integration_key\":\"{{redacted}}\",\"method_name\":\"{{name}}\",\"secret_key\":\"{{redacted}}\"}}"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/duo/270000002",
+      "body": "{\"api_hostname\":\"api-hfl-live-2.duosecurity.com\",\"integration_key\":\"{{redacted}}\",\"method_name\":\"{{name}}\",\"secret_key\":\"{{redacted}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"api-hfl-live-2.duosecurity.com\",\"id\":270000002,\"integration_key\":\"{{redacted}}\",\"method_name\":\"{{name}}\",\"secret_key\":\"{{redacted}}\"}}"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/duo/270000002",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"api-hfl-live-2.duosecurity.com\",\"id\":270000002,\"integration_key\":\"{{redacted}}\",\"method_name\":\"{{name}}\",\"secret_key\":\"{{redacted}}\"}}"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/duo/270000002",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"api-hfl-live-2.duosecurity.com\",\"id\":270000002,\"integration_key\":\"{{redacted}}\",\"method_name\":\"{{name}}\",\"secret_key\":\"{{redacted}}\"}}"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/duo/270000002",
+      "body": "{\"api_hostname\":\"api-drift.duosecurity.com\",\"id\":270000002,\"integration_key\":\"{{redacted}}\",\"method_name\":\"{{name}}\",\"secret_key\":\"{{redacted}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"api-drift.duosecurity.com\",\"id\":270000002,\"integration_key\":\"{{redacted}}\",\"method_name\":\"{{name}}\",\"secret_key\":\"{{redacted}}\"}}"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/duo/270000002",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"api-drift.duosecurity.com\",\"id\":270000002,\"integration_key\":\"{{redacted}}\",\"method_name\":\"{{name}}\",\"secret_key\":\"{{redacted}}\"}}"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/duo/270000002",
+      "body": "{\"api_hostname\":\"api-hfl-live-2.duosecurity.com\",\"integration_key\":\"{{redacted}}\",\"method_name\":\"{{name}}\",\"secret_key\":\"{{redacted}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"api-hfl-live-2.duosecurity.com\",\"id\":270000002,\"integration_key\":\"{{redacted}}\",\"method_name\":\"{{name}}\",\"secret_key\":\"{{redacted}}\"}}"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/duo/270000002",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"api-hfl-live-2.duosecurity.com\",\"id\":270000002,\"integration_key\":\"{{redacted}}\",\"method_name\":\"{{name}}\",\"secret_key\":\"{{redacted}}\"}}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/identity/mfa/method/duo/270000002",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/duo/270000002",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

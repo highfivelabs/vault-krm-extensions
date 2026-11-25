@@ -1,0 +1,570 @@
+openapi: 3.0.2
+info:
+  title: Vault secrets sync (Vault Enterprise)
+  version: 1.0.0
+  description: Hand-made supplement to the Vault OpenAPI document; see the comment at the top.
+paths:
+  /sys/sync/config:
+    parameters: []
+    get:
+      summary: Read the secrets sync configuration (Vault Enterprise).
+      operationId: read-sync-config
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncConfigResponse'
+    patch:
+      summary: Update the secrets sync configuration (Vault Enterprise).
+      operationId: patch-sync-config
+      requestBody:
+        required: true
+        content:
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/SyncConfigRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+  /sys/sync/destinations/aws-sm/{name}:
+    parameters:
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a secrets sync destination for AWS Secrets Manager (Vault Enterprise).
+      operationId: read-sync-destinations-aws-sm
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncDestinationsAwsSmResponse'
+    post:
+      summary: Create or update a secrets sync destination for AWS Secrets Manager (Vault Enterprise).
+      operationId: write-sync-destinations-aws-sm
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SyncDestinationsAwsSmRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a secrets sync destination for AWS Secrets Manager (Vault Enterprise).
+      operationId: delete-sync-destinations-aws-sm
+      responses:
+        '204':
+          description: empty body
+  /sys/sync/destinations/azure-kv/{name}:
+    parameters:
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a secrets sync destination for Azure Key Vault (Vault Enterprise).
+      operationId: read-sync-destinations-azure-kv
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncDestinationsAzureKvResponse'
+    post:
+      summary: Create or update a secrets sync destination for Azure Key Vault (Vault Enterprise).
+      operationId: write-sync-destinations-azure-kv
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SyncDestinationsAzureKvRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a secrets sync destination for Azure Key Vault (Vault Enterprise).
+      operationId: delete-sync-destinations-azure-kv
+      responses:
+        '204':
+          description: empty body
+  /sys/sync/destinations/gcp-sm/{name}:
+    parameters:
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a secrets sync destination for Google Cloud Secret Manager (Vault Enterprise).
+      operationId: read-sync-destinations-gcp-sm
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncDestinationsGcpSmResponse'
+    post:
+      summary: Create or update a secrets sync destination for Google Cloud Secret Manager (Vault Enterprise).
+      operationId: write-sync-destinations-gcp-sm
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SyncDestinationsGcpSmRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a secrets sync destination for Google Cloud Secret Manager (Vault Enterprise).
+      operationId: delete-sync-destinations-gcp-sm
+      responses:
+        '204':
+          description: empty body
+  /sys/sync/destinations/gh/{name}:
+    parameters:
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a secrets sync destination for GitHub Actions secrets (Vault Enterprise).
+      operationId: read-sync-destinations-gh
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncDestinationsGhResponse'
+    post:
+      summary: Create or update a secrets sync destination for GitHub Actions secrets (Vault Enterprise).
+      operationId: write-sync-destinations-gh
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SyncDestinationsGhRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a secrets sync destination for GitHub Actions secrets (Vault Enterprise).
+      operationId: delete-sync-destinations-gh
+      responses:
+        '204':
+          description: empty body
+  /sys/sync/destinations/vercel-project/{name}:
+    parameters:
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a secrets sync destination for a Vercel project (Vault Enterprise).
+      operationId: read-sync-destinations-vercel-project
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncDestinationsVercelProjectResponse'
+    post:
+      summary: Create or update a secrets sync destination for a Vercel project (Vault Enterprise).
+      operationId: write-sync-destinations-vercel-project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SyncDestinationsVercelProjectRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a secrets sync destination for a Vercel project (Vault Enterprise).
+      operationId: delete-sync-destinations-vercel-project
+      responses:
+        '204':
+          description: empty body
+  /sys/sync/github-apps/{name}:
+    parameters:
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a custom GitHub App for secrets sync (Vault Enterprise).
+      operationId: read-sync-github-apps
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SyncGithubAppsResponse'
+    post:
+      summary: Create or update a custom GitHub App for secrets sync (Vault Enterprise).
+      operationId: write-sync-github-apps
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SyncGithubAppsRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a custom GitHub App for secrets sync (Vault Enterprise).
+      operationId: delete-sync-github-apps
+      responses:
+        '204':
+          description: empty body
+components:
+  schemas:
+    SyncConfigRequest:
+      type: object
+      properties:
+        disabled:
+          type: boolean
+        queue_capacity:
+          type: integer
+    SyncConfigResponse:
+      type: object
+      properties:
+        disabled:
+          type: boolean
+        queue_capacity:
+          type: integer
+    SyncDestinationsAwsSmRequest:
+      type: object
+      properties:
+        access_key_id:
+          type: string
+        secret_access_key:
+          type: string
+        role_arn:
+          type: string
+        external_id:
+          type: string
+        region:
+          type: string
+        kms_key_id:
+          type: string
+        replica_regions:
+          type: object
+          additionalProperties:
+            type: string
+        secret_name_template:
+          type: string
+        custom_tags:
+          type: object
+          additionalProperties:
+            type: string
+        granularity:
+          type: string
+          enum:
+          - secret-path
+          - secret-key
+        identity_token_audience:
+          type: string
+        identity_token_key:
+          type: string
+        identity_token_ttl:
+          type: string
+          format: duration
+        disable_strict_networking:
+          type: boolean
+        allowed_ipv4_addresses:
+          type: array
+          items:
+            type: string
+        allowed_ipv6_addresses:
+          type: array
+          items:
+            type: string
+        allowed_ports:
+          type: array
+          items:
+            type: integer
+    SyncDestinationsAwsSmResponse:
+      type: object
+      properties:
+        connection_details:
+          type: object
+        options:
+          type: object
+    SyncDestinationsAzureKvRequest:
+      type: object
+      properties:
+        key_vault_uri:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        tenant_id:
+          type: string
+        cloud:
+          type: string
+        secret_name_template:
+          type: string
+        custom_tags:
+          type: object
+          additionalProperties:
+            type: string
+        granularity:
+          type: string
+          enum:
+          - secret-path
+          - secret-key
+        identity_token_audience:
+          type: string
+        identity_token_key:
+          type: string
+        identity_token_ttl:
+          type: string
+          format: duration
+        disable_strict_networking:
+          type: boolean
+        allowed_ipv4_addresses:
+          type: array
+          items:
+            type: string
+        allowed_ipv6_addresses:
+          type: array
+          items:
+            type: string
+        allowed_ports:
+          type: array
+          items:
+            type: integer
+      required:
+      - key_vault_uri
+      - client_id
+      - tenant_id
+    SyncDestinationsAzureKvResponse:
+      type: object
+      properties:
+        connection_details:
+          type: object
+        options:
+          type: object
+    SyncDestinationsGcpSmRequest:
+      type: object
+      properties:
+        credentials:
+          type: string
+        project_id:
+          type: string
+        kms_key_id:
+          type: string
+        replica_regions:
+          type: object
+          additionalProperties:
+            type: string
+        replication_locations:
+          type: array
+          items:
+            type: string
+        locational_kms_keys:
+          type: object
+          additionalProperties:
+            type: string
+        global_kms_key:
+          type: string
+        service_account_email:
+          type: string
+        secret_name_template:
+          type: string
+        custom_tags:
+          type: object
+          additionalProperties:
+            type: string
+        granularity:
+          type: string
+          enum:
+          - secret-path
+          - secret-key
+        identity_token_audience:
+          type: string
+        identity_token_key:
+          type: string
+        identity_token_ttl:
+          type: string
+          format: duration
+        disable_strict_networking:
+          type: boolean
+        allowed_ipv4_addresses:
+          type: array
+          items:
+            type: string
+        allowed_ipv6_addresses:
+          type: array
+          items:
+            type: string
+        allowed_ports:
+          type: array
+          items:
+            type: integer
+    SyncDestinationsGcpSmResponse:
+      type: object
+      properties:
+        connection_details:
+          type: object
+        options:
+          type: object
+    SyncDestinationsGhRequest:
+      type: object
+      properties:
+        enterprise_url:
+          type: string
+        secrets_location:
+          type: string
+          enum:
+          - organization
+          - repository
+        access_token:
+          type: string
+        app_name:
+          type: string
+        installation_id:
+          type: string
+        repository_owner:
+          type: string
+        repository_name:
+          type: string
+        environment_name:
+          type: string
+        organization_name:
+          type: string
+        organization_visibility:
+          type: string
+          enum:
+          - all
+          - private
+          - selected
+        selected_repository_names:
+          type: array
+          items:
+            type: string
+        secret_name_template:
+          type: string
+        granularity:
+          type: string
+          enum:
+          - secret-path
+          - secret-key
+        disable_strict_networking:
+          type: boolean
+        allowed_ipv4_addresses:
+          type: array
+          items:
+            type: string
+        allowed_ipv6_addresses:
+          type: array
+          items:
+            type: string
+        allowed_ports:
+          type: array
+          items:
+            type: integer
+    SyncDestinationsGhResponse:
+      type: object
+      properties:
+        connection_details:
+          type: object
+        options:
+          type: object
+    SyncDestinationsVercelProjectRequest:
+      type: object
+      properties:
+        access_token:
+          type: string
+        project_id:
+          type: string
+        team_id:
+          type: string
+        deployment_environments:
+          type: array
+          items:
+            type: string
+        secret_name_template:
+          type: string
+        granularity:
+          type: string
+          enum:
+          - secret-path
+          - secret-key
+        disable_strict_networking:
+          type: boolean
+        allowed_ipv4_addresses:
+          type: array
+          items:
+            type: string
+        allowed_ipv6_addresses:
+          type: array
+          items:
+            type: string
+        allowed_ports:
+          type: array
+          items:
+            type: integer
+      required:
+      - access_token
+      - project_id
+      - deployment_environments
+    SyncDestinationsVercelProjectResponse:
+      type: object
+      properties:
+        connection_details:
+          type: object
+        options:
+          type: object
+    SyncGithubAppsRequest:
+      type: object
+      properties:
+        app_id:
+          type: integer
+        private_key:
+          type: string
+      required:
+      - app_id
+      - private_key
+    SyncGithubAppsResponse:
+      type: object
+      properties:
+        app_id:
+          type: integer

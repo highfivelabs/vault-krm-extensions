@@ -1,0 +1,69 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-aws/role/{{name}}",
+      "body": "{\"auth_type\":\"ec2\",\"bound_ami_id\":\"ami-0123456789abcdef0\",\"policies\":\"default\",\"role_tag\":\"VaultRole\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"auth_type\":\"ec2\",\"bound_ami_id\":\"ami-0123456789abcdef0\",\"id\":280000010,\"policies\":\"default\",\"role_tag\":\"VaultRole\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-aws/role/{{name}}/tag",
+      "body": "{}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000011}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/roletag-blacklist/rehearsal-tag",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-aws/roletag-blacklist/rehearsal-tag",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/roletag-blacklist/rehearsal-tag",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/roletag-blacklist/rehearsal-tag",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/{{run}}-aws/roletag-blacklist/rehearsal-tag",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/roletag-blacklist/rehearsal-tag",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

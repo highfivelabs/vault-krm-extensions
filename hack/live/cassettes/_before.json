@@ -1,0 +1,41 @@
+{
+  "recorded": "2026-11-22T20:07:17Z",
+  "target": "Vault dev server 2.2.2",
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/sys/mounts/{{run}}-kv",
+      "body": "{\"options\":{\"version\":\"1\"},\"type\":\"kv\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/mounts/{{run}}-pki",
+      "body": "{\"type\":\"pki\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/mounts/{{run}}-transit",
+      "body": "{\"type\":\"transit\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/auth/{{run}}-userpass",
+      "body": "{\"type\":\"userpass\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/auth/{{run}}-aws",
+      "body": "{\"type\":\"aws\"}",
+      "status": 204,
+      "contentType": "application/json"
+    }
+  ]
+}

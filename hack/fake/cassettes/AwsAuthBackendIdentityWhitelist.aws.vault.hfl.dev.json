@@ -1,0 +1,95 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mfa": "rehearsal-mfa"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/config/tidy/identity-whitelist",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-aws/config/tidy/identity-whitelist",
+      "body": "{\"disable_periodic_tidy\":true,\"safety_buffer\":\"48h\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"disable_periodic_tidy\":true,\"safety_buffer\":\"48h\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/config/tidy/identity-whitelist",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"disable_periodic_tidy\":true,\"safety_buffer\":\"48h\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/config/tidy/identity-whitelist",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"disable_periodic_tidy\":true,\"safety_buffer\":\"48h\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-aws/config/tidy/identity-whitelist",
+      "body": "{\"disable_periodic_tidy\":false,\"safety_buffer\":\"48h\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"disable_periodic_tidy\":false,\"safety_buffer\":\"48h\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/config/tidy/identity-whitelist",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"disable_periodic_tidy\":false,\"safety_buffer\":\"48h\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-aws/config/tidy/identity-whitelist",
+      "body": "{\"disable_periodic_tidy\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"disable_periodic_tidy\":true,\"safety_buffer\":\"48h\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/config/tidy/identity-whitelist",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"disable_periodic_tidy\":true,\"safety_buffer\":\"48h\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-aws/config/tidy/identity-whitelist",
+      "body": "{\"disable_periodic_tidy\":false,\"safety_buffer\":\"48h\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"disable_periodic_tidy\":false,\"safety_buffer\":\"48h\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/config/tidy/identity-whitelist",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"disable_periodic_tidy\":false,\"safety_buffer\":\"48h\"}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/{{run}}-aws/config/tidy/identity-whitelist",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/config/tidy/identity-whitelist",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

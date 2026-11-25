@@ -1,0 +1,301 @@
+# Inputs to krm-rest-runtime/gen/krmgen.py. Specs are pinned to the commit in each url;
+# hack/gen/fetch-specs.sh downloads them. overrides: map (Terraform type -> API item path),
+# exclude (Terraform types), excludePaths (API item paths).
+vendor: vault
+title: Vault
+groupSuffix: vault.hfl.dev
+connectionKind: Connection
+credentialKeys:
+- token
+baseURLHelp: Vault API base URL including /v1, e.g. https://vault.example.com:8200/v1. Required. The Secret may also hold `namespace` (Vault Enterprise / HCP).
+terraform:
+  provider: hashicorp/vault
+  prefix: vault
+  gaps: terraform-gaps.json
+specs:
+- file: specs/vault.json
+  url: https://raw.githubusercontent.com/hashicorp/vault-client-go/a0f17ccb92501f7b7ad1bf5188b404383f08a45f/openapi.json
+# Hand-made supplements (sources and dates at the top of each): endpoints the
+# document above leaves out, or has only as bodiless enterprise stubs.
+- file: supplement/sys.yaml
+- file: supplement/transform.yaml
+- file: supplement/kmip.yaml
+- file: supplement/keymgmt.yaml
+- file: supplement/sync.yaml
+- file: supplement/auth-saml.yaml
+- file: supplement/auth-scep.yaml
+- file: supplement/auth-spiffe.yaml
+- file: supplement/auth-tpm.yaml
+- file: supplement/secret-spiffe.yaml
+- file: supplement/os.yaml
+- file: supplement/azure.yaml
+- file: supplement/pki.yaml
+- file: supplement/pki-external-ca.yaml
+- file: supplement/identity.yaml
+- file: supplement/identity-parts.yaml
+envelope:
+  always: data
+# Kinds written by hand (hack/gen/kinds/*.yaml, sources in each): REST
+# resources Vault's OpenAPI document leaves out, or whose calls no path
+# pairing finds.
+handwritten: {dir: kinds}
+postUpdates: true
+# An operation whose body is not plain JSON sends its media type: secrets
+# sync's configuration takes only a JSON merge patch (supplement/sync.yaml).
+versionedMediaTypes: true
+overrides:
+  placeholderWords: \{([a-z0-9]+(?:_[a-z0-9]+)*?)_mount_path\}
+  wordSynonyms:
+    backend: ''
+    mount: ''
+    certs: cert
+    certificate: cert
+    roletag: role_tag
+    configuration: config
+    secrets: ''
+    secret: ''
+    engine: ''
+  map:
+    vault_kv_secret_backend_v2: /{kv_v2_mount_path}/config
+    vault_pki_secret_backend_config_issuers: /{pki_mount_path}/config/issuers
+    vault_aws_auth_backend_sts_role: /auth/{aws_mount_path}/config/sts/{account_id}
+    # The untyped /sys/plugins/catalog/{name} is deprecated: a read answers
+    # nothing, and a write runs the binary to guess its type.
+    vault_plugin: /sys/plugins/catalog/{type}/{name}
+    vault_ldap_secret_backend_library_set: /{ldap_mount_path}/library/{name}
+    # Deprecated in favor of the LDAP library set: the Active Directory engine's
+    # library takes the same path under its mount and the same fields.
+    vault_ad_secret_backend_library: /{ldap_mount_path}/library/{name}
+    # A KV version 1 secret at any path (the same calls as vault_kv_secret).
+    vault_generic_secret: /{kv_v1_mount_path}/{path}
+    vault_kv_secret: /{kv_v1_mount_path}/{path}
+    # supplement/sys.yaml
+    vault_config_control_group: /sys/config/control-group
+    vault_config_group_policy_application: /sys/config/group-policy-application
+    vault_egp_policy: /sys/policies/egp/{name}
+    vault_rgp_policy: /sys/policies/rgp/{name}
+    # One kind per key; Terraform's resource holds every key of each type.
+    vault_managed_keys: /sys/managed-keys/{type}/{name}
+    vault_mfa_duo: /sys/mfa/method/duo/{name}
+    vault_mfa_okta: /sys/mfa/method/okta/{name}
+    vault_mfa_pingid: /sys/mfa/method/pingid/{name}
+    vault_mfa_totp: /sys/mfa/method/totp/{name}
+    vault_raft_autopilot: /sys/storage/raft/autopilot/configuration
+    vault_raft_snapshot_agent_config: /sys/storage/raft/snapshot-auto/config/{name}
+    vault_plugin_pinned_version: /sys/plugins/pins/{type}/{name}
+    vault_config_ui_custom_messages: /sys/config/ui/custom-messages/{id}
+    vault_config_ui_default_auth: /sys/config/ui/login/default-auth/{name}
+    vault_oauth_resource_server_config_profile: /sys/config/oauth-resource-server/{name}
+    # supplement/transform.yaml
+    vault_transform_alphabet: /{transform_mount_path}/alphabet/{name}
+    vault_transform_template: /{transform_mount_path}/template/{name}
+    vault_transform_transformation: /{transform_mount_path}/transformation/{name}
+    vault_transform_transformation_tokenization: /{transform_mount_path}/transformations/tokenization/{name}
+    vault_transform_transformation_tokenization_store: /{transform_mount_path}/stores/{name}
+    vault_transform_role: /{transform_mount_path}/role/{name}
+    vault_transform_key_configuration: /{transform_mount_path}/tokenization/keys/{name}/config
+    # supplement/kmip.yaml; the backend's mount is a SecretEngineMount.
+    vault_pki_secret_backend_acme_eab: /{pki_mount_path}/eab/{key_id}
+    vault_kmip_secret_backend: /{kmip_mount_path}/config
+    vault_kmip_secret_role: /{kmip_mount_path}/scope/{scope}/role/{role}
+    vault_kmip_secret_listener: /{kmip_mount_path}/listener/{name}
+    vault_kmip_secret_scope: /{kmip_mount_path}/scope/{scope}
+    # supplement/keymgmt.yaml
+    vault_keymgmt_key: /{keymgmt_mount_path}/key/{name}
+    vault_keymgmt_aws_kms: /{keymgmt_mount_path}/kms/{name}
+    vault_keymgmt_azure_kms: /{keymgmt_mount_path}/kms/{name}
+    vault_keymgmt_gcp_kms: /{keymgmt_mount_path}/kms/{name}
+    vault_keymgmt_distribute_key: /{keymgmt_mount_path}/kms/{name}/key/{key_name}
+    # supplement/sync.yaml
+    vault_secrets_sync_config: /sys/sync/config
+    vault_secrets_sync_aws_destination: /sys/sync/destinations/aws-sm/{name}
+    vault_secrets_sync_azure_destination: /sys/sync/destinations/azure-kv/{name}
+    vault_secrets_sync_gcp_destination: /sys/sync/destinations/gcp-sm/{name}
+    vault_secrets_sync_gh_destination: /sys/sync/destinations/gh/{name}
+    vault_secrets_sync_vercel_destination: /sys/sync/destinations/vercel-project/{name}
+    vault_secrets_sync_github_apps: /sys/sync/github-apps/{name}
+    # The other supplements. A Terraform "backend" that also enables the
+    # mount stands in for the method's or engine's config here; the mount is
+    # an AuthEngineMount or SecretEngineMount.
+    vault_saml_auth_backend: /auth/{saml_mount_path}/config
+    vault_saml_auth_backend_role: /auth/{saml_mount_path}/role/{name}
+    vault_scep_auth_backend_role: /auth/{scep_mount_path}/role/{name}
+    vault_spiffe_auth_backend_config: /auth/{spiffe_mount_path}/config
+    vault_spiffe_auth_backend_role: /auth/{spiffe_mount_path}/role/{name}
+    vault_tpm_auth_backend_config: /auth/{tpm_mount_path}/config
+    vault_tpm_auth_backend_role: /auth/{tpm_mount_path}/role/{name}
+    vault_spiffe_secret_backend_config: /{spiffe_mount_path}/config
+    vault_spiffe_secret_backend_role: /{spiffe_mount_path}/role/{name}
+    vault_os_secret_backend: /{os_mount_path}/config
+    vault_os_secret_backend_host: /{os_mount_path}/hosts/{name}
+    vault_os_secret_backend_account: /{os_mount_path}/hosts/{host_ref}/accounts/{name}
+    vault_azure_secret_backend_static_role: /{azure_mount_path}/static-roles/{name}
+    vault_pki_secret_backend_config_est: /{pki_mount_path}/config/est
+    vault_pki_secret_backend_config_cmpv2: /{pki_mount_path}/config/cmp
+    vault_pki_secret_backend_config_scep: /{pki_mount_path}/config/scep
+    vault_pki_external_ca_secret_backend_role: /{pki_external_ca_mount_path}/role/{name}
+    vault_pki_external_ca_secret_backend_acme_account: /{pki_external_ca_mount_path}/config/acme-account/{name}
+    vault_pki_external_ca_secret_backend_dns_provider_aws_route53: /{pki_external_ca_mount_path}/config/dns/aws-route53/{name}
+    vault_pki_external_ca_secret_backend_dns_provider_azure: /{pki_external_ca_mount_path}/config/dns/azure-dns/{name}
+    vault_pki_external_ca_secret_backend_dns_provider_gcp: /{pki_external_ca_mount_path}/config/dns/google-cloud-dns/{name}
+    vault_pki_external_ca_secret_backend_dns_provider_rfc2136: /{pki_external_ca_mount_path}/config/dns/rfc2136/{name}
+    vault_identity_tpm: /identity/tpm/name/{name}
+    vault_identity_tpm_group: /identity/tpmgroup/id/{id}
+    vault_agent_registration: /agent-registry/registration/id/{id}
+    vault_scim_client: /identity/scim/client/{client_name}
+    # Policies and members of an existing group or entity (supplement/identity-parts.yaml).
+    vault_identity_group_policies: /identity/group/id/{group_id}
+    vault_identity_group_member_entity_ids: /identity/group/id/{group_id}
+    vault_identity_group_member_group_ids: /identity/group/id/{group_id}
+    vault_identity_entity_policies: /identity/entity/id/{entity_id}
+  kindNames:
+    # One kind for the three Terraform types that each set part of a group.
+    /identity/group/id/{group_id}: IdentityGroupAssignment
+    /identity/entity/id/{entity_id}: IdentityEntityAssignment
+    /sys/sync/github-apps/{name}: SecretsSyncGithubApp
+    # One KMS provider path for Terraform's three provider-specific types.
+    /{keymgmt_mount_path}/kms/{name}: KeymgmtKmsProvider
+    /{kv_v1_mount_path}/{path}: KvSecret
+    # One message or key per object (plural Terraform names).
+    /sys/config/ui/custom-messages/{id}: ConfigUiCustomMessage
+    /sys/managed-keys/{type}/{name}: ManagedKey
+  createOnly:
+    /{gcpkms_mount_path}/keys/{key}: [algorithm, crypto_key, protection_level, purpose]
+    # An account's password is taken on create only (os_secret_backend_account_resource.go).
+    /{os_mount_path}/hosts/{host_ref}/accounts/{name}: [password]
+    # An agent registration's update sends neither (agent_registration_resource.go).
+    /agent-registry/registration/id/{id}: [display_name, entity_id, local]
+    # An ACME account's PUT takes only trusted_ca and default_nameserver (API docs).
+    /{pki_external_ca_mount_path}/config/acme-account/{name}: [directory_url, eab_key, eab_kid, email_contacts, key_type]
+  # Made by a POST elsewhere, which answers the ID; updated by a POST to their own path.
+  creates:
+    # A named KMIP CA (supplement/kmip.yaml), generated or imported: two
+    # kinds, both read and deleted at .../ca/{name}; only an imported one's
+    # scope and role settings can be changed (POST .../ca/{name}).
+    /{kmip_mount_path}/ca/{name}:
+    - {path: "/{kmip_mount_path}/ca/{name}/generate", terraform: vault_kmip_secret_ca_generated, update: false}
+    - {path: "/{kmip_mount_path}/ca/{name}/import", terraform: vault_kmip_secret_ca_imported, createOnly: [ca_pem]}
+    # A root CA generated on a PKI mount (Terraform's
+    # vault_pki_secret_backend_root_cert, at Vault 1.11+'s multi-issuer
+    # path): an issuer made by POST .../issuers/generate/root/{exported}, read
+    # and deleted as that issuer (.../issuer/{issuer_id}); it cannot be
+    # changed (every Terraform field forces a new one).
+    /{pki_mount_path}/issuer/{issuer_ref}:
+    - {path: "/{pki_mount_path}/issuers/generate/root/{exported}", terraform: vault_pki_secret_backend_root_cert, update: false, secretOutputs: [private_key]}
+    # A CA bundle imported into the mount (Terraform's
+    # vault_pki_secret_backend_config_ca: POST .../config/ca, pem_bundle), and
+    # a signed intermediate certificate set on it
+    # (vault_pki_secret_backend_intermediate_set_signed: POST
+    # .../intermediate/set-signed, certificate): each answers the issuers it
+    # imported, and is read as the first of them. Terraform's resources read
+    # nothing back and delete nothing (vault/resource_pki_secret_backend_config_ca.go,
+    # _intermediate_set_signed.go): deleting the object leaves the issuer. A
+    # bundle already imported answers no new issuer, so the object fails.
+    - {path: "/{pki_mount_path}/config/ca", terraform: vault_pki_secret_backend_config_ca, update: false, idFrom: imported_issuers.0, writeOnly: [pem_bundle],
+       forget: "Terraform's resource deletes nothing: deleting the object leaves the imported issuer (DELETE /{pki_mount_path}/issuer/{issuer_ref} removes it)."}
+    - {path: "/{pki_mount_path}/intermediate/set-signed", terraform: vault_pki_secret_backend_intermediate_set_signed, update: false, idFrom: imported_issuers.0, writeOnly: [certificate],
+       forget: "Terraform's resource deletes nothing: deleting the object leaves the imported issuer (DELETE /{pki_mount_path}/issuer/{issuer_ref} removes it)."}
+    # An intermediate CA's key and certificate request (Terraform's
+    # vault_pki_secret_backend_intermediate_cert_request, at Vault 1.11+'s
+    # multi-issuer path): POST .../issuers/generate/intermediate/{exported}
+    # makes a key, answers its key_id, the CSR and (exported) the private
+    # key, which go to the object's Secret; read as that key. Terraform's
+    # resource deletes nothing (_intermediate_cert_request.go): deleting the
+    # object leaves the key, which the signed issuer goes on using.
+    /{pki_mount_path}/key/{key_ref}:
+    - {path: "/{pki_mount_path}/issuers/generate/intermediate/{exported}", terraform: vault_pki_secret_backend_intermediate_cert_request, update: false, idFrom: key_id,
+       secretOutputs: [csr, private_key], forget: "The key stays for the issuer its signed certificate is set on: deleting the object leaves it (DELETE /{pki_mount_path}/key/{key_ref} removes it)."}
+    # An ACME external account binding: made by POST .../acme/new-eab, which
+    # answers its key once; listed (LIST .../eab) and deleted by ID.
+    /{pki_mount_path}/eab/{key_id}: /{pki_mount_path}/acme/new-eab
+    /identity/tpmgroup/id/{id}: /identity/tpmgroup
+    /agent-registry/registration/id/{id}: /agent-registry/register
+    # An ACME account: POST makes it, PUT updates it, on its own path.
+    /{pki_external_ca_mount_path}/config/acme-account/{name}: /{pki_external_ca_mount_path}/config/acme-account/{name}
+  # Fields a read does not give back as written (not compared; written once
+  # each time the spec changes). Checked against each plugin's read handler.
+  writeOnly:
+    # Never returned (Terraform's secret_key_wo / credentials_wo).
+    /{alicloud_mount_path}/config: [secret_key]
+    /{gcpkms_mount_path}/config: [credentials]
+    # Written as a JSON string and "name:..,type:.." strings; read back as
+    # [{hash, policy_document}] and [{name, type}].
+    /{alicloud_mount_path}/role/{name}: [inline_policies, remote_policies]
+    # Written as a list; read back as one sorted, comma-joined string.
+    /auth/{ldap_mount_path}/users/{name}: [groups]
+  # Vault Enterprise 1.19+ assumes a role in another account for a static
+  # role (API docs: secret/aws "Create static role"; Terraform sends them on
+  # Enterprise only). The spec predates them.
+  extraFields:
+    /{aws_mount_path}/static-roles/{name}:
+      assume_role_arn:
+        type: string
+      assume_role_session_name:
+        type: string
+      external_id:
+        type: string
+  # ... and a read returns them (empty on the open-source server), though
+  # the spec's response leaves them out.
+  readable:
+    /{aws_mount_path}/static-roles/{name}: [assume_role_arn, assume_role_session_name, external_id]
+  excludeOperationIdPrefixes:
+  - enterprise-stub-
+  # A UI header read answers only its first value ({"value": ...}) unless
+  # asked for all of them; the kind sets and compares `values`.
+  readQuery:
+    # Vault's LIST is a GET with list=true.
+    /{kmip_mount_path}/scope/{scope}: {list: true}
+    /{pki_mount_path}/eab/{key_id}: {list: true}
+    /sys/config/ui/headers/{header}: {multivalue: true}
+  # Written on one path, read on another.
+  readFrom:
+    # An ACME EAB: only an ID in the mount's LIST of them.
+    /{pki_mount_path}/eab/{key_id}: {path: "/{pki_mount_path}/eab/", list: data/keys, field: ""}
+    # A KMIP scope: only a name in the mount's LIST of scopes ({"keys": [...]}).
+    /{kmip_mount_path}/scope/{scope}: {path: "/{kmip_mount_path}/scope", list: data/keys, field: ""}
+    # A tokenization key's configuration: POST .../keys/:name/config, GET .../keys/:name.
+    /{transform_mount_path}/tokenization/keys/{name}/config: {path: "/{transform_mount_path}/tokenization/keys/{name}"}
+  elements:
+    vault_identity_oidc_key_allowed_client_id:
+      item: /identity/oidc/key/{name}
+      in: {allowed_client_id: allowed_client_ids}
+  # A generated root CA's ID is its issuer's.
+  idFrom:
+    /{pki_mount_path}/issuer/{issuer_ref}: issuer_id
+  # Answered once, by the create: an EAB's key.
+  secretOutputs:
+    /{pki_mount_path}/eab/{key_id}: [key]
+# Terraform gap types no kind will cover, and why: no draft kind is made for them
+# (krm-rest-runtime's README, "Draft kinds"). The README's "Not covered" table is
+# generated from these and draftNotes. Not resources to manage: each call issues new
+# material or runs a one-off action, with nothing that reads back what was set.
+hardBlocks:
+  vault_approle_auth_backend_login: &login >-
+    A login, which issues a token (Terraform keeps the token and looks it up); not a
+    resource to manage.
+  vault_aws_auth_backend_login: *login
+  vault_terraform_cloud_secret_creds: >-
+    `GET .../creds/:role` issues an HCP Terraform token under a lease; Terraform looks
+    the lease up and revokes it. Not a resource to manage.
+  vault_aws_auth_backend_role_tag: >-
+    `POST .../role/:role/tag` answers a signed tag Vault keeps nowhere; Terraform's read
+    and delete do nothing.
+  vault_pki_secret_backend_cert: &issue >-
+    Issues a certificate (`.../issue/:role`, `.../sign/:role`,
+    `.../root/sign-intermediate`); Terraform reads nothing back (only checks the mount
+    and its renewal window) and revokes on destroy if asked.
+  vault_pki_secret_backend_sign: *issue
+  vault_pki_secret_backend_root_sign_intermediate: *issue
+  vault_keymgmt_key_rotate: &keymgmt >-
+    One `POST .../rotate` or `.../replicate`; Terraform's destroy does nothing
+    ("rotation is permanent", "replication is not a physical resource").
+  vault_keymgmt_replicate_key: *keymgmt
+  vault_pki_external_ca_secret_backend_order_challenge_fulfilled: >-
+    One `POST .../fulfilled-challenge`; Terraform reads and deletes nothing.
+  vault_pki_external_ca_secret_backend_order_certificate: >-
+    A lookup (`GET .../order/:id/fetch-cert` of a completed order); it writes nothing.
+  vault_ad_secret_backend: &ad >-
+    Removed from Vault: the Active Directory secrets engine is under "Removed" on Vault's
+    deprecation page (announced March 2023, removal CY25 Q1); `vault_ldap_secret_backend`
+    and its static roles replace it.
+  vault_ad_secret_role: *ad

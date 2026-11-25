@@ -1,0 +1,605 @@
+openapi: 3.0.2
+info:
+  title: Vault PKI External CA secrets engine (Vault Enterprise)
+  version: 1.0.0
+  description: Hand-made supplement to the Vault OpenAPI document; see the comment at the top.
+paths:
+  /{pki_external_ca_mount_path}/role/{name}:
+    parameters:
+    - name: pki_external_ca_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: pki-external-ca
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a PKI External CA role.
+      operationId: read-pki-external-ca-role
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PkiExternalCaRoleResponse'
+    post:
+      summary: Create or update a PKI External CA role.
+      operationId: write-pki-external-ca-role
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PkiExternalCaRoleRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a PKI External CA role.
+      operationId: delete-pki-external-ca-role
+      responses:
+        '204':
+          description: empty body
+  /{pki_external_ca_mount_path}/config/dns/aws-route53/{name}:
+    parameters:
+    - name: pki_external_ca_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: pki-external-ca
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read an AWS Route53 DNS provider of the PKI External CA engine.
+      operationId: read-pki-external-ca-dns-aws-route53
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PkiExternalCaDnsAwsRoute53Response'
+    post:
+      summary: Create or update an AWS Route53 DNS provider of the PKI External CA engine.
+      operationId: write-pki-external-ca-dns-aws-route53
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PkiExternalCaDnsAwsRoute53Request'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete an AWS Route53 DNS provider of the PKI External CA engine.
+      operationId: delete-pki-external-ca-dns-aws-route53
+      responses:
+        '204':
+          description: empty body
+  /{pki_external_ca_mount_path}/config/dns/azure-dns/{name}:
+    parameters:
+    - name: pki_external_ca_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: pki-external-ca
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read an Azure DNS provider of the PKI External CA engine.
+      operationId: read-pki-external-ca-dns-azure
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PkiExternalCaDnsAzureResponse'
+    post:
+      summary: Create or update an Azure DNS provider of the PKI External CA engine.
+      operationId: write-pki-external-ca-dns-azure
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PkiExternalCaDnsAzureRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete an Azure DNS provider of the PKI External CA engine.
+      operationId: delete-pki-external-ca-dns-azure
+      responses:
+        '204':
+          description: empty body
+  /{pki_external_ca_mount_path}/config/dns/google-cloud-dns/{name}:
+    parameters:
+    - name: pki_external_ca_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: pki-external-ca
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a Google Cloud DNS provider of the PKI External CA engine.
+      operationId: read-pki-external-ca-dns-gcp
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PkiExternalCaDnsGcpResponse'
+    post:
+      summary: Create or update a Google Cloud DNS provider of the PKI External CA engine.
+      operationId: write-pki-external-ca-dns-gcp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PkiExternalCaDnsGcpRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a Google Cloud DNS provider of the PKI External CA engine.
+      operationId: delete-pki-external-ca-dns-gcp
+      responses:
+        '204':
+          description: empty body
+  /{pki_external_ca_mount_path}/config/dns/rfc2136/{name}:
+    parameters:
+    - name: pki_external_ca_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: pki-external-ca
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read an RFC 2136 (dynamic DNS update) provider of the PKI External CA engine.
+      operationId: read-pki-external-ca-dns-rfc2136
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PkiExternalCaDnsRfc2136Response'
+    post:
+      summary: Create or update an RFC 2136 (dynamic DNS update) provider of the PKI External CA engine.
+      operationId: write-pki-external-ca-dns-rfc2136
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PkiExternalCaDnsRfc2136Request'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete an RFC 2136 (dynamic DNS update) provider of the PKI External CA engine.
+      operationId: delete-pki-external-ca-dns-rfc2136
+      responses:
+        '204':
+          description: empty body
+  /{pki_external_ca_mount_path}/config/acme-account/{name}:
+    parameters:
+    - name: pki_external_ca_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: pki-external-ca
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read an ACME account.
+      operationId: read-pki-external-ca-acme-account
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PkiExternalCaAcmeAccountResponse'
+    post:
+      summary: Create an ACME account (registers it with the ACME server).
+      operationId: create-pki-external-ca-acme-account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PkiExternalCaAcmeAccountRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    put:
+      summary: Update an ACME account's trusted_ca and default_nameserver.
+      operationId: update-pki-external-ca-acme-account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PkiExternalCaAcmeAccountRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete an ACME account.
+      operationId: delete-pki-external-ca-acme-account
+      responses:
+        '204':
+          description: empty body
+components:
+  schemas:
+    PkiExternalCaAcmeAccountRequest:
+      type: object
+      required: [directory_url, email_contacts]
+      properties:
+        directory_url:
+          type: string
+        email_contacts:
+          type: array
+          items:
+            type: string
+        key_type:
+          type: string
+          enum: [ec-256, ec-384, ec-521, rsa-2048, rsa-4096, rsa-8192]
+        eab_kid:
+          type: string
+        eab_key:
+          type: string
+        trusted_ca:
+          type: string
+        default_nameserver:
+          type: string
+    PkiExternalCaAcmeAccountResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        directory_url:
+          type: string
+        email_contacts:
+          type: array
+          items:
+            type: string
+        trusted_ca:
+          type: string
+        default_nameserver:
+          type: string
+        active_key_version:
+          type: integer
+        account_keys:
+          type: object
+          additionalProperties: true
+        creation_date:
+          type: string
+        last_updated_date:
+          type: string
+    PkiExternalCaRoleRequest:
+      type: object
+      properties:
+        acme_account_name:
+          type: string
+        dns_provider_name:
+          type: string
+        dns_provider_type:
+          type: string
+          enum:
+          - aws-route53
+          - azure-dns
+          - google-cloud-dns
+          - rfc2136
+        allowed_domains:
+          type: array
+          items:
+            type: string
+        allowed_domain_options:
+          type: array
+          items:
+            type: string
+        allowed_challenge_types:
+          type: array
+          items:
+            type: string
+        csr_generate_key_type:
+          type: string
+          enum:
+          - ec-256
+          - ec-384
+          - ec-521
+          - rsa-2048
+          - rsa-4096
+        csr_identifier_population:
+          type: string
+      required:
+      - acme_account_name
+    PkiExternalCaRoleResponse:
+      type: object
+      properties:
+        acme_account_name:
+          type: string
+        dns_provider_name:
+          type: string
+        dns_provider_type:
+          type: string
+          enum:
+          - aws-route53
+          - azure-dns
+          - google-cloud-dns
+          - rfc2136
+        allowed_domains:
+          type: array
+          items:
+            type: string
+        allowed_domain_options:
+          type: array
+          items:
+            type: string
+        allowed_challenge_types:
+          type: array
+          items:
+            type: string
+        csr_generate_key_type:
+          type: string
+          enum:
+          - ec-256
+          - ec-384
+          - ec-521
+          - rsa-2048
+          - rsa-4096
+        csr_identifier_population:
+          type: string
+    PkiExternalCaDnsAwsRoute53Request:
+      type: object
+      properties:
+        identifiers:
+          type: array
+          items:
+            type: string
+        access_key_id:
+          type: string
+        secret_access_key:
+          type: string
+        region:
+          type: string
+        hosted_zone_id:
+          type: string
+          description: Route53 hosted zone ID.
+        external_id:
+          type: string
+        assume_role_arn:
+          type: string
+        ttl:
+          type: string
+          format: duration
+        nameserver:
+          type: string
+      required:
+      - identifiers
+    PkiExternalCaDnsAwsRoute53Response:
+      type: object
+      properties:
+        identifiers:
+          type: array
+          items:
+            type: string
+        access_key_id:
+          type: string
+        region:
+          type: string
+        hosted_zone_id:
+          type: string
+          description: Route53 hosted zone ID.
+        external_id:
+          type: string
+        assume_role_arn:
+          type: string
+        nameserver:
+          type: string
+    PkiExternalCaDnsAzureRequest:
+      type: object
+      properties:
+        identifiers:
+          type: array
+          items:
+            type: string
+        zone_name:
+          type: string
+          description: Azure DNS zone name.
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        tenant_id:
+          type: string
+          description: Azure tenant ID.
+        subscription_id:
+          type: string
+          description: Azure subscription ID.
+        resource_group_name:
+          type: string
+        environment:
+          type: string
+          enum:
+          - AzurePublic
+          - AzureChina
+          - AzureGovernment
+        ttl:
+          type: string
+          format: duration
+        nameserver:
+          type: string
+      required:
+      - identifiers
+    PkiExternalCaDnsAzureResponse:
+      type: object
+      properties:
+        identifiers:
+          type: array
+          items:
+            type: string
+        zone_name:
+          type: string
+          description: Azure DNS zone name.
+        client_id:
+          type: string
+        tenant_id:
+          type: string
+          description: Azure tenant ID.
+        subscription_id:
+          type: string
+          description: Azure subscription ID.
+        resource_group_name:
+          type: string
+        environment:
+          type: string
+          enum:
+          - AzurePublic
+          - AzureChina
+          - AzureGovernment
+        nameserver:
+          type: string
+    PkiExternalCaDnsGcpRequest:
+      type: object
+      properties:
+        identifiers:
+          type: array
+          items:
+            type: string
+        credentials:
+          type: string
+        project:
+          type: string
+          description: GCP project.
+        zone_name:
+          type: string
+          description: Cloud DNS zone name.
+        impersonate_service_account:
+          type: string
+        ttl:
+          type: string
+          format: duration
+        nameserver:
+          type: string
+      required:
+      - identifiers
+    PkiExternalCaDnsGcpResponse:
+      type: object
+      properties:
+        identifiers:
+          type: array
+          items:
+            type: string
+        project:
+          type: string
+          description: GCP project.
+        zone_name:
+          type: string
+          description: Cloud DNS zone name.
+        impersonate_service_account:
+          type: string
+        nameserver:
+          type: string
+    PkiExternalCaDnsRfc2136Request:
+      type: object
+      properties:
+        identifiers:
+          type: array
+          items:
+            type: string
+        nameserver:
+          type: string
+        tsig_key_name:
+          type: string
+        tsig_secret:
+          type: string
+          description: TSIG secret, base64.
+        tsig_algorithm:
+          type: string
+          enum:
+          - hmac-sha1
+          - hmac-sha224
+          - hmac-sha256
+          - hmac-sha384
+          - hmac-sha512
+        ttl:
+          type: string
+          format: duration
+      required:
+      - identifiers
+      - nameserver
+      - tsig_key_name
+      - tsig_secret
+    PkiExternalCaDnsRfc2136Response:
+      type: object
+      properties:
+        identifiers:
+          type: array
+          items:
+            type: string
+        nameserver:
+          type: string
+        tsig_key_name:
+          type: string
+        tsig_algorithm:
+          type: string
+          enum:
+          - hmac-sha1
+          - hmac-sha224
+          - hmac-sha256
+          - hmac-sha384
+          - hmac-sha512

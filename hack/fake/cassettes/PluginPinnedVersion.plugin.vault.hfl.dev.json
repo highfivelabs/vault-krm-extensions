@@ -1,0 +1,137 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "body": "{\"command\":\"hfl-live-plugin\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\",\"version\":\"v1.0.0\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"command\":\"hfl-live-plugin\",\"id\":280000014,\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\",\"version\":\"v1.0.0\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "body": "{\"command\":\"hfl-live-plugin\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\",\"version\":\"v1.0.1\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"command\":\"hfl-live-plugin\",\"id\":280000015,\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\",\"version\":\"v1.0.1\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "body": "{\"command\":\"hfl-live-plugin\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\",\"version\":\"v1.0.2\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"command\":\"hfl-live-plugin\",\"id\":280000016,\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\",\"version\":\"v1.0.2\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "body": "{\"version\":\"v1.0.0\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"version\":\"v1.0.0\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"version\":\"v1.0.0\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"version\":\"v1.0.0\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "body": "{\"version\":\"v1.0.1\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"version\":\"v1.0.1\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"version\":\"v1.0.1\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "body": "{\"version\":\"v1.0.2\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"version\":\"v1.0.2\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"version\":\"v1.0.2\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "body": "{\"version\":\"v1.0.1\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"version\":\"v1.0.1\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"version\":\"v1.0.1\"}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/plugins/catalog/secret/{{name}}?version=v1.0.0",
+      "status": 204
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/plugins/catalog/secret/{{name}}?version=v1.0.1",
+      "status": 204
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/plugins/catalog/secret/{{name}}?version=v1.0.2",
+      "status": 204
+    }
+  ]
+}

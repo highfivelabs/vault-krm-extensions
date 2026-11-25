@@ -1,0 +1,8 @@
+terraform: [vault_activation_flags]
+kind: ActivationFlag
+shape: settings
+params:
+  feature: {type: string, as GET /sys/activation-flags names it (secrets-sync).}
+sample: {feature: secrets-sync}
+read: {method: GET, path: "/sys/activation-flags", find: {list: data/activated, param: feature}}
+update: {method: PUT, path: "/sys/activation-flags/{feature}/activate"}

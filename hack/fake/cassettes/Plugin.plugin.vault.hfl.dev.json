@@ -1,0 +1,105 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "body": "{\"args\":[\"a\"],\"command\":\"hfl-live-plugin\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"args\":[\"a\"],\"builtin\":true,\"command\":\"hfl-live-plugin\",\"deprecation_status\":\"example-deprecation-status\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"args\":[\"a\"],\"builtin\":true,\"command\":\"hfl-live-plugin\",\"deprecation_status\":\"example-deprecation-status\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"args\":[\"a\"],\"builtin\":true,\"command\":\"hfl-live-plugin\",\"deprecation_status\":\"example-deprecation-status\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "body": "{\"args\":[\"b\"],\"command\":\"hfl-live-plugin\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"args\":[\"b\"],\"builtin\":true,\"command\":\"hfl-live-plugin\",\"deprecation_status\":\"example-deprecation-status\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"args\":[\"b\"],\"builtin\":true,\"command\":\"hfl-live-plugin\",\"deprecation_status\":\"example-deprecation-status\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"args\":[\"b\"],\"builtin\":true,\"command\":\"hfl-live-plugin\",\"deprecation_status\":\"example-deprecation-status\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "body": "{\"args\":[\"c\"],\"builtin\":true,\"command\":\"hfl-live-plugin\",\"deprecation_status\":\"example-deprecation-status\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"args\":[\"c\"],\"builtin\":true,\"command\":\"hfl-live-plugin\",\"deprecation_status\":\"example-deprecation-status\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"args\":[\"c\"],\"builtin\":true,\"command\":\"hfl-live-plugin\",\"deprecation_status\":\"example-deprecation-status\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "body": "{\"args\":[\"b\"],\"command\":\"hfl-live-plugin\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"args\":[\"b\"],\"builtin\":true,\"command\":\"hfl-live-plugin\",\"deprecation_status\":\"example-deprecation-status\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"args\":[\"b\"],\"builtin\":true,\"command\":\"hfl-live-plugin\",\"deprecation_status\":\"example-deprecation-status\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\"}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

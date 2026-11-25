@@ -1,0 +1,54 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "caCert": "rehearsal-caCert",
+    "csr": "rehearsal-csr",
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "signed": "rehearsal-signed",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/auth/example-saml-mount-path/config",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-saml-mount-path/config",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-saml-mount-path/config",
+      "body": "{\"acs_urls\":[],\"entity_id\":\"example-entity-id\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"acs_urls\":[],\"entity_id\":\"example-entity-id\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-saml-mount-path/config",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"acs_urls\":[],\"entity_id\":\"example-entity-id\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-saml-mount-path/config",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"acs_urls\":[],\"entity_id\":\"example-entity-id\"}}\n"
+    }
+  ]
+}

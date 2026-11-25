@@ -1,0 +1,110 @@
+{
+  "recorded": "2026-11-22T20:07:18Z",
+  "target": "Vault dev server 2.2.2",
+  "vars": {
+    "issuer": "b2145452-73da-a16b-353f-8eeb465fb9be",
+    "key": "9f1c47da-2a22-4676-4b02-f6000a2184f9",
+    "mfa": "f3f83141-6a0d-ba15-5a8f-38b659d5cc4a",
+    "tag": "v1:noSQyMKvvgg=:r={{run}}-19:d=false:m=false:gXpjsFnRfjn0SwzqsluE/m/25kwAo+VIoEj2Blnb8mQ="
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/duo",
+      "body": "{\"api_hostname\":\"api-hfl-live.duosecurity.com\",\"integration_key\":\"{{redacted}}\",\"method_name\":\"{{name}}\",\"secret_key\":\"{{redacted}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"a8390512-42f5-7597-c329-08b1bd84134a\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"method_id\":\"158c67b1-ce6a-44a2-c85a-01640380b26b\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/duo/158c67b1-ce6a-44a2-c85a-01640380b26b",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"5c6ba6a5-1ba6-7d11-bdec-9d34833f14c6\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"api_hostname\":\"api-hfl-live.duosecurity.com\",\"id\":\"158c67b1-ce6a-44a2-c85a-01640380b26b\",\"mount_accessor\":\"\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"pushinfo\":\"\",\"type\":\"duo\",\"use_passcode\":false,\"username_format\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/duo/158c67b1-ce6a-44a2-c85a-01640380b26b",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"4270646c-732c-acee-9746-b9d7044be4ab\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"api_hostname\":\"api-hfl-live.duosecurity.com\",\"id\":\"158c67b1-ce6a-44a2-c85a-01640380b26b\",\"mount_accessor\":\"\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"pushinfo\":\"\",\"type\":\"duo\",\"use_passcode\":false,\"username_format\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/duo/158c67b1-ce6a-44a2-c85a-01640380b26b",
+      "body": "{\"api_hostname\":\"api-hfl-live-2.duosecurity.com\",\"integration_key\":\"{{redacted}}\",\"method_name\":\"{{name}}\",\"secret_key\":\"{{redacted}}\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/duo/158c67b1-ce6a-44a2-c85a-01640380b26b",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"e1bfe510-9a8f-9ef3-6463-6c38974a00cf\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"api_hostname\":\"api-hfl-live-2.duosecurity.com\",\"id\":\"158c67b1-ce6a-44a2-c85a-01640380b26b\",\"mount_accessor\":\"\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"pushinfo\":\"\",\"type\":\"duo\",\"use_passcode\":false,\"username_format\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/duo/158c67b1-ce6a-44a2-c85a-01640380b26b",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"d88daf53-43e0-5c45-6b0f-be13b46b615b\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"api_hostname\":\"api-hfl-live-2.duosecurity.com\",\"id\":\"158c67b1-ce6a-44a2-c85a-01640380b26b\",\"mount_accessor\":\"\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"pushinfo\":\"\",\"type\":\"duo\",\"use_passcode\":false,\"username_format\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/duo/158c67b1-ce6a-44a2-c85a-01640380b26b",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"153012a3-74f9-285d-b71a-30ebcba31d27\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"api_hostname\":\"api-hfl-live-2.duosecurity.com\",\"id\":\"158c67b1-ce6a-44a2-c85a-01640380b26b\",\"mount_accessor\":\"\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"pushinfo\":\"\",\"type\":\"duo\",\"use_passcode\":false,\"username_format\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/duo/158c67b1-ce6a-44a2-c85a-01640380b26b",
+      "body": "{\"api_hostname\":\"api-drift.duosecurity.com\",\"id\":\"158c67b1-ce6a-44a2-c85a-01640380b26b\",\"integration_key\":\"{{redacted}}\",\"method_name\":\"{{name}}\",\"mount_accessor\":\"\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"pushinfo\":\"\",\"secret_key\":\"{{redacted}}\",\"type\":\"duo\",\"use_passcode\":false,\"username_format\":\"\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/duo/158c67b1-ce6a-44a2-c85a-01640380b26b",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"7c2f8ea5-00e3-1f36-e29f-efae2499dbae\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"api_hostname\":\"api-drift.duosecurity.com\",\"id\":\"158c67b1-ce6a-44a2-c85a-01640380b26b\",\"mount_accessor\":\"\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"pushinfo\":\"\",\"type\":\"duo\",\"use_passcode\":false,\"username_format\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/duo/158c67b1-ce6a-44a2-c85a-01640380b26b",
+      "body": "{\"api_hostname\":\"api-hfl-live-2.duosecurity.com\",\"integration_key\":\"{{redacted}}\",\"method_name\":\"{{name}}\",\"secret_key\":\"{{redacted}}\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/duo/158c67b1-ce6a-44a2-c85a-01640380b26b",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"823751e6-9204-22d6-a515-61b63f9a8430\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"api_hostname\":\"api-hfl-live-2.duosecurity.com\",\"id\":\"158c67b1-ce6a-44a2-c85a-01640380b26b\",\"mount_accessor\":\"\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"pushinfo\":\"\",\"type\":\"duo\",\"use_passcode\":false,\"username_format\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/duo/158c67b1-ce6a-44a2-c85a-01640380b26b",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"fa360315-42bd-25c0-f1a0-cccf18841a75\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"api_hostname\":\"api-hfl-live-2.duosecurity.com\",\"id\":\"158c67b1-ce6a-44a2-c85a-01640380b26b\",\"mount_accessor\":\"\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"pushinfo\":\"\",\"type\":\"duo\",\"use_passcode\":false,\"username_format\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/identity/mfa/method/duo/158c67b1-ce6a-44a2-c85a-01640380b26b",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/duo/158c67b1-ce6a-44a2-c85a-01640380b26b",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[]}\n"
+    }
+  ]
+}

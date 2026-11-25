@@ -1,0 +1,110 @@
+{
+  "recorded": "2026-11-22T20:07:18Z",
+  "target": "Vault dev server 2.2.2",
+  "vars": {
+    "issuer": "b2145452-73da-a16b-353f-8eeb465fb9be",
+    "key": "9f1c47da-2a22-4676-4b02-f6000a2184f9",
+    "mfa": "f3f83141-6a0d-ba15-5a8f-38b659d5cc4a",
+    "tag": "v1:noSQyMKvvgg=:r={{run}}-19:d=false:m=false:gXpjsFnRfjn0SwzqsluE/m/25kwAo+VIoEj2Blnb8mQ="
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/okta",
+      "body": "{\"api_token\":\"{{redacted}}\",\"base_url\":\"okta.com\",\"method_name\":\"{{name}}\",\"org_name\":\"hfl-live\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"01a43bc9-bf33-3525-e352-a68ba40c2e46\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"method_id\":\"6dd4a12a-2589-886c-de88-b5fd4056c1dc\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/okta/6dd4a12a-2589-886c-de88-b5fd4056c1dc",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"6eba51dd-fdb9-e3ab-756b-8472b0d282fb\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"base_url\":\"okta.com\",\"id\":\"6dd4a12a-2589-886c-de88-b5fd4056c1dc\",\"mount_accessor\":\"\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"org_name\":\"hfl-live\",\"type\":\"okta\",\"username_format\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/okta/6dd4a12a-2589-886c-de88-b5fd4056c1dc",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"7f7418da-2a3c-770e-1d7e-f7709b76e452\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"base_url\":\"okta.com\",\"id\":\"6dd4a12a-2589-886c-de88-b5fd4056c1dc\",\"mount_accessor\":\"\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"org_name\":\"hfl-live\",\"type\":\"okta\",\"username_format\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/okta/6dd4a12a-2589-886c-de88-b5fd4056c1dc",
+      "body": "{\"api_token\":\"{{redacted}}\",\"base_url\":\"okta.com\",\"method_name\":\"{{name}}\",\"org_name\":\"hfl-live-2\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/okta/6dd4a12a-2589-886c-de88-b5fd4056c1dc",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"2d69a614-8594-2be3-81ee-6c7181f23bc4\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"base_url\":\"okta.com\",\"id\":\"6dd4a12a-2589-886c-de88-b5fd4056c1dc\",\"mount_accessor\":\"\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"org_name\":\"hfl-live-2\",\"type\":\"okta\",\"username_format\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/okta/6dd4a12a-2589-886c-de88-b5fd4056c1dc",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"80ca34ee-ce37-2bde-54d0-a99dd259b91b\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"base_url\":\"okta.com\",\"id\":\"6dd4a12a-2589-886c-de88-b5fd4056c1dc\",\"mount_accessor\":\"\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"org_name\":\"hfl-live-2\",\"type\":\"okta\",\"username_format\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/okta/6dd4a12a-2589-886c-de88-b5fd4056c1dc",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"a250a734-1428-5aa2-26aa-f7cbce786692\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"base_url\":\"okta.com\",\"id\":\"6dd4a12a-2589-886c-de88-b5fd4056c1dc\",\"mount_accessor\":\"\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"org_name\":\"hfl-live-2\",\"type\":\"okta\",\"username_format\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/okta/6dd4a12a-2589-886c-de88-b5fd4056c1dc",
+      "body": "{\"api_token\":\"{{redacted}}\",\"base_url\":\"okta.com\",\"id\":\"6dd4a12a-2589-886c-de88-b5fd4056c1dc\",\"method_name\":\"{{name}}\",\"mount_accessor\":\"\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"org_name\":\"hfl-live-drift\",\"type\":\"okta\",\"username_format\":\"\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/okta/6dd4a12a-2589-886c-de88-b5fd4056c1dc",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"193d79f0-7641-0307-2f87-56afbd718951\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"base_url\":\"okta.com\",\"id\":\"6dd4a12a-2589-886c-de88-b5fd4056c1dc\",\"mount_accessor\":\"\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"org_name\":\"hfl-live-drift\",\"type\":\"okta\",\"username_format\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/okta/6dd4a12a-2589-886c-de88-b5fd4056c1dc",
+      "body": "{\"api_token\":\"{{redacted}}\",\"base_url\":\"okta.com\",\"method_name\":\"{{name}}\",\"org_name\":\"hfl-live-2\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/okta/6dd4a12a-2589-886c-de88-b5fd4056c1dc",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"0c6ff9c7-8ecb-8bc1-4df0-b041cfca0588\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"base_url\":\"okta.com\",\"id\":\"6dd4a12a-2589-886c-de88-b5fd4056c1dc\",\"mount_accessor\":\"\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"org_name\":\"hfl-live-2\",\"type\":\"okta\",\"username_format\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/okta/6dd4a12a-2589-886c-de88-b5fd4056c1dc",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"18f291d2-b9da-1b2f-5d39-84103fb5b602\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"base_url\":\"okta.com\",\"id\":\"6dd4a12a-2589-886c-de88-b5fd4056c1dc\",\"mount_accessor\":\"\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"org_name\":\"hfl-live-2\",\"type\":\"okta\",\"username_format\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/identity/mfa/method/okta/6dd4a12a-2589-886c-de88-b5fd4056c1dc",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/okta/6dd4a12a-2589-886c-de88-b5fd4056c1dc",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[]}\n"
+    }
+  ]
+}

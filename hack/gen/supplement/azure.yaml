@@ -1,0 +1,81 @@
+openapi: 3.0.2
+info:
+  title: Vault Azure secrets engine static roles
+  version: 1.0.0
+  description: Hand-made supplement to the Vault OpenAPI document; see the comment at the top.
+paths:
+  /{azure_mount_path}/static-roles/{name}:
+    parameters:
+    - name: azure_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: azure
+      required: true
+    - name: name
+      description: Name of the static role.
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read an Azure static role.
+      operationId: read-azure-static-roles
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create or update an Azure static role.
+      operationId: write-azure-static-roles
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AzureStaticRolesRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete an Azure static role.
+      operationId: delete-azure-static-roles
+      responses:
+        '204':
+          description: empty body
+components:
+  schemas:
+    AzureStaticRolesRequest:
+      type: object
+      properties:
+        application_object_id:
+          type: string
+        rotation_period:
+          type: string
+          format: duration
+        ttl:
+          type: string
+          format: duration
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+        defer_initial_creds:
+          type: boolean
+        secret_id:
+          type: string
+        client_secret:
+          type: string
+        expiration:
+          type: string
+        skip_import_rotation:
+          type: boolean
+        seamless_rotation:
+          type: boolean
+        rotation_grace_period:
+          type: string
+          format: duration
+      required:
+      - application_object_id

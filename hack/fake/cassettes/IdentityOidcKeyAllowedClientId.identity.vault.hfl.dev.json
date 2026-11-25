@@ -1,0 +1,74 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "caCert": "rehearsal-caCert",
+    "csr": "rehearsal-csr",
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "signed": "rehearsal-signed",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/identity/oidc/key/{{name}}",
+      "body": "{\"algorithm\":\"ES256\",\"allowed_client_ids\":[\"{{name}}-other\"]}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"algorithm\":\"ES256\",\"allowed_client_ids\":[\"{{name}}-other\"],\"id\":280000041}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/oidc/key/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"allowed_client_ids\":[]}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/oidc/key/{{name}}",
+      "body": "{\"allowed_client_ids\":[\"{{name}}-client\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"allowed_client_ids\":[\"{{name}}-client\"]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/oidc/key/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"allowed_client_ids\":[\"{{name}}-client\"]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/oidc/key/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"allowed_client_ids\":[\"{{name}}-client\"]}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/oidc/key/{{name}}",
+      "body": "{\"allowed_client_ids\":[]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"allowed_client_ids\":[]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/oidc/key/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"allowed_client_ids\":[]}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/identity/oidc/key/{{name}}",
+      "status": 204
+    }
+  ]
+}

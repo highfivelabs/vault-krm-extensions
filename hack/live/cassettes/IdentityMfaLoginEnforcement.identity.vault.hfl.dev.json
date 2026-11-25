@@ -1,0 +1,134 @@
+{
+  "recorded": "2026-11-22T20:07:18Z",
+  "target": "Vault dev server 2.2.2",
+  "vars": {
+    "mfa": "f3f83141-6a0d-ba15-5a8f-38b659d5cc4a"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/totp",
+      "body": "{\"issuer\":\"hfl-live\",\"method_name\":\"{{name}}-m\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"39b3e82c-5c43-a745-e438-71ae8448ab4b\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"method_id\":\"f3f83141-6a0d-ba15-5a8f-38b659d5cc4a\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/login-enforcement/{{name}}",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[]}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/mfa/login-enforcement/{{name}}",
+      "body": "{\"auth_method_types\":[\"userpass\"],\"mfa_method_ids\":[\"f3f83141-6a0d-ba15-5a8f-38b659d5cc4a\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/login-enforcement/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"d9d44b90-b7ab-1d71-92b5-124cf1f1740b\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"auth_method_accessors\":[],\"auth_method_types\":[\"userpass\"],\"id\":\"71d99e93-c195-3b3b-3ec2-07533fda7da0\",\"identity_entity_ids\":[],\"identity_group_ids\":[],\"mfa_method_ids\":[\"f3f83141-6a0d-ba15-5a8f-38b659d5cc4a\"],\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/login-enforcement/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"cb1dd033-2e7c-285e-10f1-5f85ba7755ce\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"auth_method_accessors\":[],\"auth_method_types\":[\"userpass\"],\"id\":\"71d99e93-c195-3b3b-3ec2-07533fda7da0\",\"identity_entity_ids\":[],\"identity_group_ids\":[],\"mfa_method_ids\":[\"f3f83141-6a0d-ba15-5a8f-38b659d5cc4a\"],\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/login-enforcement/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"c35ef2dc-fae0-1bdb-b449-c8737dbb9e96\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"auth_method_accessors\":[],\"auth_method_types\":[\"userpass\"],\"id\":\"71d99e93-c195-3b3b-3ec2-07533fda7da0\",\"identity_entity_ids\":[],\"identity_group_ids\":[],\"mfa_method_ids\":[\"f3f83141-6a0d-ba15-5a8f-38b659d5cc4a\"],\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/mfa/login-enforcement/{{name}}",
+      "body": "{\"auth_method_types\":[\"userpass\",\"token\"],\"mfa_method_ids\":[\"f3f83141-6a0d-ba15-5a8f-38b659d5cc4a\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/login-enforcement/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"b70562af-0aa9-9e96-54ee-f7d9e973f014\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"auth_method_accessors\":[],\"auth_method_types\":[\"userpass\",\"token\"],\"id\":\"71d99e93-c195-3b3b-3ec2-07533fda7da0\",\"identity_entity_ids\":[],\"identity_group_ids\":[],\"mfa_method_ids\":[\"f3f83141-6a0d-ba15-5a8f-38b659d5cc4a\"],\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/login-enforcement/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"8aa459e9-5d6f-e6f3-b783-3348cae1d317\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"auth_method_accessors\":[],\"auth_method_types\":[\"userpass\",\"token\"],\"id\":\"71d99e93-c195-3b3b-3ec2-07533fda7da0\",\"identity_entity_ids\":[],\"identity_group_ids\":[],\"mfa_method_ids\":[\"f3f83141-6a0d-ba15-5a8f-38b659d5cc4a\"],\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/login-enforcement/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"7db40e06-756a-9679-31e9-ded89599308e\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"auth_method_accessors\":[],\"auth_method_types\":[\"userpass\",\"token\"],\"id\":\"71d99e93-c195-3b3b-3ec2-07533fda7da0\",\"identity_entity_ids\":[],\"identity_group_ids\":[],\"mfa_method_ids\":[\"f3f83141-6a0d-ba15-5a8f-38b659d5cc4a\"],\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/mfa/login-enforcement/{{name}}",
+      "body": "{\"auth_method_accessors\":[],\"auth_method_types\":[\"token\"],\"id\":\"71d99e93-c195-3b3b-3ec2-07533fda7da0\",\"identity_entity_ids\":[],\"identity_group_ids\":[],\"mfa_method_ids\":[\"f3f83141-6a0d-ba15-5a8f-38b659d5cc4a\"],\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/login-enforcement/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"67476144-f241-5cd0-8497-a346103f1f57\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"auth_method_accessors\":[],\"auth_method_types\":[\"token\"],\"id\":\"71d99e93-c195-3b3b-3ec2-07533fda7da0\",\"identity_entity_ids\":[],\"identity_group_ids\":[],\"mfa_method_ids\":[\"f3f83141-6a0d-ba15-5a8f-38b659d5cc4a\"],\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/mfa/login-enforcement/{{name}}",
+      "body": "{\"auth_method_types\":[\"userpass\",\"token\"],\"mfa_method_ids\":[\"f3f83141-6a0d-ba15-5a8f-38b659d5cc4a\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/login-enforcement/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"574c258b-3307-6a32-578b-271e03db9631\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"auth_method_accessors\":[],\"auth_method_types\":[\"userpass\",\"token\"],\"id\":\"71d99e93-c195-3b3b-3ec2-07533fda7da0\",\"identity_entity_ids\":[],\"identity_group_ids\":[],\"mfa_method_ids\":[\"f3f83141-6a0d-ba15-5a8f-38b659d5cc4a\"],\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/login-enforcement/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"6d31c629-9f7d-58cf-6bee-fc7e9590f8de\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"auth_method_accessors\":[],\"auth_method_types\":[\"userpass\",\"token\"],\"id\":\"71d99e93-c195-3b3b-3ec2-07533fda7da0\",\"identity_entity_ids\":[],\"identity_group_ids\":[],\"mfa_method_ids\":[\"f3f83141-6a0d-ba15-5a8f-38b659d5cc4a\"],\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/identity/mfa/login-enforcement/{{name}}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/login-enforcement/{{name}}",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[]}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/identity/mfa/method/totp/f3f83141-6a0d-ba15-5a8f-38b659d5cc4a",
+      "status": 204,
+      "contentType": "application/json"
+    }
+  ]
+}

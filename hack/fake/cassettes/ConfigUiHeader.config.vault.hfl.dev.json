@@ -1,0 +1,92 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/headers/X-{{name}}?multivalue=true",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/ui/headers/X-{{name}}",
+      "body": "{\"values\":[\"a\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"value\":\"example-value\",\"values\":[\"a\"]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/headers/X-{{name}}?multivalue=true",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"value\":\"example-value\",\"values\":[\"a\"]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/headers/X-{{name}}?multivalue=true",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"value\":\"example-value\",\"values\":[\"a\"]}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/ui/headers/X-{{name}}",
+      "body": "{\"values\":[\"b\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"value\":\"example-value\",\"values\":[\"b\"]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/headers/X-{{name}}?multivalue=true",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"value\":\"example-value\",\"values\":[\"b\"]}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/ui/headers/X-{{name}}",
+      "body": "{\"values\":[\"c\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"value\":\"example-value\",\"values\":[\"c\"]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/headers/X-{{name}}?multivalue=true",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"value\":\"example-value\",\"values\":[\"c\"]}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/ui/headers/X-{{name}}",
+      "body": "{\"values\":[\"b\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"value\":\"example-value\",\"values\":[\"b\"]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/headers/X-{{name}}?multivalue=true",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"value\":\"example-value\",\"values\":[\"b\"]}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/config/ui/headers/X-{{name}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/headers/X-{{name}}?multivalue=true",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

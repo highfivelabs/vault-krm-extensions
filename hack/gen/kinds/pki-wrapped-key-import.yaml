@@ -1,0 +1,20 @@
+terraform: [vault_pki_secret_backend_wrapped_key_import]
+kind: PkiSecretBackendWrappedKeyImport
+shape: crud
+params:
+  pkiMountPath: {type: string, placeholder: pki_mount_path}
+fields:
+  key_name: {type: string}
+  wrapped_key: {type: string}
+  export_key_hmac: {type: string}
+required: [wrapped_key, export_key_hmac]
+writeOnly: [wrapped_key, export_key_hmac]
+id: key_id
+envelope: data
+forget: As Terraform's resource does, deleting the object leaves the imported key in the mount; remove it with DELETE /{pki_mount_path}/key/{key_id}.
+serverFields:
+  key_id: 4f1d4c3e-0000-4000-8000-000000000000
+  key_type: ec
+sample: {pkiMountPath: pki, key_name: example-imported-key, wrapped_key: ZXhhbXBsZQ==, export_key_hmac: "sha256:example"}
+create: {method: POST, path: "/{pki_mount_path}/keys/import"}
+read: {method: GET, path: "/{pki_mount_path}/key/{id}"}

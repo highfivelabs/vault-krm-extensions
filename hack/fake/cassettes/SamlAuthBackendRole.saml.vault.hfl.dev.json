@@ -1,0 +1,103 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "caCert": "rehearsal-caCert",
+    "csr": "rehearsal-csr",
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "signed": "rehearsal-signed",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/auth/example-saml-mount-path/role/example-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-saml-mount-path/role/example-name",
+      "body": "{\"groups_attribute\":\"example-groups-attribute\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"groups_attribute\":\"example-groups-attribute\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-saml-mount-path/role/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"groups_attribute\":\"example-groups-attribute\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-saml-mount-path/role/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"groups_attribute\":\"example-groups-attribute\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-saml-mount-path/role/example-name",
+      "body": "{\"groups_attribute\":\"changed-groups_attribute\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"groups_attribute\":\"changed-groups_attribute\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-saml-mount-path/role/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"groups_attribute\":\"changed-groups_attribute\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-saml-mount-path/role/example-name",
+      "body": "{\"groups_attribute\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"groups_attribute\":\"hfl-live-drift\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-saml-mount-path/role/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"groups_attribute\":\"hfl-live-drift\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-saml-mount-path/role/example-name",
+      "body": "{\"groups_attribute\":\"changed-groups_attribute\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"groups_attribute\":\"changed-groups_attribute\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-saml-mount-path/role/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"groups_attribute\":\"changed-groups_attribute\"}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/example-saml-mount-path/role/example-name",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-saml-mount-path/role/example-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

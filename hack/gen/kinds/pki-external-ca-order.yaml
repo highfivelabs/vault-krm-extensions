@@ -1,0 +1,27 @@
+terraform: [vault_pki_external_ca_secret_backend_order]
+kind: PkiExternalCaSecretBackendOrder
+shape: crud
+params:
+  pkiExternalCaMountPath: {type: string, placeholder: pki_external_ca_mount_path}
+  role_name: {type: string, placeholder: name}
+fields:
+  identifiers:
+    type: array
+    items: {type: string}
+  csr: {type: string, not both.}
+writeOnly: [csr]
+id: order_id
+envelope: data
+forget: An order cannot be deleted; it expires. Deleting the object leaves it, as Terraform's resource does.
+serverFields:
+  order_status: awaiting-challenge-fulfillment
+  creation_date: "2026-06-29T08:45:22-04:00"
+  expires: "2026-07-06T12:45:23Z"
+  last_update: "2026-06-29T08:45:24-04:00"
+  next_work_date: "2026-06-29T09:45:24-04:00"
+  last_error: ""
+  serial_number: ""
+  challenges: {}
+sample: {pkiExternalCaMountPath: pki-external-ca, role_name: web-server, identifiers: [example.com]}
+create: {method: POST, path: "/{pki_external_ca_mount_path}/role/{name}/new-order"}
+read: {method: GET, path: "/{pki_external_ca_mount_path}/role/{name}/order/{id}/status"}

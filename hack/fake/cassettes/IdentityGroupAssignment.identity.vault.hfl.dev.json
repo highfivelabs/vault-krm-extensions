@@ -1,0 +1,129 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/identity/group",
+      "body": "{\"name\":\"{{name}}\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000019,\"name\":\"{{name}}\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/entity",
+      "body": "{\"name\":\"{{name}}\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"id\":280000020,\"name\":\"{{name}}\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/group/id/rehearsal-group",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/group/id/rehearsal-group",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/identity/group/id/rehearsal-group",
+      "body": "{\"member_entity_ids\":[\"rehearsal-entity\"],\"policies\":[\"default\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"member_entity_ids\":[\"rehearsal-entity\"],\"policies\":[\"default\"]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/group/id/rehearsal-group",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"member_entity_ids\":[\"rehearsal-entity\"],\"policies\":[\"default\"]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/group/id/rehearsal-group",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"member_entity_ids\":[\"rehearsal-entity\"],\"policies\":[\"default\"]}}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/identity/group/id/rehearsal-group",
+      "body": "{\"member_entity_ids\":[\"rehearsal-entity\"],\"policies\":[\"default\",\"hfl-live\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"member_entity_ids\":[\"rehearsal-entity\"],\"policies\":[\"default\",\"hfl-live\"]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/group/id/rehearsal-group",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"member_entity_ids\":[\"rehearsal-entity\"],\"policies\":[\"default\",\"hfl-live\"]}}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/identity/group/id/rehearsal-group",
+      "body": "{\"policies\":[\"hfl-live-drift\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"member_entity_ids\":[\"rehearsal-entity\"],\"policies\":[\"hfl-live-drift\"]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/group/id/rehearsal-group",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"member_entity_ids\":[\"rehearsal-entity\"],\"policies\":[\"hfl-live-drift\"]}}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/identity/group/id/rehearsal-group",
+      "body": "{\"member_entity_ids\":[\"rehearsal-entity\"],\"policies\":[\"default\",\"hfl-live\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"member_entity_ids\":[\"rehearsal-entity\"],\"policies\":[\"default\",\"hfl-live\"]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/group/id/rehearsal-group",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"member_entity_ids\":[\"rehearsal-entity\"],\"policies\":[\"default\",\"hfl-live\"]}}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/identity/group/id/rehearsal-group",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"member_entity_ids\":[\"rehearsal-entity\"],\"policies\":[\"default\",\"hfl-live\"]}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/identity/group/id/rehearsal-group",
+      "status": 204
+    },
+    {
+      "method": "DELETE",
+      "path": "/identity/entity/id/rehearsal-entity",
+      "status": 204
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "recorded": "2026-11-22T20:07:18Z",
+  "target": "Vault dev server 2.2.2",
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[]}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "body": "{\"password\":\"{{redacted}}\",\"token_policies\":[\"default\"],\"token_ttl\":\"1h\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"98c743b6-32a7-48e3-e452-9e6e27232b93\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"alias_metadata\":{},\"token_bound_cidrs\":[],\"token_explicit_max_ttl\":0,\"token_max_ttl\":0,\"token_no_default_policy\":false,\"token_num_uses\":0,\"token_period\":0,\"token_policies\":[\"default\"],\"token_ttl\":3600,\"token_type\":\"default\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"userpass\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"3ea450b0-f4ce-39f6-9008-d7c5e76a2b70\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"alias_metadata\":{},\"token_bound_cidrs\":[],\"token_explicit_max_ttl\":0,\"token_max_ttl\":0,\"token_no_default_policy\":false,\"token_num_uses\":0,\"token_period\":0,\"token_policies\":[\"default\"],\"token_ttl\":3600,\"token_type\":\"default\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"userpass\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"9cb3b40c-025a-4819-3d1f-931fade90218\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"alias_metadata\":{},\"token_bound_cidrs\":[],\"token_explicit_max_ttl\":0,\"token_max_ttl\":0,\"token_no_default_policy\":false,\"token_num_uses\":0,\"token_period\":0,\"token_policies\":[\"default\"],\"token_ttl\":3600,\"token_type\":\"default\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"userpass\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "body": "{\"password\":\"{{redacted}}\",\"token_policies\":[\"default\",\"hfl-live\"],\"token_ttl\":\"1h\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"7bcf8794-dc61-7493-6916-d363d7059266\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"alias_metadata\":{},\"token_bound_cidrs\":[],\"token_explicit_max_ttl\":0,\"token_max_ttl\":0,\"token_no_default_policy\":false,\"token_num_uses\":0,\"token_period\":0,\"token_policies\":[\"default\",\"hfl-live\"],\"token_ttl\":3600,\"token_type\":\"default\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"userpass\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"14a9a472-0bae-6a6e-eaab-5093dc59cf87\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"alias_metadata\":{},\"token_bound_cidrs\":[],\"token_explicit_max_ttl\":0,\"token_max_ttl\":0,\"token_no_default_policy\":false,\"token_num_uses\":0,\"token_period\":0,\"token_policies\":[\"default\",\"hfl-live\"],\"token_ttl\":3600,\"token_type\":\"default\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"userpass\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "body": "{\"token_policies\":[\"hfl-live-drift\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"f0c23afc-3cff-d3cd-c10e-2701a65a1269\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"alias_metadata\":{},\"token_bound_cidrs\":[],\"token_explicit_max_ttl\":0,\"token_max_ttl\":0,\"token_no_default_policy\":false,\"token_num_uses\":0,\"token_period\":0,\"token_policies\":[\"hfl-live-drift\"],\"token_ttl\":3600,\"token_type\":\"default\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"userpass\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "body": "{\"password\":\"{{redacted}}\",\"token_policies\":[\"default\",\"hfl-live\"],\"token_ttl\":\"1h\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"896f5bf5-6e5c-45cd-8739-1d05864407ab\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"alias_metadata\":{},\"token_bound_cidrs\":[],\"token_explicit_max_ttl\":0,\"token_max_ttl\":0,\"token_no_default_policy\":false,\"token_num_uses\":0,\"token_period\":0,\"token_policies\":[\"default\",\"hfl-live\"],\"token_ttl\":3600,\"token_type\":\"default\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"userpass\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"eef66fcf-84ba-3380-da60-008185a5c78a\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"alias_metadata\":{},\"token_bound_cidrs\":[],\"token_explicit_max_ttl\":0,\"token_max_ttl\":0,\"token_no_default_policy\":false,\"token_num_uses\":0,\"token_period\":0,\"token_policies\":[\"default\",\"hfl-live\"],\"token_ttl\":3600,\"token_type\":\"default\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"userpass\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[]}\n"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "caCert": "rehearsal-caCert",
+    "csr": "rehearsal-csr",
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "signed": "rehearsal-signed",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/auth/example-spiffe-mount-path/config",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-spiffe-mount-path/config",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-spiffe-mount-path/config",
+      "body": "{\"profile\":\"https_spiffe_bundle\",\"trust_domain\":\"example-trust-domain\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"profile\":\"https_spiffe_bundle\",\"trust_domain\":\"example-trust-domain\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-spiffe-mount-path/config",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"profile\":\"https_spiffe_bundle\",\"trust_domain\":\"example-trust-domain\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-spiffe-mount-path/config",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"profile\":\"https_spiffe_bundle\",\"trust_domain\":\"example-trust-domain\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-spiffe-mount-path/config",
+      "body": "{\"profile\":\"changed-profile\",\"trust_domain\":\"example-trust-domain\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"profile\":\"changed-profile\",\"trust_domain\":\"example-trust-domain\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-spiffe-mount-path/config",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"profile\":\"changed-profile\",\"trust_domain\":\"example-trust-domain\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-spiffe-mount-path/config",
+      "body": "{\"profile\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"profile\":\"hfl-live-drift\",\"trust_domain\":\"example-trust-domain\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-spiffe-mount-path/config",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"profile\":\"hfl-live-drift\",\"trust_domain\":\"example-trust-domain\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-spiffe-mount-path/config",
+      "body": "{\"profile\":\"changed-profile\",\"trust_domain\":\"example-trust-domain\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"profile\":\"changed-profile\",\"trust_domain\":\"example-trust-domain\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-spiffe-mount-path/config",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"profile\":\"changed-profile\",\"trust_domain\":\"example-trust-domain\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-spiffe-mount-path/config",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"profile\":\"changed-profile\",\"trust_domain\":\"example-trust-domain\"}}\n"
+    }
+  ]
+}

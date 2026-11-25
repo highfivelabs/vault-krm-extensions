@@ -1,0 +1,4 @@
+/bin/
+/hack/gen/specs/
+# Local git worktrees
+.worktrees/

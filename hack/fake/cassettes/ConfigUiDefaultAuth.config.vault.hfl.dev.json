@@ -1,0 +1,103 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "caCert": "rehearsal-caCert",
+    "csr": "rehearsal-csr",
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "signed": "rehearsal-signed",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/login/default-auth/example-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/ui/login/default-auth/example-name",
+      "body": "{\"default_auth_type\":\"example-default-auth-type\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"default_auth_type\":\"example-default-auth-type\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/login/default-auth/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"default_auth_type\":\"example-default-auth-type\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/login/default-auth/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"default_auth_type\":\"example-default-auth-type\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/ui/login/default-auth/example-name",
+      "body": "{\"default_auth_type\":\"changed-default_auth_type\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"default_auth_type\":\"changed-default_auth_type\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/login/default-auth/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"default_auth_type\":\"changed-default_auth_type\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/ui/login/default-auth/example-name",
+      "body": "{\"default_auth_type\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"default_auth_type\":\"hfl-live-drift\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/login/default-auth/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"default_auth_type\":\"hfl-live-drift\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/ui/login/default-auth/example-name",
+      "body": "{\"default_auth_type\":\"changed-default_auth_type\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"default_auth_type\":\"changed-default_auth_type\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/login/default-auth/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"default_auth_type\":\"changed-default_auth_type\"}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/config/ui/login/default-auth/example-name",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/login/default-auth/example-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

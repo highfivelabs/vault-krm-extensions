@@ -1,0 +1,42 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "caCert": "rehearsal-caCert",
+    "csr": "rehearsal-csr",
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "signed": "rehearsal-signed",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "DELETE",
+      "path": "/sys/mounts/{{run}}-kv",
+      "status": 204
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/mounts/{{run}}-pki",
+      "status": 204
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/mounts/{{run}}-transit",
+      "status": 204
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/auth/{{run}}-userpass",
+      "status": 204
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/auth/{{run}}-aws",
+      "status": 204
+    }
+  ]
+}

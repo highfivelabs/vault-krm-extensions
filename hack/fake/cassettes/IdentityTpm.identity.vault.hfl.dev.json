@@ -1,0 +1,103 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "caCert": "rehearsal-caCert",
+    "csr": "rehearsal-csr",
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "signed": "rehearsal-signed",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/identity/tpm/name/example-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/tpm/name/example-name",
+      "body": "{\"tpm_ek_public_key\":\"example-tpm-ek-public-key\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"tpm_ek_public_key\":\"example-tpm-ek-public-key\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/tpm/name/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"tpm_ek_public_key\":\"example-tpm-ek-public-key\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/tpm/name/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"tpm_ek_public_key\":\"example-tpm-ek-public-key\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/tpm/name/example-name",
+      "body": "{\"tpm_ek_public_key\":\"changed-tpm_ek_public_key\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"tpm_ek_public_key\":\"changed-tpm_ek_public_key\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/tpm/name/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"tpm_ek_public_key\":\"changed-tpm_ek_public_key\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/tpm/name/example-name",
+      "body": "{\"tpm_ek_public_key\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"tpm_ek_public_key\":\"hfl-live-drift\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/tpm/name/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"tpm_ek_public_key\":\"hfl-live-drift\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/tpm/name/example-name",
+      "body": "{\"tpm_ek_public_key\":\"changed-tpm_ek_public_key\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"tpm_ek_public_key\":\"changed-tpm_ek_public_key\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/tpm/name/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"tpm_ek_public_key\":\"changed-tpm_ek_public_key\"}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/identity/tpm/name/example-name",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/identity/tpm/name/example-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

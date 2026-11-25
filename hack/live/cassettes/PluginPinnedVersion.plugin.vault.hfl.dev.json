@@ -1,0 +1,160 @@
+{
+  "recorded": "2026-11-22T20:07:18Z",
+  "target": "Vault dev server 2.2.2",
+  "vars": {
+    "issuer": "b2145452-73da-a16b-353f-8eeb465fb9be",
+    "key": "9f1c47da-2a22-4676-4b02-f6000a2184f9",
+    "mfa": "f3f83141-6a0d-ba15-5a8f-38b659d5cc4a",
+    "tag": "v1:noSQyMKvvgg=:r={{run}}-19:d=false:m=false:gXpjsFnRfjn0SwzqsluE/m/25kwAo+VIoEj2Blnb8mQ="
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "body": "{\"command\":\"hfl-live-plugin\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\",\"version\":\"v1.0.0\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "body": "{\"command\":\"hfl-live-plugin\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\",\"version\":\"v1.0.1\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/catalog/secret/{{name}}",
+      "body": "{\"command\":\"hfl-live-plugin\",\"sha256\":\"275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc\",\"version\":\"v1.0.2\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[\"1 error occurred:\\n\\t* no pinned version for this plugin\\n\\n\"]}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "body": "{\"version\":\"v1.0.0\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"a80c9790-4b74-aebf-eab2-3ee9c23f3080\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":null,\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"b84d8bb6-caba-f842-e019-269ff21f2db6\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"name\":\"{{name}}\",\"type\":\"secret\",\"version\":\"v1.0.0\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"405f859e-5e82-8912-18c7-b75de72654f5\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"name\":\"{{name}}\",\"type\":\"secret\",\"version\":\"v1.0.0\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"8a170c4c-ac72-3121-5714-8455bbe201d9\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"name\":\"{{name}}\",\"type\":\"secret\",\"version\":\"v1.0.0\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "body": "{\"version\":\"v1.0.1\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"b43f94bf-c29d-3fee-b079-a9e9890f1493\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":null,\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"ab024824-df4e-3abb-3313-1351c8f51b36\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"name\":\"{{name}}\",\"type\":\"secret\",\"version\":\"v1.0.1\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"5d79f823-0f52-2df6-1598-66a0d3f3fc4e\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"name\":\"{{name}}\",\"type\":\"secret\",\"version\":\"v1.0.1\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "body": "{\"version\":\"v1.0.2\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"781c6621-c9bd-e807-c12a-7f0c7cbf2347\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":null,\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"49531b42-1a06-162e-65c0-5ea5f0d8dc46\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"name\":\"{{name}}\",\"type\":\"secret\",\"version\":\"v1.0.2\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "body": "{\"version\":\"v1.0.1\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"8ebd6b31-6e93-da31-0404-39e2e2dd632e\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":null,\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"bc34483f-c08b-bc39-9341-eaee89548a37\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"name\":\"{{name}}\",\"type\":\"secret\",\"version\":\"v1.0.1\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"c8f910c4-95fa-a483-2d17-c7caef5f3ec2\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"name\":\"{{name}}\",\"type\":\"secret\",\"version\":\"v1.0.1\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"8f0f0897-5d32-ec7e-ff5a-4e3e2aeda4c5\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":null,\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/pins/secret/{{name}}",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[\"1 error occurred:\\n\\t* no pinned version for this plugin\\n\\n\"]}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/plugins/catalog/secret/{{name}}?version=v1.0.0",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/plugins/catalog/secret/{{name}}?version=v1.0.1",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/plugins/catalog/secret/{{name}}?version=v1.0.2",
+      "status": 204,
+      "contentType": "application/json"
+    }
+  ]
+}

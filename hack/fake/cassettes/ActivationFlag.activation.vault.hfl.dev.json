@@ -1,0 +1,53 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "caCert": "rehearsal-caCert",
+    "csr": "rehearsal-csr",
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "signed": "rehearsal-signed",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/sys/activation-flags",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"activated\":[]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/activation-flags",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"activated\":[]}}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/sys/activation-flags/secrets-sync/activate",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/activation-flags",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"activated\":[\"secrets-sync\"]}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/activation-flags",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"activated\":[\"secrets-sync\"]}}\n"
+    }
+  ]
+}

@@ -1,0 +1,1286 @@
+openapi: 3.0.2
+info:
+  title: Vault system endpoints missing from the generated OpenAPI document
+  version: 1.0.0
+  description: Hand-made supplement to the Vault OpenAPI document; see the comment at the top.
+paths:
+  /agent-registry/register:
+    post:
+      summary: Register an agent; answers the registration's id.
+      operationId: write-agent-registry-register
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentRegistrationRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentRegistrationResponse'
+  /agent-registry/registration/id/{id}:
+    parameters:
+    - name: id
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read an agent registration by ID.
+      operationId: read-agent-registry-registration-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentRegistrationResponse'
+    post:
+      summary: Update an agent registration by ID.
+      operationId: write-agent-registry-registration-id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgentRegistrationRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete an agent registration by ID.
+      operationId: delete-agent-registry-registration-id
+      responses:
+        '204':
+          description: empty body
+  /sys/config/control-group:
+    parameters: []
+    get:
+      summary: Read the Control Group settings (Vault Enterprise).
+      operationId: read-config-control-group
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfigControlGroupResponse'
+    post:
+      summary: Create or update the Control Group settings (Vault Enterprise).
+      operationId: write-config-control-group
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfigControlGroupRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete the Control Group settings (Vault Enterprise).
+      operationId: delete-config-control-group
+      responses:
+        '204':
+          description: empty body
+  /sys/config/group-policy-application:
+    parameters: []
+    get:
+      summary: Read the group policy application mode (Vault Enterprise).
+      operationId: read-config-group-policy-application
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfigGroupPolicyApplicationResponse'
+    post:
+      summary: Create or update the group policy application mode (Vault Enterprise).
+      operationId: write-config-group-policy-application
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfigGroupPolicyApplicationRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+  /sys/policies/egp/{name}:
+    parameters:
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read an Endpoint Governing Policy (Sentinel, Vault Enterprise).
+      operationId: read-policies-egp
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PoliciesEgpResponse'
+    post:
+      summary: Create or update an Endpoint Governing Policy (Sentinel, Vault Enterprise).
+      operationId: write-policies-egp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PoliciesEgpRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete an Endpoint Governing Policy (Sentinel, Vault Enterprise).
+      operationId: delete-policies-egp
+      responses:
+        '204':
+          description: empty body
+  /sys/policies/rgp/{name}:
+    parameters:
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a Role Governing Policy (Sentinel, Vault Enterprise).
+      operationId: read-policies-rgp
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PoliciesRgpResponse'
+    post:
+      summary: Create or update a Role Governing Policy (Sentinel, Vault Enterprise).
+      operationId: write-policies-rgp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PoliciesRgpRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a Role Governing Policy (Sentinel, Vault Enterprise).
+      operationId: delete-policies-rgp
+      responses:
+        '204':
+          description: empty body
+  /sys/managed-keys/{type}/{name}:
+    parameters:
+    - name: type
+      in: path
+      schema:
+        type: string
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a managed key (Vault Enterprise).
+      operationId: read-managed-keys
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create or update a managed key (Vault Enterprise).
+      operationId: write-managed-keys
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManagedKeysRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a managed key (Vault Enterprise).
+      operationId: delete-managed-keys
+      responses:
+        '204':
+          description: empty body
+  /sys/mfa/method/duo/{name}:
+    parameters:
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a Duo MFA method (Vault Enterprise).
+      operationId: read-mfa-method-duo
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MfaMethodDuoResponse'
+    post:
+      summary: Create or update a Duo MFA method (Vault Enterprise).
+      operationId: write-mfa-method-duo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MfaMethodDuoRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a Duo MFA method (Vault Enterprise).
+      operationId: delete-mfa-method-duo
+      responses:
+        '204':
+          description: empty body
+  /sys/mfa/method/okta/{name}:
+    parameters:
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read an Okta MFA method (Vault Enterprise).
+      operationId: read-mfa-method-okta
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MfaMethodOktaResponse'
+    post:
+      summary: Create or update an Okta MFA method (Vault Enterprise).
+      operationId: write-mfa-method-okta
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MfaMethodOktaRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete an Okta MFA method (Vault Enterprise).
+      operationId: delete-mfa-method-okta
+      responses:
+        '204':
+          description: empty body
+  /sys/mfa/method/pingid/{name}:
+    parameters:
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a PingID MFA method (Vault Enterprise).
+      operationId: read-mfa-method-pingid
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create or update a PingID MFA method (Vault Enterprise).
+      operationId: write-mfa-method-pingid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MfaMethodPingidRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a PingID MFA method (Vault Enterprise).
+      operationId: delete-mfa-method-pingid
+      responses:
+        '204':
+          description: empty body
+  /sys/mfa/method/totp/{name}:
+    parameters:
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a TOTP MFA method (Vault Enterprise).
+      operationId: read-mfa-method-totp
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MfaMethodTotpResponse'
+    post:
+      summary: Create or update a TOTP MFA method (Vault Enterprise).
+      operationId: write-mfa-method-totp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MfaMethodTotpRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a TOTP MFA method (Vault Enterprise).
+      operationId: delete-mfa-method-totp
+      responses:
+        '204':
+          description: empty body
+  /sys/storage/raft/autopilot/configuration:
+    parameters: []
+    get:
+      summary: Read the autopilot configuration of Integrated Storage (Raft).
+      operationId: read-raft-autopilot-configuration
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RaftAutopilotConfigurationResponse'
+    post:
+      summary: Create or update the autopilot configuration of Integrated Storage (Raft).
+      operationId: write-raft-autopilot-configuration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RaftAutopilotConfigurationRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+  /sys/storage/raft/snapshot-auto/config/{name}:
+    parameters:
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read an automated Raft snapshot configuration (Vault Enterprise).
+      operationId: read-raft-snapshot-auto-config
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RaftSnapshotAutoConfigResponse'
+    post:
+      summary: Create or update an automated Raft snapshot configuration (Vault Enterprise).
+      operationId: write-raft-snapshot-auto-config
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RaftSnapshotAutoConfigRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete an automated Raft snapshot configuration (Vault Enterprise).
+      operationId: delete-raft-snapshot-auto-config
+      responses:
+        '204':
+          description: empty body
+  /sys/plugins/pins/{type}/{name}:
+    parameters:
+    - name: type
+      in: path
+      schema:
+        type: string
+      required: true
+    - name: name
+      description: The name of the plugin.
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read the pinned version of a plugin.
+      operationId: read-plugins-pins
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PluginsPinsResponse'
+    post:
+      summary: Create or update the pinned version of a plugin.
+      operationId: write-plugins-pins
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PluginsPinsRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete the pinned version of a plugin.
+      operationId: delete-plugins-pins
+      responses:
+        '204':
+          description: empty body
+  /sys/config/ui/custom-messages:
+    parameters: []
+    post:
+      summary: Create a custom message shown in the Vault UI (Vault Enterprise).
+      operationId: create-config-ui-custom-messages
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfigUiCustomMessagesRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfigUiCustomMessagesCreateResponse'
+  /sys/config/ui/custom-messages/{id}:
+    parameters:
+    - name: id
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a custom message shown in the Vault UI (Vault Enterprise).
+      operationId: read-config-ui-custom-messages
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfigUiCustomMessagesResponse'
+    post:
+      summary: Update a custom message shown in the Vault UI (Vault Enterprise).
+      operationId: write-config-ui-custom-messages
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfigUiCustomMessagesRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a custom message shown in the Vault UI (Vault Enterprise).
+      operationId: delete-config-ui-custom-messages
+      responses:
+        '204':
+          description: empty body
+  /sys/config/ui/login/default-auth/{name}:
+    parameters:
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a default login method configuration of the Vault UI (Vault Enterprise).
+      operationId: read-config-ui-login-default-auth
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfigUiLoginDefaultAuthResponse'
+    post:
+      summary: Create or update a default login method configuration of the Vault UI (Vault Enterprise).
+      operationId: write-config-ui-login-default-auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfigUiLoginDefaultAuthRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a default login method configuration of the Vault UI (Vault Enterprise).
+      operationId: delete-config-ui-login-default-auth
+      responses:
+        '204':
+          description: empty body
+  /sys/config/oauth-resource-server/{name}:
+    parameters:
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read an OAuth resource server configuration profile.
+      operationId: read-config-oauth-resource-server
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create or update an OAuth resource server configuration profile.
+      operationId: write-config-oauth-resource-server
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfigOauthResourceServerRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete an OAuth resource server configuration profile.
+      operationId: delete-config-oauth-resource-server
+      responses:
+        '204':
+          description: empty body
+components:
+  schemas:
+    AgentRegistrationRequest:
+      type: object
+      required: [display_name, entity_id]
+      properties:
+        display_name:
+          type: string
+        entity_id:
+          type: string
+        ceiling_policies:
+          type: array
+          items:
+            type: string
+        no_default_ceiling_policy:
+          type: boolean
+        description:
+          type: string
+        owner:
+          type: string
+        optional_authorization_details:
+          type: boolean
+        local:
+          type: boolean
+    AgentRegistrationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        display_name:
+          type: string
+        entity_id:
+          type: string
+        ceiling_policies:
+          type: array
+          items:
+            type: string
+        no_default_ceiling_policy:
+          type: boolean
+        description:
+          type: string
+        owner:
+          type: string
+        optional_authorization_details:
+          type: boolean
+        local:
+          type: boolean
+        creation_time:
+          type: string
+        last_updated_time:
+          type: string
+    ConfigControlGroupRequest:
+      type: object
+      properties:
+        max_ttl:
+          type: string
+          format: duration
+    ConfigControlGroupResponse:
+      type: object
+      properties:
+        max_ttl:
+          type: string
+          format: duration
+    ConfigGroupPolicyApplicationRequest:
+      type: object
+      properties:
+        group_policy_application_mode:
+          type: string
+          enum:
+          - within_namespace_hierarchy
+          - any
+      required:
+      - group_policy_application_mode
+    ConfigGroupPolicyApplicationResponse:
+      type: object
+      properties:
+        group_policy_application_mode:
+          type: string
+          enum:
+          - within_namespace_hierarchy
+          - any
+    PoliciesEgpRequest:
+      type: object
+      properties:
+        policy:
+          type: string
+        enforcement_level:
+          type: string
+          enum:
+          - advisory
+          - soft-mandatory
+          - hard-mandatory
+        paths:
+          type: array
+          items:
+            type: string
+      required:
+      - policy
+      - enforcement_level
+      - paths
+    PoliciesEgpResponse:
+      type: object
+      properties:
+        policy:
+          type: string
+        enforcement_level:
+          type: string
+          enum:
+          - advisory
+          - soft-mandatory
+          - hard-mandatory
+        paths:
+          type: array
+          items:
+            type: string
+    PoliciesRgpRequest:
+      type: object
+      properties:
+        policy:
+          type: string
+        enforcement_level:
+          type: string
+          enum:
+          - advisory
+          - soft-mandatory
+          - hard-mandatory
+      required:
+      - policy
+      - enforcement_level
+    PoliciesRgpResponse:
+      type: object
+      properties:
+        policy:
+          type: string
+        enforcement_level:
+          type: string
+          enum:
+          - advisory
+          - soft-mandatory
+          - hard-mandatory
+    ManagedKeysRequest:
+      type: object
+      properties:
+        allow_generate_key:
+          type: boolean
+        allow_replace_key:
+          type: boolean
+        allow_store_key:
+          type: boolean
+        any_mount:
+          type: boolean
+        usages:
+          type: string
+        library:
+          type: string
+        key_label:
+          type: string
+        key_id:
+          type: string
+        mechanism:
+          type: string
+        pin:
+          type: string
+        slot:
+          type: string
+        token_label:
+          type: string
+        curve:
+          type: string
+        key_bits:
+          type: string
+        force_rw_session:
+          type: boolean
+        max_parallel:
+          type: integer
+        rsa_oaep_hash:
+          type: string
+        access_key:
+          type: string
+        secret_key:
+          type: string
+        endpoint:
+          type: string
+        key_type:
+          type: string
+          description: 'awskms: RSA or ECDSA; azurekeyvault: RSA-HSM.'
+        kms_key:
+          type: string
+        region:
+          type: string
+        tenant_id:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        environment:
+          type: string
+        vault_name:
+          type: string
+        key_name:
+          type: string
+        resource:
+          type: string
+        encryption_mode:
+          type: string
+        credentials:
+          type: string
+        crypto_key:
+          type: string
+        crypto_key_version:
+          type: string
+        key_ring:
+          type: string
+        project:
+          type: string
+        algorithm:
+          type: string
+    MfaMethodDuoRequest:
+      type: object
+      properties:
+        mount_accessor:
+          type: string
+        username_format:
+          type: string
+        secret_key:
+          type: string
+        integration_key:
+          type: string
+        api_hostname:
+          type: string
+          description: API hostname for Duo.
+        push_info:
+          type: string
+      required:
+      - mount_accessor
+      - secret_key
+      - integration_key
+      - api_hostname
+    MfaMethodDuoResponse:
+      type: object
+      properties:
+        mount_accessor:
+          type: string
+        username_format:
+          type: string
+        api_hostname:
+          type: string
+          description: API hostname for Duo.
+    MfaMethodOktaRequest:
+      type: object
+      properties:
+        mount_accessor:
+          type: string
+        username_format:
+          type: string
+        org_name:
+          type: string
+          description: Name of the organization to be used in the Okta API.
+        api_token:
+          type: string
+          description: Okta API key.
+        base_url:
+          type: string
+        primary_email:
+          type: boolean
+      required:
+      - mount_accessor
+      - org_name
+      - api_token
+    MfaMethodOktaResponse:
+      type: object
+      properties:
+        mount_accessor:
+          type: string
+        username_format:
+          type: string
+        org_name:
+          type: string
+          description: Name of the organization to be used in the Okta API.
+        base_url:
+          type: string
+        primary_email:
+          type: boolean
+    MfaMethodPingidRequest:
+      type: object
+      properties:
+        mount_accessor:
+          type: string
+        username_format:
+          type: string
+        settings_file_base64:
+          type: string
+      required:
+      - mount_accessor
+      - settings_file_base64
+    MfaMethodTotpRequest:
+      type: object
+      properties:
+        issuer:
+          type: string
+          description: The name of the key's issuing organization.
+        period:
+          type: string
+          format: duration
+        key_size:
+          type: integer
+          description: The size in bytes of the generated key (default 20).
+        qr_size:
+          type: integer
+          description: The pixel size of the generated square QR code (default 200).
+        algorithm:
+          type: string
+          enum:
+          - SHA1
+          - SHA256
+          - SHA512
+        digits:
+          type: integer
+        skew:
+          type: integer
+        max_validation_attempts:
+          type: integer
+      required:
+      - issuer
+    MfaMethodTotpResponse:
+      type: object
+      properties:
+        issuer:
+          type: string
+          description: The name of the key's issuing organization.
+        period:
+          type: string
+          format: duration
+        key_size:
+          type: integer
+          description: The size in bytes of the generated key (default 20).
+        qr_size:
+          type: integer
+          description: The pixel size of the generated square QR code (default 200).
+        algorithm:
+          type: string
+          enum:
+          - SHA1
+          - SHA256
+          - SHA512
+        digits:
+          type: integer
+        skew:
+          type: integer
+        max_validation_attempts:
+          type: integer
+    RaftAutopilotConfigurationRequest:
+      type: object
+      properties:
+        cleanup_dead_servers:
+          type: boolean
+        last_contact_threshold:
+          type: string
+        dead_server_last_contact_threshold:
+          type: string
+        max_trailing_logs:
+          type: integer
+        min_quorum:
+          type: integer
+        server_stabilization_time:
+          type: string
+        disable_upgrade_migration:
+          type: boolean
+    RaftAutopilotConfigurationResponse:
+      type: object
+      properties:
+        cleanup_dead_servers:
+          type: boolean
+        last_contact_threshold:
+          type: string
+        dead_server_last_contact_threshold:
+          type: string
+        max_trailing_logs:
+          type: integer
+        min_quorum:
+          type: integer
+        server_stabilization_time:
+          type: string
+        disable_upgrade_migration:
+          type: boolean
+    RaftSnapshotAutoConfigRequest:
+      type: object
+      properties:
+        interval:
+          type: string
+          format: duration
+        retain:
+          type: integer
+        path_prefix:
+          type: string
+        file_prefix:
+          type: string
+        storage_type:
+          type: string
+          enum:
+          - local
+          - azure-blob
+          - aws-s3
+          - google-gcs
+        autoload_enabled:
+          type: boolean
+        local_max_space:
+          type: integer
+        aws_s3_bucket:
+          type: string
+        aws_s3_region:
+          type: string
+        aws_access_key_id:
+          type: string
+          description: AWS access key ID.
+        aws_secret_access_key:
+          type: string
+          description: AWS secret access key.
+        aws_session_token:
+          type: string
+          description: AWS session token.
+        aws_s3_endpoint:
+          type: string
+        aws_s3_disable_tls:
+          type: boolean
+        aws_s3_force_path_style:
+          type: boolean
+        aws_s3_enable_kms:
+          type: boolean
+        aws_s3_server_side_encryption:
+          type: boolean
+        aws_s3_kms_key:
+          type: string
+        google_gcs_bucket:
+          type: string
+        google_service_account_key:
+          type: string
+        google_endpoint:
+          type: string
+        google_disable_tls:
+          type: boolean
+        azure_container_name:
+          type: string
+        azure_account_name:
+          type: string
+        azure_auth_mode:
+          type: string
+          description: Azure authentication mode.
+          enum:
+          - shared
+          - managed
+          - environment
+        azure_account_key:
+          type: string
+        azure_client_id:
+          type: string
+        azure_blob_environment:
+          type: string
+          description: Azure blob environment.
+        azure_endpoint:
+          type: string
+      required:
+      - interval
+      - path_prefix
+      - storage_type
+    RaftSnapshotAutoConfigResponse:
+      type: object
+      properties:
+        interval:
+          type: string
+          format: duration
+        retain:
+          type: integer
+        path_prefix:
+          type: string
+        file_prefix:
+          type: string
+        storage_type:
+          type: string
+          enum:
+          - local
+          - azure-blob
+          - aws-s3
+          - google-gcs
+        autoload_enabled:
+          type: boolean
+        local_max_space:
+          type: integer
+        aws_s3_bucket:
+          type: string
+        aws_s3_region:
+          type: string
+        aws_s3_endpoint:
+          type: string
+        aws_s3_disable_tls:
+          type: boolean
+        aws_s3_force_path_style:
+          type: boolean
+        aws_s3_enable_kms:
+          type: boolean
+        aws_s3_server_side_encryption:
+          type: boolean
+        aws_s3_kms_key:
+          type: string
+        google_gcs_bucket:
+          type: string
+        google_endpoint:
+          type: string
+        google_disable_tls:
+          type: boolean
+        azure_container_name:
+          type: string
+        azure_account_name:
+          type: string
+        azure_auth_mode:
+          type: string
+          description: Azure authentication mode.
+          enum:
+          - shared
+          - managed
+          - environment
+        azure_client_id:
+          type: string
+        azure_blob_environment:
+          type: string
+          description: Azure blob environment.
+        azure_endpoint:
+          type: string
+    PluginsPinsRequest:
+      type: object
+      properties:
+        version:
+          type: string
+      required:
+      - version
+    PluginsPinsResponse:
+      type: object
+      properties:
+        version:
+          type: string
+    ConfigUiCustomMessagesRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        message:
+          type: string
+        authenticated:
+          type: boolean
+        type:
+          type: string
+          enum:
+          - banner
+          - modal
+        start_time:
+          type: string
+        end_time:
+          type: string
+        link:
+          type: object
+          additionalProperties:
+            type: string
+        options:
+          type: object
+      required:
+      - title
+      - message
+      - start_time
+    ConfigUiCustomMessagesResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        message:
+          type: string
+        authenticated:
+          type: boolean
+        type:
+          type: string
+          enum:
+          - banner
+          - modal
+        start_time:
+          type: string
+        end_time:
+          type: string
+        link:
+          type: object
+          additionalProperties:
+            type: string
+        options:
+          type: object
+    ConfigUiCustomMessagesCreateResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Identifier Vault assigned.
+    ConfigUiLoginDefaultAuthRequest:
+      type: object
+      properties:
+        namespace_path:
+          type: string
+        default_auth_type:
+          type: string
+        backup_auth_types:
+          type: array
+          items:
+            type: string
+        disable_inheritance:
+          type: boolean
+      required:
+      - default_auth_type
+    ConfigUiLoginDefaultAuthResponse:
+      type: object
+      properties:
+        namespace_path:
+          type: string
+        default_auth_type:
+          type: string
+        backup_auth_types:
+          type: array
+          items:
+            type: string
+        disable_inheritance:
+          type: boolean
+    ConfigOauthResourceServerRequest:
+      type: object
+      properties:
+        issuer_id:
+          type: string
+        local:
+          type: boolean
+        use_jwks:
+          type: boolean
+        jwks_uri:
+          type: string
+        jwks_ca_pem:
+          type: string
+        public_keys:
+          type: array
+          items:
+            type: object
+            properties:
+              key_id:
+                type: string
+              pem:
+                type: string
+        audiences:
+          type: array
+          items:
+            type: string
+        no_default_policy:
+          type: boolean
+        optional_authorization_details:
+          type: boolean
+        user_claim:
+          type: string
+        supported_algorithms:
+          type: array
+          items:
+            type: string
+        jwt_type:
+          type: string
+          enum:
+          - access_token
+        clock_skew_leeway:
+          type: integer
+        enabled:
+          type: boolean
+        unique_id_claim:
+          type: string
+        actor_claim:
+          type: string
+        authorization_details_claim:
+          type: string
+      required:
+      - issuer_id

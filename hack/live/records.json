@@ -1,0 +1,636 @@
+{
+  "AlicloudSecretBackend.alicloud.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "AlicloudSecretBackendRole.alicloud.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "ApproleAuthBackendRoleCustomSecretId.approle.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "ApproleAuthBackendRoleSecretId.approle.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "AwsAuthBackendCert.aws.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "AwsAuthBackendIdentityWhitelist.aws.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "AwsAuthBackendRoletagBlacklist.aws.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "AwsAuthBackendStsRole.aws.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "ConfigUiHeader.config.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "GcpSecretImpersonatedAccount.gcp.vault.hfl.dev": {
+    "result": "fail",
+    "steps": [],
+    "reason": "before POST /{{run}}-gcp/config: HTTP 400: {\"errors\":[\"invalid credentials JSON file: unexpected end of JSON input\"]}\n",
+    "run": "hfl-live-2611220632-1818",
+    "date": "2026-11-22T06:32:56Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-17T01:27:44Z"
+  },
+  "GcpkmsSecretBackend.gcpkms.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "GenericEndpoint.generic.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "IdentityEntityAssignment.identity.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "IdentityGroupAssignment.identity.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "IdentityMfaDuo.identity.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "IdentityMfaLoginEnforcement.identity.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "IdentityMfaOkta.identity.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "IdentityMfaPingid.identity.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "IdentityMfaTotp.identity.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "IdentityOidcKeyAllowedClientId.identity.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:19Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:19Z"
+  },
+  "KvSecret.kv.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "KvSecretBackendV2.kv.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "LdapAuthBackendUser.ldap.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "OktaAuthBackendUser.okta.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "PkiSecretBackendAcmeEab.pki.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:19Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:19Z"
+  },
+  "PkiSecretBackendConfigAcme.pki.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "PkiSecretBackendConfigAutoTidy.pki.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "PkiSecretBackendConfigCa.pki.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:19Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:19Z"
+  },
+  "PkiSecretBackendConfigCluster.pki.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "PkiSecretBackendConfigIssuers.pki.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "PkiSecretBackendCrlConfig.pki.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "PkiSecretBackendIntermediateCertRequest.pki.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:19Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:19Z"
+  },
+  "PkiSecretBackendIntermediateSetSigned.pki.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:19Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:19Z"
+  },
+  "PkiSecretBackendIssuer.pki.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "PkiSecretBackendKey.pki.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "PkiSecretBackendRootCert.pki.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:19Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:19Z"
+  },
+  "Plugin.plugin.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "PluginPinnedVersion.plugin.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "PluginRuntime.plugin.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "RadiusAuthBackendUser.radius.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "SysConfigCors.sys.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "Token.token.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:19Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:19Z"
+  },
+  "TokenAuthBackendRole.token.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "TransitSecretBackendCacheConfig.transit.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  },
+  "UserpassAuthBackendUser.userpass.vault.hfl.dev": {
+    "result": "pass",
+    "steps": [
+      "create",
+      "read",
+      "update",
+      "drift",
+      "delete",
+      "gone"
+    ],
+    "run": "hfl-live-2611222007-b064",
+    "date": "2026-11-22T20:07:18Z",
+    "target": "Vault dev server 2.2.2",
+    "lastPass": "2026-11-22T20:07:18Z"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "caCert": "rehearsal-caCert",
+    "csr": "rehearsal-csr",
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "signed": "rehearsal-signed",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/auth/example-tpm-mount-path/config",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-tpm-mount-path/config",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-tpm-mount-path/config",
+      "body": "{\"ca_lifetime\":\"example-ca-lifetime\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"ca_lifetime\":\"example-ca-lifetime\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-tpm-mount-path/config",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"ca_lifetime\":\"example-ca-lifetime\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-tpm-mount-path/config",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"ca_lifetime\":\"example-ca-lifetime\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-tpm-mount-path/config",
+      "body": "{\"ca_lifetime\":\"changed-ca_lifetime\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"ca_lifetime\":\"changed-ca_lifetime\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-tpm-mount-path/config",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"ca_lifetime\":\"changed-ca_lifetime\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-tpm-mount-path/config",
+      "body": "{\"ca_lifetime\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"ca_lifetime\":\"hfl-live-drift\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-tpm-mount-path/config",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"ca_lifetime\":\"hfl-live-drift\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-tpm-mount-path/config",
+      "body": "{\"ca_lifetime\":\"changed-ca_lifetime\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"ca_lifetime\":\"changed-ca_lifetime\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/example-tpm-mount-path/config",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"ca_lifetime\":\"changed-ca_lifetime\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/example-tpm-mount-path/config",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"ca_lifetime\":\"changed-ca_lifetime\"}}\n"
+    }
+  ]
+}

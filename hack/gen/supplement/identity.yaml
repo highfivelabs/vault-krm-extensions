@@ -1,0 +1,193 @@
+openapi: 3.0.2
+info:
+  title: 'Vault identity: TPM records and SCIM clients (Vault Enterprise)'
+  version: 1.0.0
+  description: Hand-made supplement to the Vault OpenAPI document; see the comment at the top.
+paths:
+  /identity/tpm/name/{name}:
+    parameters:
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read an identity TPM record.
+      operationId: read-identity-tpm-name
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create or update an identity TPM record.
+      operationId: write-identity-tpm-name
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityTpmNameRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete an identity TPM record.
+      operationId: delete-identity-tpm-name
+      responses:
+        '204':
+          description: empty body
+  /identity/tpmgroup:
+    post:
+      summary: Create an identity TPM group; answers its id.
+      operationId: write-identity-tpmgroup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityTpmGroupRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityTpmGroupResponse'
+  /identity/tpmgroup/id/{id}:
+    parameters:
+    - name: id
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read an identity TPM group by ID.
+      operationId: read-identity-tpmgroup-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityTpmGroupResponse'
+    post:
+      summary: Update an identity TPM group by ID.
+      operationId: write-identity-tpmgroup-id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityTpmGroupRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete an identity TPM group by ID.
+      operationId: delete-identity-tpmgroup-id
+      responses:
+        '204':
+          description: empty body
+  /identity/scim/client/{client_name}:
+    parameters:
+    - name: client_name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read an identity SCIM client.
+      operationId: read-identity-scim-client
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create or update an identity SCIM client.
+      operationId: write-identity-scim-client
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityScimClientRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete an identity SCIM client.
+      operationId: delete-identity-scim-client
+      responses:
+        '204':
+          description: empty body
+components:
+  schemas:
+    IdentityTpmGroupRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+        member_tpm_ids:
+          type: array
+          items:
+            type: string
+    IdentityTpmGroupResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+        member_tpm_ids:
+          type: array
+          items:
+            type: string
+    IdentityTpmNameRequest:
+      type: object
+      properties:
+        tpm_ek_public_key:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+        disabled:
+          type: boolean
+      required:
+      - tpm_ek_public_key
+    IdentityScimClientRequest:
+      type: object
+      properties:
+        access_grant_principal:
+          type: string
+        alias_mount_accessor:
+          type: string
+        default_schema_version:
+          type: string
+        allow_user_adoption:
+          type: boolean
+        allow_group_adoption:
+          type: boolean
+        allowed_extra_alias_mount_accessors:
+          type: array
+          items:
+            type: string
+        max_active_tokens:
+          type: integer
+        max_token_ttl:
+          type: string
+          format: duration
+      required:
+      - access_grant_principal

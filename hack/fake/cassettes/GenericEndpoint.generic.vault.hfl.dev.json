@@ -1,0 +1,100 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/{{run}}-kv/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/{{run}}-kv/{{name}}",
+      "body": "{\"value\":\"first\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"value\":\"first\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/{{run}}-kv/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"value\":\"first\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/{{run}}-kv/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"value\":\"first\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/{{run}}-kv/{{name}}",
+      "body": "{\"value\":\"second\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"value\":\"second\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/{{run}}-kv/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"value\":\"second\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/{{run}}-kv/{{name}}",
+      "body": "{\"value\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"value\":\"hfl-live-drift\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/{{run}}-kv/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"value\":\"hfl-live-drift\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/{{run}}-kv/{{name}}",
+      "body": "{\"value\":\"second\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"value\":\"second\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/{{run}}-kv/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"value\":\"second\"}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/{{run}}-kv/{{name}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/{{run}}-kv/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

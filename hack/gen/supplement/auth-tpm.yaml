@@ -1,0 +1,133 @@
+openapi: 3.0.2
+info:
+  title: Vault TPM auth method (Vault Enterprise)
+  version: 1.0.0
+  description: Hand-made supplement to the Vault OpenAPI document; see the comment at the top.
+paths:
+  /auth/{tpm_mount_path}/config:
+    parameters:
+    - name: tpm_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: tpm
+      required: true
+    get:
+      summary: Read the TPM auth method's configuration.
+      operationId: read-tpm-config
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create or update the TPM auth method's configuration.
+      operationId: write-tpm-config
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TpmConfigRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+  /auth/{tpm_mount_path}/role/{name}:
+    parameters:
+    - name: tpm_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: tpm
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a TPM auth role.
+      operationId: read-tpm-role
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create or update a TPM auth role.
+      operationId: write-tpm-role
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TpmRoleRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a TPM auth role.
+      operationId: delete-tpm-role
+      responses:
+        '204':
+          description: empty body
+components:
+  schemas:
+    TpmConfigRequest:
+      type: object
+      properties:
+        ca_lifetime:
+          type: string
+          format: duration
+        ca_soft_expiry:
+          type: string
+          format: duration
+        default_cert_ttl:
+          type: string
+          format: duration
+    TpmRoleRequest:
+      type: object
+      properties:
+        tpm_ids:
+          type: array
+          items:
+            type: string
+        tpmgroup_ids:
+          type: array
+          items:
+            type: string
+        display_name:
+          type: string
+        cert_ttl:
+          type: string
+          format: duration
+        token_ttl:
+          type: string
+          format: duration
+          description: The initial ttl of the token to generate.
+        token_max_ttl:
+          type: string
+          format: duration
+          description: The maximum lifetime of the generated token.
+        token_policies:
+          type: array
+          items:
+            type: string
+        token_bound_cidrs:
+          type: array
+          items:
+            type: string
+        token_explicit_max_ttl:
+          type: string
+          format: duration
+        token_no_default_policy:
+          type: boolean
+        token_num_uses:
+          type: integer
+        token_period:
+          type: string
+          format: duration
+        token_type:
+          type: string

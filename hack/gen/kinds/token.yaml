@@ -1,0 +1,37 @@
+terraform: [vault_token]
+kind: Token
+shape: crud
+fields:
+  policies:
+    type: array
+    items: {type: string}
+  meta:
+    type: object
+    additionalProperties: {type: string}
+  no_parent: {type: boolean}
+  no_default_policy: {type: boolean}
+  renewable: {type: boolean}
+  ttl: {type: string}
+  explicit_max_ttl: {type: string, description: Hard maximum lifetime, past which it cannot be renewed (24h).}
+  period: {type: string}
+  display_name: {type: string}
+  num_uses: {type: integer}
+  entity_alias: {type: string}
+  type: {type: string, enum: [service, batch], description: Token type.}
+writeOnly: [policies, no_parent, no_default_policy, ttl, explicit_max_ttl, period, display_name, num_uses, entity_alias]
+compareReturnedOnly: true
+id: accessor
+envelope: data
+secretOutputs: [client_token]
+redact: [accessor]
+serverFields:
+  accessor: 8609694a-cdbc-db9b-d345-e782dbb562ed
+  creation_time: 1523979354
+  creation_ttl: 2764800
+  expire_time: "2018-05-19T11:35:54.466476215-04:00"
+  orphan: false
+  path: auth/token/create
+sample: {policies: [default], ttl: 1h, renewable: true, meta: {team: ops}}
+create: {method: POST, path: /auth/token/create, envelope: auth}
+read: {method: POST, path: /auth/token/lookup-accessor, body: {accessor: "{id}"}}
+delete: {method: POST, path: /auth/token/revoke-accessor, body: {accessor: "{id}"}}

@@ -1,0 +1,612 @@
+openapi: 3.0.2
+info:
+  title: Vault KMIP secrets engine (Vault Enterprise)
+  version: 1.0.0
+  description: Hand-made supplement to the Vault OpenAPI document; see the comment at the top.
+paths:
+  /{kmip_mount_path}/scope:
+    parameters:
+    - name: kmip_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: kmip
+      required: true
+    get:
+      summary: List the scopes (LIST, or GET with list=true).
+      operationId: list-kmip-scopes
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  keys:
+                    type: array
+                    items:
+                      type: string
+  /{kmip_mount_path}/scope/{scope}:
+    parameters:
+    - name: kmip_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: kmip
+      required: true
+    - name: scope
+      in: path
+      schema:
+        type: string
+      required: true
+    post:
+      summary: Create a scope.
+      operationId: write-kmip-scope
+      responses:
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a scope; with force=true, also when it holds KMIP managed objects.
+      operationId: delete-kmip-scope
+      responses:
+        '204':
+          description: empty body
+  /{kmip_mount_path}/config:
+    parameters:
+    - name: kmip_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: kmip
+      required: true
+    get:
+      summary: Read the KMIP secrets engine's configuration.
+      operationId: read-kmip-config
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KmipConfigResponse'
+    post:
+      summary: Create or update the KMIP secrets engine's configuration.
+      operationId: write-kmip-config
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KmipConfigRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+  /{kmip_mount_path}/scope/{scope}/role/{role}:
+    parameters:
+    - name: kmip_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: kmip
+      required: true
+    - name: scope
+      in: path
+      schema:
+        type: string
+      required: true
+    - name: role
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a KMIP role in a scope.
+      operationId: read-kmip-scope-role
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KmipScopeRoleResponse'
+    post:
+      summary: Create or update a KMIP role in a scope.
+      operationId: write-kmip-scope-role
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KmipScopeRoleRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a KMIP role in a scope.
+      operationId: delete-kmip-scope-role
+      responses:
+        '204':
+          description: empty body
+  /{kmip_mount_path}/listener/{name}:
+    parameters:
+    - name: kmip_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: kmip
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a KMIP listener.
+      operationId: read-kmip-listener
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KmipListenerResponse'
+    post:
+      summary: Create or update a KMIP listener.
+      operationId: write-kmip-listener
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KmipListenerRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a KMIP listener.
+      operationId: delete-kmip-listener
+      responses:
+        '204':
+          description: empty body
+  /{kmip_mount_path}/ca/{name}:
+    parameters:
+    - name: kmip_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: kmip
+      required: true
+    - name: name
+      description: Name of the CA.
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a CA.
+      operationId: read-kmip-ca
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KmipCaResponse'
+    post:
+      summary: Update an imported CA's scope and role settings (a generated CA cannot be updated).
+      operationId: update-kmip-ca
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KmipCaUpdateRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a CA (refused while a listener or role uses it).
+      operationId: delete-kmip-ca
+      responses:
+        '204':
+          description: empty body
+  /{kmip_mount_path}/ca/{name}/generate:
+    parameters:
+    - name: kmip_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: kmip
+      required: true
+    - name: name
+      description: Name of the CA.
+      in: path
+      schema:
+        type: string
+      required: true
+    post:
+      summary: Generate a CA.
+      operationId: generate-kmip-ca
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KmipCaGenerateRequest'
+      responses:
+        '200':
+          description: OK
+  /{kmip_mount_path}/ca/{name}/import:
+    parameters:
+    - name: kmip_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: kmip
+      required: true
+    - name: name
+      description: Name of the CA.
+      in: path
+      schema:
+        type: string
+      required: true
+    post:
+      summary: Import a CA, to verify client certificates with.
+      operationId: import-kmip-ca
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KmipCaImportRequest'
+      responses:
+        '200':
+          description: OK
+components:
+  schemas:
+    KmipCaGenerateRequest:
+      type: object
+      required: [key_type, key_bits]
+      properties:
+        key_type:
+          type: string
+          enum: [rsa, ec]
+        key_bits:
+          type: integer
+        ttl:
+          type: integer
+    KmipCaImportRequest:
+      type: object
+      required: [ca_pem]
+      properties:
+        ca_pem:
+          type: string
+          description: CA certificate in PEM format.
+        scope_name:
+          type: string
+        scope_field:
+          type: string
+        role_name:
+          type: string
+        role_field:
+          type: string
+    KmipCaUpdateRequest:
+      type: object
+      properties:
+        scope_name:
+          type: string
+        scope_field:
+          type: string
+        role_name:
+          type: string
+        role_field:
+          type: string
+    KmipCaResponse:
+      type: object
+      properties:
+        key_type:
+          type: string
+        key_bits:
+          type: integer
+        imported:
+          type: boolean
+        scope_name:
+          type: string
+        scope_field:
+          type: string
+        role_name:
+          type: string
+        role_field:
+          type: string
+        certificate:
+          type: string
+        ca_chain:
+          type: array
+          items:
+            type: string
+        serial_number:
+          type: string
+    KmipConfigRequest:
+      type: object
+      properties:
+        listen_addrs:
+          type: array
+          items:
+            type: string
+        server_hostnames:
+          type: array
+          items:
+            type: string
+        server_ips:
+          type: array
+          items:
+            type: string
+        tls_ca_key_type:
+          type: string
+        tls_ca_key_bits:
+          type: integer
+        tls_min_version:
+          type: string
+        default_tls_client_key_type:
+          type: string
+        default_tls_client_key_bits:
+          type: integer
+        default_tls_client_ttl:
+          type: string
+          format: duration
+    KmipConfigResponse:
+      type: object
+      properties:
+        listen_addrs:
+          type: array
+          items:
+            type: string
+        server_hostnames:
+          type: array
+          items:
+            type: string
+        server_ips:
+          type: array
+          items:
+            type: string
+        tls_ca_key_type:
+          type: string
+        tls_ca_key_bits:
+          type: integer
+        tls_min_version:
+          type: string
+        default_tls_client_key_type:
+          type: string
+        default_tls_client_key_bits:
+          type: integer
+        default_tls_client_ttl:
+          type: string
+          format: duration
+    KmipScopeRoleRequest:
+      type: object
+      properties:
+        ca:
+          type: string
+        tls_client_key_type:
+          type: string
+        tls_client_key_bits:
+          type: integer
+        tls_client_ttl:
+          type: string
+          format: duration
+        operation_activate:
+          type: boolean
+        operation_add_attribute:
+          type: boolean
+        operation_all:
+          type: boolean
+        operation_create:
+          type: boolean
+        operation_create_key_pair:
+          type: boolean
+        operation_decrypt:
+          type: boolean
+        operation_delete_attribute:
+          type: boolean
+        operation_destroy:
+          type: boolean
+        operation_discover_versions:
+          type: boolean
+        operation_encrypt:
+          type: boolean
+        operation_get:
+          type: boolean
+        operation_get_attribute_list:
+          type: boolean
+        operation_get_attributes:
+          type: boolean
+        operation_import:
+          type: boolean
+        operation_locate:
+          type: boolean
+        operation_mac:
+          type: boolean
+        operation_mac_verify:
+          type: boolean
+        operation_modify_attribute:
+          type: boolean
+        operation_none:
+          type: boolean
+        operation_query:
+          type: boolean
+        operation_register:
+          type: boolean
+        operation_rekey:
+          type: boolean
+        operation_rekey_key_pair:
+          type: boolean
+        operation_revoke:
+          type: boolean
+        operation_rng_retrieve:
+          type: boolean
+        operation_rng_seed:
+          type: boolean
+        operation_sign:
+          type: boolean
+        operation_signature_verify:
+          type: boolean
+        deactivated_object_operations:
+          type: array
+          items:
+            type: string
+    KmipScopeRoleResponse:
+      type: object
+      properties:
+        tls_client_key_type:
+          type: string
+        tls_client_key_bits:
+          type: integer
+        tls_client_ttl:
+          type: string
+          format: duration
+        operation_activate:
+          type: boolean
+        operation_add_attribute:
+          type: boolean
+        operation_all:
+          type: boolean
+        operation_create:
+          type: boolean
+        operation_create_key_pair:
+          type: boolean
+        operation_decrypt:
+          type: boolean
+        operation_delete_attribute:
+          type: boolean
+        operation_destroy:
+          type: boolean
+        operation_discover_versions:
+          type: boolean
+        operation_encrypt:
+          type: boolean
+        operation_get:
+          type: boolean
+        operation_get_attribute_list:
+          type: boolean
+        operation_get_attributes:
+          type: boolean
+        operation_import:
+          type: boolean
+        operation_locate:
+          type: boolean
+        operation_mac:
+          type: boolean
+        operation_mac_verify:
+          type: boolean
+        operation_modify_attribute:
+          type: boolean
+        operation_none:
+          type: boolean
+        operation_query:
+          type: boolean
+        operation_register:
+          type: boolean
+        operation_rekey:
+          type: boolean
+        operation_rekey_key_pair:
+          type: boolean
+        operation_revoke:
+          type: boolean
+        operation_rng_retrieve:
+          type: boolean
+        operation_rng_seed:
+          type: boolean
+        operation_sign:
+          type: boolean
+        operation_signature_verify:
+          type: boolean
+    KmipListenerRequest:
+      type: object
+      properties:
+        ca:
+          type: string
+        address:
+          type: string
+        server_hostnames:
+          type: array
+          items:
+            type: string
+        server_ips:
+          type: array
+          items:
+            type: string
+        additional_client_cas:
+          type: array
+          items:
+            type: string
+        also_use_legacy_ca:
+          type: boolean
+        tls_min_version:
+          type: string
+          description: Minimum TLS version.
+          enum:
+          - tls12
+          - tls13
+        tls_max_version:
+          type: string
+          description: Maximum TLS version.
+          enum:
+          - tls12
+          - tls13
+        tls_cipher_suites:
+          type: string
+      required:
+      - ca
+      - address
+    KmipListenerResponse:
+      type: object
+      properties:
+        ca:
+          type: string
+        address:
+          type: string
+        server_hostnames:
+          type: array
+          items:
+            type: string
+        server_ips:
+          type: array
+          items:
+            type: string
+        additional_client_cas:
+          type: array
+          items:
+            type: string
+        also_use_legacy_ca:
+          type: boolean
+        tls_min_version:
+          type: string
+          description: Minimum TLS version.
+          enum:
+          - tls12
+          - tls13
+        tls_max_version:
+          type: string
+          description: Maximum TLS version.
+          enum:
+          - tls12
+          - tls13
+        tls_cipher_suites:
+          type: string

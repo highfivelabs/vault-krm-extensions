@@ -1,0 +1,131 @@
+{
+  "recorded": "2026-11-22T20:07:18Z",
+  "target": "Vault dev server 2.2.2",
+  "vars": {
+    "entity": "824161f1-5a83-bf5d-2111-78ef4eabffba",
+    "group": "bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+    "issuer": "b2145452-73da-a16b-353f-8eeb465fb9be",
+    "key": "9f1c47da-2a22-4676-4b02-f6000a2184f9",
+    "mfa": "f3f83141-6a0d-ba15-5a8f-38b659d5cc4a",
+    "tag": "v1:noSQyMKvvgg=:r={{run}}-19:d=false:m=false:gXpjsFnRfjn0SwzqsluE/m/25kwAo+VIoEj2Blnb8mQ="
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/sys/auth/{{name}}-ldap",
+      "body": "{\"type\":\"ldap\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-ldap/users/{{name}}",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[]}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{name}}-ldap/users/{{name}}",
+      "body": "{\"groups\":[\"hfl-live\"],\"policies\":[\"default\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-ldap/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"ed7ed5ef-c83c-bbb1-1ac8-870d62ae67e7\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"groups\":\"hfl-live\",\"policies\":[\"default\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"ldap\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-ldap/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"a7e1af27-0ccd-228d-5632-d12b74704d3c\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"groups\":\"hfl-live\",\"policies\":[\"default\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"ldap\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-ldap/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"b84e94b8-9cd2-4dc0-f596-74bce992c697\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"groups\":\"hfl-live\",\"policies\":[\"default\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"ldap\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{name}}-ldap/users/{{name}}",
+      "body": "{\"groups\":[\"hfl-live\"],\"policies\":[\"default\",\"hfl-live\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-ldap/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"d64bbac4-201c-3f26-cac3-b2af012d5c42\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"groups\":\"hfl-live\",\"policies\":[\"default\",\"hfl-live\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"ldap\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-ldap/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"256abe9a-813d-12fd-41d6-8165af29370c\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"groups\":\"hfl-live\",\"policies\":[\"default\",\"hfl-live\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"ldap\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{name}}-ldap/users/{{name}}",
+      "body": "{\"policies\":[\"hfl-live-drift\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-ldap/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"6c7456e3-c08b-3c8c-d411-499679d05af1\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"groups\":\"\",\"policies\":[\"hfl-live-drift\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"ldap\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{name}}-ldap/users/{{name}}",
+      "body": "{\"groups\":[\"hfl-live\"],\"policies\":[\"default\",\"hfl-live\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-ldap/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"9545228e-28f3-d615-d5ed-64fdaec95917\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"groups\":\"hfl-live\",\"policies\":[\"default\",\"hfl-live\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"ldap\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-ldap/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"fd2bb298-013b-4000-b2ff-97af6928b1cc\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"groups\":\"hfl-live\",\"policies\":[\"default\",\"hfl-live\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"ldap\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/{{name}}-ldap/users/{{name}}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{name}}-ldap/users/{{name}}",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[]}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/auth/{{name}}-ldap",
+      "status": 204,
+      "contentType": "application/json"
+    }
+  ]
+}

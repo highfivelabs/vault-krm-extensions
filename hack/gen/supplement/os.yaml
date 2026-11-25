@@ -1,0 +1,201 @@
+openapi: 3.0.2
+info:
+  title: Vault OS secrets engine (Vault Enterprise)
+  version: 1.0.0
+  description: Hand-made supplement to the Vault OpenAPI document; see the comment at the top.
+paths:
+  /{os_mount_path}/config:
+    parameters:
+    - name: os_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: os
+      required: true
+    get:
+      summary: Read the OS secrets engine's configuration.
+      operationId: read-os-config
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create or update the OS secrets engine's configuration.
+      operationId: write-os-config
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OsConfigRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+  /{os_mount_path}/hosts/{name}:
+    parameters:
+    - name: os_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: os
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read an OS secrets engine target host.
+      operationId: read-os-hosts
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create or update an OS secrets engine target host.
+      operationId: write-os-hosts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OsHostsRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete an OS secrets engine target host.
+      operationId: delete-os-hosts
+      responses:
+        '204':
+          description: empty body
+  /{os_mount_path}/hosts/{host_ref}/accounts/{name}:
+    parameters:
+    - name: os_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: os
+      required: true
+    - name: host_ref
+      in: path
+      schema:
+        type: string
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read an OS secrets engine account.
+      operationId: read-os-hosts-accounts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OsAccountResponse'
+    post:
+      summary: Create or update an OS secrets engine account.
+      operationId: write-os-hosts-accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OsAccountRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete an OS secrets engine account.
+      operationId: delete-os-hosts-accounts
+      responses:
+        '204':
+          description: empty body
+components:
+  schemas:
+    OsAccountRequest:
+      type: object
+      required: [username, password]
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        parent_account_ref:
+          type: string
+        password_policy:
+          type: string
+        custom_metadata:
+          type: object
+          additionalProperties:
+            type: string
+        verify_connection:
+          type: boolean
+        rotation_period:
+          type: integer
+        rotation_schedule:
+          type: string
+        rotation_window:
+          type: integer
+        disable_automated_rotation:
+          type: boolean
+    OsAccountResponse:
+      type: object
+      properties:
+        username:
+          type: string
+        parent_account_ref:
+          type: string
+        password_policy:
+          type: string
+        custom_metadata:
+          type: object
+          additionalProperties:
+            type: string
+        rotation_period:
+          type: integer
+        rotation_schedule:
+          type: string
+        rotation_window:
+          type: integer
+        disable_automated_rotation:
+          type: boolean
+        last_vault_rotation:
+          type: string
+        next_vault_rotation:
+          type: string
+    OsConfigRequest:
+      type: object
+      properties:
+        max_versions:
+          type: integer
+        ssh_host_key_trust_on_first_use:
+          type: boolean
+    OsHostsRequest:
+      type: object
+      properties:
+        address:
+          type: string
+        port:
+          type: integer
+        ssh_host_key:
+          type: string
+        password_policy:
+          type: string
+        custom_metadata:
+          type: object
+          additionalProperties:
+            type: string
+      required:
+      - address

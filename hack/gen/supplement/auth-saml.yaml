@@ -1,0 +1,156 @@
+openapi: 3.0.2
+info:
+  title: Vault SAML auth method (Vault Enterprise)
+  version: 1.0.0
+  description: Hand-made supplement to the Vault OpenAPI document; see the comment at the top.
+paths:
+  /auth/{saml_mount_path}/config:
+    parameters:
+    - name: saml_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: saml
+      required: true
+    get:
+      summary: Read the SAML auth method's configuration.
+      operationId: read-saml-config
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create or update the SAML auth method's configuration.
+      operationId: write-saml-config
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SamlConfigRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+  /auth/{saml_mount_path}/role/{name}:
+    parameters:
+    - name: saml_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: saml
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a SAML auth role.
+      operationId: read-saml-role
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create or update a SAML auth role.
+      operationId: write-saml-role
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SamlRoleRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a SAML auth role.
+      operationId: delete-saml-role
+      responses:
+        '204':
+          description: empty body
+components:
+  schemas:
+    SamlConfigRequest:
+      type: object
+      properties:
+        idp_metadata_url:
+          type: string
+        idp_sso_url:
+          type: string
+        idp_entity_id:
+          type: string
+        idp_cert:
+          type: string
+        entity_id:
+          type: string
+        acs_urls:
+          type: array
+          items:
+            type: string
+        default_role:
+          type: string
+        verbose_logging:
+          type: boolean
+        validate_response_signature:
+          type: boolean
+        validate_assertion_signature:
+          type: boolean
+      required:
+      - entity_id
+      - acs_urls
+    SamlRoleRequest:
+      type: object
+      properties:
+        bound_subjects:
+          type: array
+          items:
+            type: string
+        bound_subjects_type:
+          type: string
+          enum:
+          - string
+          - glob
+        bound_attributes:
+          type: object
+          additionalProperties:
+            type: string
+        bound_attributes_type:
+          type: string
+          enum:
+          - string
+          - glob
+        groups_attribute:
+          type: string
+        token_ttl:
+          type: string
+          format: duration
+          description: The initial ttl of the token to generate.
+        token_max_ttl:
+          type: string
+          format: duration
+          description: The maximum lifetime of the generated token.
+        token_policies:
+          type: array
+          items:
+            type: string
+        token_bound_cidrs:
+          type: array
+          items:
+            type: string
+        token_explicit_max_ttl:
+          type: string
+          format: duration
+        token_no_default_policy:
+          type: boolean
+        token_num_uses:
+          type: integer
+        token_period:
+          type: string
+          format: duration
+        token_type:
+          type: string

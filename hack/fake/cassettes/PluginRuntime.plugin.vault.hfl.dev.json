@@ -1,0 +1,105 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/sys/plugins/runtimes/catalog/container/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/runtimes/catalog/container/{{name}}",
+      "body": "{\"cgroup_parent\":\"/hfl-live\",\"oci_runtime\":\"runsc\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"cgroup_parent\":\"/hfl-live\",\"oci_runtime\":\"runsc\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/runtimes/catalog/container/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"cgroup_parent\":\"/hfl-live\",\"oci_runtime\":\"runsc\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/runtimes/catalog/container/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"cgroup_parent\":\"/hfl-live\",\"oci_runtime\":\"runsc\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/runtimes/catalog/container/{{name}}",
+      "body": "{\"cgroup_parent\":\"/hfl-live-2\",\"oci_runtime\":\"runsc\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"cgroup_parent\":\"/hfl-live-2\",\"oci_runtime\":\"runsc\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/runtimes/catalog/container/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"cgroup_parent\":\"/hfl-live-2\",\"oci_runtime\":\"runsc\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/runtimes/catalog/container/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"cgroup_parent\":\"/hfl-live-2\",\"oci_runtime\":\"runsc\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/runtimes/catalog/container/{{name}}",
+      "body": "{\"cgroup_parent\":\"/hfl-live-drift\",\"oci_runtime\":\"runsc\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"cgroup_parent\":\"/hfl-live-drift\",\"oci_runtime\":\"runsc\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/runtimes/catalog/container/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"cgroup_parent\":\"/hfl-live-drift\",\"oci_runtime\":\"runsc\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/plugins/runtimes/catalog/container/{{name}}",
+      "body": "{\"cgroup_parent\":\"/hfl-live-2\",\"oci_runtime\":\"runsc\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"cgroup_parent\":\"/hfl-live-2\",\"oci_runtime\":\"runsc\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/runtimes/catalog/container/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"cgroup_parent\":\"/hfl-live-2\",\"oci_runtime\":\"runsc\"}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/plugins/runtimes/catalog/container/{{name}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/sys/plugins/runtimes/catalog/container/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

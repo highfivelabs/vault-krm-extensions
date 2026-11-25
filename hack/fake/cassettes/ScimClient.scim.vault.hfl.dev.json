@@ -1,0 +1,103 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "caCert": "rehearsal-caCert",
+    "csr": "rehearsal-csr",
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "signed": "rehearsal-signed",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/identity/scim/client/example-client-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/scim/client/example-client-name",
+      "body": "{\"access_grant_principal\":\"example-access-grant-principal\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"access_grant_principal\":\"example-access-grant-principal\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/scim/client/example-client-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"access_grant_principal\":\"example-access-grant-principal\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/scim/client/example-client-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"access_grant_principal\":\"example-access-grant-principal\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/scim/client/example-client-name",
+      "body": "{\"access_grant_principal\":\"changed-access_grant_principal\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"access_grant_principal\":\"changed-access_grant_principal\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/scim/client/example-client-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"access_grant_principal\":\"changed-access_grant_principal\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/scim/client/example-client-name",
+      "body": "{\"access_grant_principal\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"access_grant_principal\":\"hfl-live-drift\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/scim/client/example-client-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"access_grant_principal\":\"hfl-live-drift\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/scim/client/example-client-name",
+      "body": "{\"access_grant_principal\":\"changed-access_grant_principal\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"access_grant_principal\":\"changed-access_grant_principal\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/scim/client/example-client-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"access_grant_principal\":\"changed-access_grant_principal\"}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/identity/scim/client/example-client-name",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/identity/scim/client/example-client-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

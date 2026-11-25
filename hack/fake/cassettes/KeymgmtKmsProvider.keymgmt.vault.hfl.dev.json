@@ -1,0 +1,103 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "caCert": "rehearsal-caCert",
+    "csr": "rehearsal-csr",
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "signed": "rehearsal-signed",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/example-keymgmt-mount-path/kms/example-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/example-keymgmt-mount-path/kms/example-name",
+      "body": "{\"key_collection\":\"example-key-collection\",\"provider\":\"azurekeyvault\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"key_collection\":\"example-key-collection\",\"provider\":\"azurekeyvault\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/example-keymgmt-mount-path/kms/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"key_collection\":\"example-key-collection\",\"provider\":\"azurekeyvault\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/example-keymgmt-mount-path/kms/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"key_collection\":\"example-key-collection\",\"provider\":\"azurekeyvault\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/example-keymgmt-mount-path/kms/example-name",
+      "body": "{\"key_collection\":\"changed-key_collection\",\"provider\":\"azurekeyvault\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"key_collection\":\"changed-key_collection\",\"provider\":\"azurekeyvault\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/example-keymgmt-mount-path/kms/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"key_collection\":\"changed-key_collection\",\"provider\":\"azurekeyvault\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/example-keymgmt-mount-path/kms/example-name",
+      "body": "{\"key_collection\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"key_collection\":\"hfl-live-drift\",\"provider\":\"azurekeyvault\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/example-keymgmt-mount-path/kms/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"key_collection\":\"hfl-live-drift\",\"provider\":\"azurekeyvault\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/example-keymgmt-mount-path/kms/example-name",
+      "body": "{\"key_collection\":\"changed-key_collection\",\"provider\":\"azurekeyvault\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"key_collection\":\"changed-key_collection\",\"provider\":\"azurekeyvault\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/example-keymgmt-mount-path/kms/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"key_collection\":\"changed-key_collection\",\"provider\":\"azurekeyvault\"}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/example-keymgmt-mount-path/kms/example-name",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/example-keymgmt-mount-path/kms/example-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

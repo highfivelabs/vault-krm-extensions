@@ -1,0 +1,114 @@
+{
+  "recorded": "2026-11-22T20:07:18Z",
+  "target": "Vault dev server 2.2.2",
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/headers/X-{{name}}?multivalue=true",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[]}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/ui/headers/X-{{name}}",
+      "body": "{\"values\":[\"a\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"d244635a-0020-31a6-6ba8-52e5596adf17\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":null,\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/headers/X-{{name}}?multivalue=true",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"182f3b58-1cbe-952c-08be-409c3b7d3f62\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"values\":[\"a\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/headers/X-{{name}}?multivalue=true",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"33a5df08-42af-7271-a856-551a762934c0\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"values\":[\"a\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/headers/X-{{name}}?multivalue=true",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"158888d9-5e22-3622-3423-20d98506bb24\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"values\":[\"a\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/ui/headers/X-{{name}}",
+      "body": "{\"values\":[\"b\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"fbe26079-9abe-8c50-c257-d49b203161a9\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":null,\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/headers/X-{{name}}?multivalue=true",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"82bb27d5-4cc0-2e93-ee6d-6cf034e28efb\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"values\":[\"b\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/headers/X-{{name}}?multivalue=true",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"329d0e19-bd0f-d0d2-0fc2-761afda268d2\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"values\":[\"b\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/ui/headers/X-{{name}}",
+      "body": "{\"values\":[\"c\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"9002d63f-8fb7-2c35-c79a-533b2b7127fc\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":null,\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/headers/X-{{name}}?multivalue=true",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"1526d762-2331-caad-8ad9-790da8ea6416\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"values\":[\"c\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/ui/headers/X-{{name}}",
+      "body": "{\"values\":[\"b\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"3941c87d-5aea-abb2-378c-bc6b7ceb363f\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":null,\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/headers/X-{{name}}?multivalue=true",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"69b3423f-f930-8a96-cfea-57ecd4ddf697\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"values\":[\"b\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/headers/X-{{name}}?multivalue=true",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"90aae5a9-4edc-7e06-a5da-c22cdfcd29f5\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"values\":[\"b\"]},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/config/ui/headers/X-{{name}}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/headers/X-{{name}}?multivalue=true",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[]}\n"
+    }
+  ]
+}

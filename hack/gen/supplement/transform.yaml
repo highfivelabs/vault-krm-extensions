@@ -1,0 +1,572 @@
+openapi: 3.0.2
+info:
+  title: Vault Transform secrets engine (Vault Enterprise)
+  version: 1.0.0
+  description: Hand-made supplement to the Vault OpenAPI document; see the comment at the top.
+paths:
+  /{transform_mount_path}/alphabet/{name}:
+    parameters:
+    - name: transform_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: transform
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a Transform alphabet.
+      operationId: read-transform-alphabet
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransformAlphabetResponse'
+    post:
+      summary: Create or update a Transform alphabet.
+      operationId: write-transform-alphabet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransformAlphabetRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a Transform alphabet.
+      operationId: delete-transform-alphabet
+      responses:
+        '204':
+          description: empty body
+  /{transform_mount_path}/template/{name}:
+    parameters:
+    - name: transform_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: transform
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a Transform template.
+      operationId: read-transform-template
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransformTemplateResponse'
+    post:
+      summary: Create or update a Transform template.
+      operationId: write-transform-template
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransformTemplateRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a Transform template.
+      operationId: delete-transform-template
+      responses:
+        '204':
+          description: empty body
+  /{transform_mount_path}/transformation/{name}:
+    parameters:
+    - name: transform_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: transform
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a Transform transformation.
+      operationId: read-transform-transformation
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransformTransformationResponse'
+    post:
+      summary: Create or update a Transform transformation.
+      operationId: write-transform-transformation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransformTransformationRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a Transform transformation.
+      operationId: delete-transform-transformation
+      responses:
+        '204':
+          description: empty body
+  /{transform_mount_path}/transformations/tokenization/{name}:
+    parameters:
+    - name: transform_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: transform
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a Transform tokenization transformation.
+      operationId: read-transform-transformations-tokenization
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransformTransformationsTokenizationResponse'
+    post:
+      summary: Create or update a Transform tokenization transformation.
+      operationId: write-transform-transformations-tokenization
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransformTransformationsTokenizationRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a Transform tokenization transformation.
+      operationId: delete-transform-transformations-tokenization
+      responses:
+        '204':
+          description: empty body
+  /{transform_mount_path}/tokenization/keys/{name}:
+    parameters:
+    - name: transform_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: transform
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a tokenization key's configuration.
+      operationId: read-transform-tokenization-key
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransformTokenizationKeyResponse'
+  /{transform_mount_path}/tokenization/keys/{name}/config:
+    parameters:
+    - name: transform_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: transform
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    post:
+      summary: Configure a tokenization key.
+      operationId: write-transform-tokenization-key-config
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransformTokenizationKeyConfigRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+  /{transform_mount_path}/stores/{name}:
+    parameters:
+    - name: transform_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: transform
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a Transform tokenization store.
+      operationId: read-transform-stores
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransformStoresResponse'
+    post:
+      summary: Create or update a Transform tokenization store.
+      operationId: write-transform-stores
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransformStoresRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a Transform tokenization store.
+      operationId: delete-transform-stores
+      responses:
+        '204':
+          description: empty body
+  /{transform_mount_path}/role/{name}:
+    parameters:
+    - name: transform_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: transform
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a Transform role.
+      operationId: read-transform-role
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransformRoleResponse'
+    post:
+      summary: Create or update a Transform role.
+      operationId: write-transform-role
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransformRoleRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a Transform role.
+      operationId: delete-transform-role
+      responses:
+        '204':
+          description: empty body
+components:
+  schemas:
+    TransformTokenizationKeyConfigRequest:
+      type: object
+      properties:
+        min_decryption_version:
+          type: integer
+        auto_rotate_period:
+    TransformTokenizationKeyResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        latest_version:
+          type: integer
+        min_available_version:
+          type: integer
+        min_decryption_version:
+          type: integer
+        auto_rotate_period:
+    TransformAlphabetRequest:
+      type: object
+      properties:
+        alphabet:
+          type: string
+      required:
+      - alphabet
+    TransformAlphabetResponse:
+      type: object
+      properties:
+        alphabet:
+          type: string
+    TransformTemplateRequest:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - regex
+        pattern:
+          type: string
+        alphabet:
+          type: string
+        encode_format:
+          type: string
+        decode_formats:
+          type: object
+          additionalProperties:
+            type: string
+      required:
+      - type
+      - pattern
+    TransformTemplateResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - regex
+        pattern:
+          type: string
+        alphabet:
+          type: string
+        encode_format:
+          type: string
+        decode_formats:
+          type: object
+          additionalProperties:
+            type: string
+    TransformTransformationRequest:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - fpe
+          - masking
+          - tokenization
+        template:
+          type: string
+        tweak_source:
+          type: string
+          enum:
+          - supplied
+          - generated
+          - internal
+        masking_character:
+          type: string
+        allowed_roles:
+          type: array
+          items:
+            type: string
+        deletion_allowed:
+          type: boolean
+        mapping_mode:
+          type: string
+        stores:
+          type: array
+          items:
+            type: string
+        convergent:
+          type: boolean
+        max_tweak_len:
+          type: integer
+      required:
+      - type
+    TransformTransformationResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - fpe
+          - masking
+          - tokenization
+        tweak_source:
+          type: string
+          enum:
+          - supplied
+          - generated
+          - internal
+        masking_character:
+          type: string
+        allowed_roles:
+          type: array
+          items:
+            type: string
+        deletion_allowed:
+          type: boolean
+        mapping_mode:
+          type: string
+        stores:
+          type: array
+          items:
+            type: string
+        convergent:
+          type: boolean
+        max_tweak_len:
+          type: integer
+    TransformTransformationsTokenizationRequest:
+      type: object
+      properties:
+        mapping_mode:
+          type: string
+          enum:
+          - default
+          - exportable
+        convergent:
+          type: boolean
+        max_ttl:
+          type: string
+          format: duration
+        allowed_roles:
+          type: array
+          items:
+            type: string
+        stores:
+          type: array
+          items:
+            type: string
+        deletion_allowed:
+          type: boolean
+    TransformTransformationsTokenizationResponse:
+      type: object
+      properties:
+        mapping_mode:
+          type: string
+          enum:
+          - default
+          - exportable
+        max_ttl:
+          type: string
+          format: duration
+        allowed_roles:
+          type: array
+          items:
+            type: string
+        stores:
+          type: array
+          items:
+            type: string
+        deletion_allowed:
+          type: boolean
+    TransformStoresRequest:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - sql
+        driver:
+          type: string
+          enum:
+          - postgres
+          - mysql
+          - mssql
+        connection_string:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        supported_transformations:
+          type: array
+          items:
+            type: string
+        schema:
+          type: string
+        max_open_connections:
+          type: integer
+        max_idle_connections:
+          type: integer
+        max_connection_lifetime:
+          type: string
+          format: duration
+      required:
+      - type
+      - driver
+      - connection_string
+      - username
+      - password
+    TransformStoresResponse:
+      type: object
+      properties:
+        driver:
+          type: string
+          enum:
+          - postgres
+          - mysql
+          - mssql
+        connection_string:
+          type: string
+        supported_transformations:
+          type: array
+          items:
+            type: string
+    TransformRoleRequest:
+      type: object
+      properties:
+        transformations:
+          type: array
+          items:
+            type: string
+    TransformRoleResponse:
+      type: object
+      properties:
+        transformations:
+          type: array
+          items:
+            type: string

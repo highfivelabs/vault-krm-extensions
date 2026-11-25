@@ -1,0 +1,7 @@
+{
+ "provider": "hashicorp/vault",
+ "resources": {},
+ "source": "terraform providers schema -json; facts only (no descriptions: the provider is MPL-2.0)",
+ "terraform": "1.17.2",
+ "version": "5.13.0"
+}

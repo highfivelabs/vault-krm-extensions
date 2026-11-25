@@ -1,0 +1,106 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "caCert": "rehearsal-caCert",
+    "csr": "rehearsal-csr",
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "signed": "rehearsal-signed",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/sys/config/group-policy-application",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/group-policy-application",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/group-policy-application",
+      "body": "{\"group_policy_application_mode\":\"within_namespace_hierarchy\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group_policy_application_mode\":\"within_namespace_hierarchy\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/group-policy-application",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group_policy_application_mode\":\"within_namespace_hierarchy\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/group-policy-application",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group_policy_application_mode\":\"within_namespace_hierarchy\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/group-policy-application",
+      "body": "{\"group_policy_application_mode\":\"changed-group_policy_application_mode\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group_policy_application_mode\":\"changed-group_policy_application_mode\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/group-policy-application",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group_policy_application_mode\":\"changed-group_policy_application_mode\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/group-policy-application",
+      "body": "{\"group_policy_application_mode\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group_policy_application_mode\":\"hfl-live-drift\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/group-policy-application",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group_policy_application_mode\":\"hfl-live-drift\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/group-policy-application",
+      "body": "{\"group_policy_application_mode\":\"changed-group_policy_application_mode\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group_policy_application_mode\":\"changed-group_policy_application_mode\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/group-policy-application",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group_policy_application_mode\":\"changed-group_policy_application_mode\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/group-policy-application",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"group_policy_application_mode\":\"changed-group_policy_application_mode\"}}\n"
+    }
+  ]
+}

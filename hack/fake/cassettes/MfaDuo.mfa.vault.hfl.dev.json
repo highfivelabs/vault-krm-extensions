@@ -1,0 +1,103 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "caCert": "rehearsal-caCert",
+    "csr": "rehearsal-csr",
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "signed": "rehearsal-signed",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/sys/mfa/method/duo/example-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/mfa/method/duo/example-name",
+      "body": "{\"api_hostname\":\"example-api-hostname\",\"integration_key\":\"{{redacted}}\",\"mount_accessor\":\"example-mount-accessor\",\"secret_key\":\"{{redacted}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"example-api-hostname\",\"mount_accessor\":\"example-mount-accessor\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/mfa/method/duo/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"example-api-hostname\",\"mount_accessor\":\"example-mount-accessor\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/mfa/method/duo/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"example-api-hostname\",\"mount_accessor\":\"example-mount-accessor\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/mfa/method/duo/example-name",
+      "body": "{\"api_hostname\":\"changed-api_hostname\",\"integration_key\":\"{{redacted}}\",\"mount_accessor\":\"example-mount-accessor\",\"secret_key\":\"{{redacted}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"changed-api_hostname\",\"mount_accessor\":\"example-mount-accessor\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/mfa/method/duo/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"changed-api_hostname\",\"mount_accessor\":\"example-mount-accessor\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/mfa/method/duo/example-name",
+      "body": "{\"api_hostname\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"hfl-live-drift\",\"mount_accessor\":\"example-mount-accessor\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/mfa/method/duo/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"hfl-live-drift\",\"mount_accessor\":\"example-mount-accessor\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/mfa/method/duo/example-name",
+      "body": "{\"api_hostname\":\"changed-api_hostname\",\"integration_key\":\"{{redacted}}\",\"mount_accessor\":\"example-mount-accessor\",\"secret_key\":\"{{redacted}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"changed-api_hostname\",\"mount_accessor\":\"example-mount-accessor\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/mfa/method/duo/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"api_hostname\":\"changed-api_hostname\",\"mount_accessor\":\"example-mount-accessor\"}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/mfa/method/duo/example-name",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/sys/mfa/method/duo/example-name",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

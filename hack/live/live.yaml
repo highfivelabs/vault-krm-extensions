@@ -1,0 +1,522 @@
+# Copyright 2026 High Five Labs
+# SPDX-License-Identifier: Apache-2.0
+#
+# Live tests (TestEveryKindLive, krm-rest-runtime's kindtest.Live): these
+# kinds, in this order, against a real Vault. Kinds not listed are not run
+# live. Run: task live:vault (a Vault dev server in kind, root token
+# hfl-live-dev-root-7c1e: not a word, so cassettes keep paths like /root/),
+# or against any Vault with go test -tags live, KRM_LIVE=1 and the secret
+# below. How it works and what the {{...}} templates mean: krm-rest-runtime
+# docs/live.md.
+#
+# Everything is made under mounts named after the run (hfl-live-<stamp>-<hex>),
+# deleted at the end; the sweep deletes older runs' mounts.
+secret: krm-live-vault          # JSON: {"token": "...", "baseURL": "https://<vault>/v1", "namespace": optional}
+target: Vault dev server
+version: {path: /sys/health, field: version}
+
+before:
+- {method: POST, path: "/sys/mounts/{{run}}-kv", body: {type: kv, options: {version: "1"}}}
+- {method: POST, path: "/sys/mounts/{{run}}-pki", body: {type: pki}}
+- {method: POST, path: "/sys/mounts/{{run}}-transit", body: {type: transit}}
+- {method: POST, path: "/sys/auth/{{run}}-userpass", body: {type: userpass}}
+- {method: POST, path: "/sys/auth/{{run}}-aws", body: {type: aws}}
+after:
+- {method: DELETE, path: "/sys/mounts/{{run}}-kv", ok: [404]}
+- {method: DELETE, path: "/sys/mounts/{{run}}-pki", ok: [404]}
+- {method: DELETE, path: "/sys/mounts/{{run}}-transit", ok: [404]}
+- {method: DELETE, path: "/sys/auth/{{run}}-userpass", ok: [404]}
+- {method: DELETE, path: "/sys/auth/{{run}}-aws", ok: [404]}
+
+sweep:
+- {list: /sys/mounts, items: data, delete: "/sys/mounts/{id}"}
+- {list: /sys/auth, items: data, delete: "/sys/auth/{id}"}
+
+kinds:
+- kind: TokenAuthBackendRole
+  replaceSample: true
+  spec: {roleName: "{{name}}", allowed_policies: [default], orphan: true, path_suffix: "{{name}}", explicit_max_ttl: "1h"}
+  change: {path_suffix: "{{name}}-changed"}
+
+- kind: UserpassAuthBackendUser
+  replaceSample: true
+  spec: {userpassMountPath: "{{run}}-userpass", username: "{{name}}", password: "hfl-live-not-a-secret", token_policies: [default], token_ttl: "1h"}
+  change: {token_policies: [default, hfl-live]}
+  drift: [hfl-live-drift]
+
+- kind: ConfigUiHeader
+  replaceSample: true
+  spec: {header: "X-{{name}}", values: [a]}
+  change: {values: [b]}
+  drift: [c]
+
+- kind: SysConfigCors
+  replaceSample: true
+  spec: {enable: true, allowed_origins: ["https://hfl-live.example"]}
+  change: {allowed_origins: ["https://hfl-live-2.example"]}
+  drift: ["https://drift.example"]
+  stays: DELETE /sys/config/cors disables CORS; a read still answers (enabled false)
+
+- kind: IdentityMfaTotp
+  replaceSample: true
+  spec: {method_name: "{{name}}", issuer: hfl-live, algorithm: SHA256, digits: 6}
+  change: {issuer: hfl-live-2}
+  drift: hfl-live-drift
+  driftFull: true                  # an update without method_name is refused
+
+- kind: IdentityMfaLoginEnforcement
+  before:
+  - {method: POST, path: /identity/mfa/method/totp, body: {method_name: "{{name}}-m", issuer: hfl-live}, save: {mfa: data/method_id}}
+  after:
+  - {method: DELETE, path: "/identity/mfa/method/totp/{{var:mfa}}", ok: [404]}
+  replaceSample: true
+  spec: {name: "{{name}}", mfa_method_ids: ["{{var:mfa}}"], auth_method_types: [userpass]}
+  change: {auth_method_types: [userpass, token]}
+  drift: [token]
+  driftFull: true
+
+- kind: AwsAuthBackendStsRole
+  replaceSample: true
+  spec: {awsMountPath: "{{run}}-aws", accountID: "123456789012", sts_role: "arn:aws:iam::123456789012:role/hfl-live"}
+  change: {sts_role: "arn:aws:iam::123456789012:role/hfl-live-2"}
+
+- kind: AwsAuthBackendIdentityWhitelist
+  replaceSample: true
+  spec: {awsMountPath: "{{run}}-aws", disable_periodic_tidy: true, safety_buffer: "48h"}
+  change: {disable_periodic_tidy: false}
+  drift: true
+
+- kind: KvSecret
+  replaceSample: true
+  spec: {kvV1MountPath: "{{run}}-kv", path: "{{name}}", user: hfl-live, password: hfl-live-not-a-secret}
+  change: {user: hfl-live-2}
+  drift: hfl-live-drift
+  driftFull: true                  # a write replaces the whole secret
+
+- kind: TransitSecretBackendCacheConfig
+  replaceSample: true
+  spec: {transitMountPath: "{{run}}-transit", size: 500}
+  change: {size: 600}
+  drift: 700
+
+- kind: PkiSecretBackendConfigCluster
+  replaceSample: true
+  spec: {pkiMountPath: "{{run}}-pki", path: "https://vault.example/v1/{{run}}-pki", aia_path: "https://vault.example/v1/{{run}}-pki"}
+  change: {aia_path: "https://vault-2.example/v1/{{run}}-pki"}
+  drift: "https://drift.example/v1/pki"
+
+- kind: PkiSecretBackendCrlConfig
+  replaceSample: true
+  spec: {pkiMountPath: "{{run}}-pki", expiry: "72h", disable: false}
+  change: {expiry: "48h"}
+  drift: "24h"
+
+- kind: PkiSecretBackendConfigAcme
+  replaceSample: true
+  spec: {pkiMountPath: "{{run}}-pki", enabled: false, eab_policy: not-required}
+  change: {eab_policy: always-required}
+  drift: new-account-required
+
+- kind: PkiSecretBackendConfigAutoTidy
+  replaceSample: true
+  spec: {pkiMountPath: "{{run}}-pki", enabled: false, interval_duration: "12h"}
+  change: {interval_duration: "24h"}
+  drift: "6h"
+
+- kind: PkiSecretBackendIssuer
+  before:
+  - {method: POST, path: "/{{run}}-pki/root/generate/internal", body: {common_name: hfl-live.example, issuer_name: "{{name}}", key_type: ec}}
+  replaceSample: true
+  spec: {pkiMountPath: "{{run}}-pki", issuerRef: "{{name}}", issuer_name: "{{name}}", leaf_not_after_behavior: err}
+  change: {leaf_not_after_behavior: truncate}
+  drift: permit
+  driftFull: true
+
+- kind: PkiSecretBackendKey
+  before:
+  - {method: POST, path: "/{{run}}-pki/keys/generate/internal", body: {key_name: "{{name}}", key_type: ec}, save: {key: data/key_id}}
+  replaceSample: true
+  # By ID, so renaming the key (the update) does not move its path.
+  spec: {pkiMountPath: "{{run}}-pki", keyRef: "{{var:key}}", key_name: "{{name}}"}
+  change: {key_name: "{{name}}-2"}
+  drift: "{{name}}-drift"
+
+- kind: PkiSecretBackendConfigIssuers
+  before:
+  - {method: POST, path: "/{{run}}-pki/root/generate/internal", body: {common_name: hfl-live.example, issuer_name: "{{name}}", key_type: ec}, save: {issuer: data/issuer_id}}
+  replaceSample: true
+  spec: {pkiMountPath: "{{run}}-pki", default: "{{var:issuer}}", default_follows_latest_issuer: false}
+  change: {default_follows_latest_issuer: true}
+  drift: false
+  driftFull: true                  # a write without default (or aws_public_cert) is refused
+
+- kind: AwsAuthBackendCert
+  replaceSample: true
+  # A self-signed public certificate: Vault parses it, AWS never sees it.
+  spec:
+    awsMountPath: "{{run}}-aws"
+    certName: "{{name}}"
+    type: pkcs7
+    aws_public_cert: |
+      -----BEGIN CERTIFICATE-----
+      MIIBaTCCARCgAwIBAgIUar1Uu3xwuBp1h1D87qJmWFcwKiIwCgYIKoZIzj0EAwIw
+      GzEZMBcGA1UEAwwQaGZsLWxpdmUuZXhhbXBsZTAeFw0yNjExMTUxNjQ3NTNaFw0z
+      NjExMTIxNjQ3NTNaMBsxGTAXBgNVBAMMEGhmbC1saXZlLmV4YW1wbGUwWTATBgcq
+      hkjOPQIBBggqhkjOPQMBBwNCAATo43xRYoNQoQG+jy0+eirO3Wiur1lBQnOpMn3z
+      yFeXCnghhvUrHUB3DyvuI/o+JlGKjn5ZDm/SyBD1C/RAUWC4ozIwMDAdBgNVHQ4E
+      FgQUp2REXlXVTMku0suEufC4w8iczGgwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjO
+      PQQDAgNHADBEAiAlrFm2Fp91usRhcSe2s7PqMQfb199DJLZ7MJoIWgByEQIgMVGt
+      kjkvkAOVk6S6fGJJibOn4cQLDQDpJfsX+FeRJrg=
+      -----END CERTIFICATE-----
+  change: {type: identity}
+  drift: pkcs7
+  driftFull: true                  # a write without default (or aws_public_cert) is refused
+
+- kind: AwsAuthBackendRoletagBlacklist
+  before:
+  - {method: POST, path: "/auth/{{run}}-aws/role/{{name}}", body: {auth_type: ec2, bound_ami_id: ami-0123456789abcdef0, role_tag: VaultRole, policies: default}}
+  - {method: POST, path: "/auth/{{run}}-aws/role/{{name}}/tag", body: {}, save: {tag: data/tag_value}}
+  replaceSample: true
+  spec: {awsMountPath: "{{run}}-aws", roleTag: "{{var:tag}}"}   # no body fields: create, read, delete
+
+- kind: IdentityMfaDuo
+  replaceSample: true
+  # Vault stores Duo's settings without calling Duo; only a login would.
+  spec: {method_name: "{{name}}", api_hostname: api-hfl-live.duosecurity.com, integration_key: hfl-live-ik, secret_key: hfl-live-not-a-secret}
+  change: {api_hostname: api-hfl-live-2.duosecurity.com}
+  drift: api-drift.duosecurity.com
+  driftFull: true
+
+- kind: IdentityMfaOkta
+  replaceSample: true
+  spec: {method_name: "{{name}}", org_name: hfl-live, api_token: hfl-live-not-a-secret, base_url: okta.com}
+  change: {org_name: hfl-live-2}
+  drift: hfl-live-drift
+  driftFull: true
+
+- kind: IdentityMfaPingid
+  replaceSample: true
+  # A made-up PingID settings file: Vault parses it, PingID never sees it.
+  spec: {method_name: "{{name}}", settings_file_base64: "dXNlX2Jhc2U2NF9rZXk9WUVTCnVzZV9zaWduYXR1cmU9dHJ1ZQp0b2tlbj1hR1pzTFd4cGRtVT0KaWRwX3VybD1odHRwczovL2lkcHhueWwzbS5waW5naWRlbnRpdHkuY29tL3BpbmdpZApvcmdfYWxpYXM9aGZsLWxpdmUKYWRtaW5fdXJsPWh0dHBzOi8vaWRweG55bDNtLnBpbmdpZGVudGl0eS5jb20vcGluZ2lkCmF1dGhlbnRpY2F0b3JfdXJsPWh0dHBzOi8vYXV0aGVudGljYXRvci5waW5nb25lLmNvbS9waW5naWQvcHBtCg=="}
+  change: {settings_file_base64: "dXNlX2Jhc2U2NF9rZXk9WUVTCnVzZV9zaWduYXR1cmU9dHJ1ZQp0b2tlbj1hR1pzTFd4cGRtVT0KaWRwX3VybD1odHRwczovL2lkcHhueWwzbS5waW5naWRlbnRpdHkuY29tL3BpbmdpZApvcmdfYWxpYXM9aGZsLWxpdmUtMgphZG1pbl91cmw9aHR0cHM6Ly9pZHB4bnlsM20ucGluZ2lkZW50aXR5LmNvbS9waW5naWQKYXV0aGVudGljYXRvcl91cmw9aHR0cHM6Ly9hdXRoZW50aWNhdG9yLnBpbmdvbmUuY29tL3BpbmdpZC9wcG0K"}   # org_alias hfl-live-2
+  noDrift: "a read answers name (not method_name) and what Vault parsed out of the settings file, none of which the spec sets, so nothing a person changes is comparable"
+
+- kind: PluginRuntime
+  replaceSample: true
+  # Registering a runtime only records it; gVisor is needed to run a plugin.
+  spec: {type: container, name: "{{name}}", oci_runtime: runsc, cgroup_parent: /hfl-live}
+  change: {cgroup_parent: /hfl-live-2}
+  drift: /hfl-live-drift
+  driftFull: true
+
+- kind: Plugin
+  replaceSample: true
+  # hack/live/vault-sandbox.sh puts the stand-in /vault/plugins/hfl-live-plugin
+  # (#!/bin/sh, exit 1) in the plugin directory; registering checks the file
+  # and this SHA-256 of it, and nothing runs it.
+  spec: {type: secret, name: "{{name}}", command: hfl-live-plugin, sha256: 275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc, args: [a]}
+  change: {args: [b]}
+  drift: [c]
+  driftFull: true
+
+- kind: GcpSecretImpersonatedAccount
+  before:
+  - {method: POST, path: "/sys/mounts/{{run}}-gcp", body: {type: gcp}}
+  - {method: POST, path: "/{{run}}-gcp/config", body: {credentials: "{{cred:gcpCredentials}}"}}
+  after:
+  - {method: DELETE, path: "/sys/mounts/{{run}}-gcp", ok: [404]}
+  replaceSample: true
+  spec:
+    gcpMountPath: "{{run}}-gcp"
+    name: "{{name}}"
+    service_account_email: "{{cred:gcpServiceAccountEmail}}"
+    token_scopes: [https://www.googleapis.com/auth/cloud-platform]
+    ttl: "1h"
+  change: {token_scopes: [https://www.googleapis.com/auth/userinfo.email]}
+  drift: [https://www.googleapis.com/auth/devstorage.read_only]
+
+- kind: PluginPinnedVersion
+  before:
+  # Three versions of the stand-in plugin (see Plugin): the pin, the update's
+  # and the drift's. Registering checks the file and its SHA-256 only.
+  - {method: POST, path: "/sys/plugins/catalog/secret/{{name}}", body: {command: hfl-live-plugin, sha256: 275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc, version: v1.0.0}}
+  - {method: POST, path: "/sys/plugins/catalog/secret/{{name}}", body: {command: hfl-live-plugin, sha256: 275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc, version: v1.0.1}}
+  - {method: POST, path: "/sys/plugins/catalog/secret/{{name}}", body: {command: hfl-live-plugin, sha256: 275239824e00e61b0a220e61a41791c7e9b4bd726f8b0c27077a338f8131c9dc, version: v1.0.2}}
+  after:
+  - {method: DELETE, path: "/sys/plugins/catalog/secret/{{name}}?version=v1.0.0", ok: [404]}
+  - {method: DELETE, path: "/sys/plugins/catalog/secret/{{name}}?version=v1.0.1", ok: [404]}
+  - {method: DELETE, path: "/sys/plugins/catalog/secret/{{name}}?version=v1.0.2", ok: [404]}
+  replaceSample: true
+  spec: {type: secret, name: "{{name}}", version: v1.0.0}
+  change: {version: v1.0.1}
+  drift: v1.0.2
+
+- kind: KvSecretBackendV2
+  before:
+  - {method: POST, path: "/sys/mounts/{{name}}-kv2", body: {type: kv, options: {version: "2"}}}
+  after:
+  - {method: DELETE, path: "/sys/mounts/{{name}}-kv2", ok: [404]}
+  replaceSample: true
+  # Not delete_version_after: a read answers "1h" as "1h0m0s".
+  spec: {kvV2MountPath: "{{name}}-kv2", max_versions: 5, cas_required: true}
+  change: {max_versions: 6}
+  drift: 7
+
+- kind: IdentityEntityAssignment
+  before:
+  - {method: POST, path: /identity/entity, body: {name: "{{name}}"}, save: {entity: data/id}}
+  after:
+  - {method: DELETE, path: "/identity/entity/id/{{var:entity}}", ok: [404]}
+  replaceSample: true
+  spec: {entityID: "{{var:entity}}", policies: [default]}
+  change: {policies: [default, hfl-live]}
+  drift: [hfl-live-drift]
+
+- kind: IdentityGroupAssignment
+  before:
+  - {method: POST, path: /identity/group, body: {name: "{{name}}"}, save: {group: data/id}}
+  - {method: POST, path: /identity/entity, body: {name: "{{name}}"}, save: {entity: data/id}}
+  after:
+  - {method: DELETE, path: "/identity/group/id/{{var:group}}", ok: [404]}
+  - {method: DELETE, path: "/identity/entity/id/{{var:entity}}", ok: [404]}
+  replaceSample: true
+  spec: {groupID: "{{var:group}}", policies: [default], member_entity_ids: ["{{var:entity}}"]}
+  change: {policies: [default, hfl-live]}
+  drift: [hfl-live-drift]
+
+- kind: LdapAuthBackendUser
+  before:
+  - {method: POST, path: "/sys/auth/{{name}}-ldap", body: {type: ldap}}
+  after:
+  - {method: DELETE, path: "/sys/auth/{{name}}-ldap", ok: [404]}
+  replaceSample: true
+  # A user's policies and groups are Vault's own; no LDAP server is asked.
+  spec: {ldapMountPath: "{{name}}-ldap", name: "{{name}}", policies: [default], groups: [hfl-live]}
+  change: {policies: [default, hfl-live]}
+  drift: [hfl-live-drift]
+
+- kind: OktaAuthBackendUser
+  before:
+  - {method: POST, path: "/sys/auth/{{name}}-okta", body: {type: okta}}
+  after:
+  - {method: DELETE, path: "/sys/auth/{{name}}-okta", ok: [404]}
+  replaceSample: true
+  # A user's policies and groups are Vault's own; Okta is not asked.
+  spec: {oktaMountPath: "{{name}}-okta", name: "{{name}}", policies: [default], groups: [hfl-live]}
+  change: {policies: [default, hfl-live]}
+  drift: [hfl-live-drift]
+
+- kind: RadiusAuthBackendUser
+  before:
+  - {method: POST, path: "/sys/auth/{{name}}-radius", body: {type: radius}}
+  after:
+  - {method: DELETE, path: "/sys/auth/{{name}}-radius", ok: [404]}
+  replaceSample: true
+  # A user's policies are Vault's own; no RADIUS server is asked.
+  spec: {radiusMountPath: "{{name}}-radius", name: "{{name}}", policies: [default]}
+  change: {policies: [default, hfl-live]}
+  drift: [hfl-live-drift]
+
+- kind: AlicloudSecretBackend
+  before:
+  - {method: POST, path: "/sys/mounts/{{name}}-ali", body: {type: alicloud}}
+  after:
+  - {method: DELETE, path: "/sys/mounts/{{name}}-ali", ok: [404]}
+  replaceSample: true
+  # Vault stores the keys without calling AliCloud; only issuing a credential would.
+  spec: {alicloudMountPath: "{{name}}-ali", access_key: hfl-live-access-key, secret_key: hfl-live-not-a-secret}
+  change: {access_key: hfl-live-access-key-2}
+  drift: hfl-live-drift
+  driftFull: true                  # a write without secret_key is refused
+
+- kind: AlicloudSecretBackendRole
+  before:
+  - {method: POST, path: "/sys/mounts/{{name}}-ali", body: {type: alicloud}}
+  after:
+  - {method: DELETE, path: "/sys/mounts/{{name}}-ali", ok: [404]}
+  replaceSample: true
+  # A made-up RAM role ARN: Vault stores it; only issuing a credential would assume it.
+  spec: {alicloudMountPath: "{{name}}-ali", name: "{{name}}", role_arn: "acs:ram::1234567890123456:role/hfl-live"}
+  change: {role_arn: "acs:ram::1234567890123456:role/hfl-live-2"}
+  drift: "acs:ram::1234567890123456:role/hfl-live-drift"
+
+- kind: GcpkmsSecretBackend
+  before:
+  - {method: POST, path: "/sys/mounts/{{name}}-gcpkms", body: {type: gcpkms}}
+  after:
+  - {method: DELETE, path: "/sys/mounts/{{name}}-gcpkms", ok: [404]}
+  replaceSample: true
+  # No credentials: Vault would use its own (Application Default Credentials)
+  # when a key is used; storing the configuration calls nothing.
+  spec: {gcpkmsMountPath: "{{name}}-gcpkms", scopes: [https://www.googleapis.com/auth/cloud-platform]}
+  change: {scopes: [https://www.googleapis.com/auth/cloud-platform, https://www.googleapis.com/auth/cloudkms]}   # a read answers them sorted
+  drift: [https://www.googleapis.com/auth/devstorage.read_only]
+  stays: DELETE /{mount}/config puts the default scopes back; a read still answers
+
+# An AppRole mount and role made for each SecretID kind.
+- kind: ApproleAuthBackendRoleSecretId
+  before:
+  - {method: POST, path: "/sys/auth/{{name}}", body: {type: approle}}
+  - {method: POST, path: "/auth/{{name}}/role/{{name}}", body: {token_policies: [default]}}
+  after:
+  - {method: DELETE, path: "/sys/auth/{{name}}", ok: [404]}
+  replaceSample: true
+  spec: {approleMountPath: "{{name}}", role_name: "{{name}}", metadata: '{"run":"hfl-live"}', ttl: "1h"}
+
+- kind: ApproleAuthBackendRoleCustomSecretId
+  before:
+  - {method: POST, path: "/sys/auth/{{name}}", body: {type: approle}}
+  - {method: POST, path: "/auth/{{name}}/role/{{name}}", body: {token_policies: [default]}}
+  after:
+  - {method: DELETE, path: "/sys/auth/{{name}}", ok: [404]}
+  replaceSample: true
+  spec: {approleMountPath: "{{name}}", role_name: "{{name}}", secret_id: "{{name}}-not-a-secret", ttl: "1h"}
+
+# Any path: a secret in the run's KV v1 mount.
+- kind: GenericEndpoint
+  replaceSample: true
+  spec: {path: "{{run}}-kv/{{name}}", value: first}
+  change: {value: second}
+
+# A token of the default policy; any change would be a new token.
+- kind: Token
+  replaceSample: true
+  spec: {policies: [default], ttl: "1h", renewable: true, display_name: "{{name}}", meta: {run: hfl-live}}
+  noUpdate: a token cannot be changed; a change to any field means a new token (delete and re-create the object)
+
+# An ACME external account binding on the run's PKI mount.
+- kind: PkiSecretBackendAcmeEab
+  replaceSample: true
+  spec: {pkiMountPath: "{{run}}-pki"}
+
+# A root CA (an issuer and its key) in a PKI mount made for it.
+- kind: PkiSecretBackendRootCert
+  before:
+  - {method: POST, path: "/sys/mounts/{{name}}", body: {type: pki}}
+  after:
+  - {method: DELETE, path: "/sys/mounts/{{name}}", ok: [404]}
+  replaceSample: true
+  spec: {pkiMountPath: "{{name}}", exported: internal, common_name: hfl-live.example, issuer_name: "{{name}}", key_type: ec}
+
+# An intermediate CA's key and CSR in a PKI mount made for it.
+- kind: PkiSecretBackendIntermediateCertRequest
+  before:
+  - {method: POST, path: "/sys/mounts/{{name}}", body: {type: pki}}
+  after:
+  - {method: DELETE, path: "/sys/mounts/{{name}}", ok: [404]}
+  replaceSample: true
+  spec: {pkiMountPath: "{{name}}", exported: internal, common_name: hfl-live-int.example, key_name: "{{name}}", key_type: ec}
+
+# A CA certificate (no key) made in one PKI mount, imported into another.
+- kind: PkiSecretBackendConfigCa
+  before:
+  - {method: POST, path: "/sys/mounts/{{name}}-src", body: {type: pki}}
+  - {method: POST, path: "/sys/mounts/{{name}}", body: {type: pki}}
+  - {method: POST, path: "/{{name}}-src/root/generate/internal", body: {common_name: hfl-live.example, key_type: ec}, save: {caCert: data/certificate}}
+  after:
+  - {method: DELETE, path: "/sys/mounts/{{name}}", ok: [404]}
+  - {method: DELETE, path: "/sys/mounts/{{name}}-src", ok: [404]}
+  replaceSample: true
+  spec: {pkiMountPath: "{{name}}", pem_bundle: "{{var:caCert}}"}
+
+# An intermediate CA: its CSR made in one PKI mount, signed by a root in
+# another, and the signed certificate set on the first.
+- kind: PkiSecretBackendIntermediateSetSigned
+  before:
+  - {method: POST, path: "/sys/mounts/{{name}}-root", body: {type: pki}}
+  - {method: POST, path: "/sys/mounts/{{name}}", body: {type: pki}}
+  - {method: POST, path: "/{{name}}-root/root/generate/internal", body: {common_name: hfl-live.example, key_type: ec}}
+  - {method: POST, path: "/{{name}}/intermediate/generate/internal", body: {common_name: hfl-live-int.example, key_type: ec}, save: {csr: data/csr}}
+  - {method: POST, path: "/{{name}}-root/root/sign-intermediate", body: {csr: "{{var:csr}}", common_name: hfl-live-int.example}, save: {signed: data/certificate}}
+  after:
+  - {method: DELETE, path: "/sys/mounts/{{name}}", ok: [404]}
+  - {method: DELETE, path: "/sys/mounts/{{name}}-root", ok: [404]}
+  replaceSample: true
+  spec: {pkiMountPath: "{{name}}", certificate: "{{var:signed}}"}
+
+# One client ID in allowed_client_ids of an OIDC key made for it. The
+# element is the ID itself: no field to change.
+- kind: IdentityOidcKeyAllowedClientId
+  before:
+  - {method: POST, path: "/identity/oidc/key/{{name}}", body: {algorithm: ES256, allowed_client_ids: ["{{name}}-other"]}}
+  after:
+  - {method: DELETE, path: "/identity/oidc/key/{{name}}", ok: [404]}
+  replaceSample: true
+  spec: {name: "{{name}}", allowed_client_id: "{{name}}-client"}
+
+# Not run. The sandbox is Vault's open-source dev server (in-memory storage):
+# Enterprise features answer 404 there ("enterprise-only feature", or
+# "plugin not found in the catalog" for an Enterprise plugin's mount, or
+# "unsupported path"), and a few kinds need a real cloud account or server.
+- {kind: ConfigControlGroup, skip: "Vault Enterprise only (Control Groups): needs a Vault Enterprise license (KLIVE3); the open-source dev server answers 404 enterprise-only feature"}
+- {kind: ConfigGroupPolicyApplication, skip: "Vault Enterprise only (namespaces' group policy application): needs a Vault Enterprise license (KLIVE3); the open-source dev server answers 404 enterprise-only feature"}
+- {kind: ConfigUiCustomMessage, skip: "Vault Enterprise only (UI custom messages): needs a Vault Enterprise license (KLIVE3); the open-source dev server answers 404 unsupported path"}
+- {kind: ConfigUiDefaultAuth, skip: "Vault Enterprise only (UI default login method): needs a Vault Enterprise license (KLIVE3); the open-source dev server answers 404 unsupported path"}
+- {kind: EgpPolicy, skip: "Vault Enterprise only (Sentinel): needs a Vault Enterprise license (KLIVE3); the open-source dev server answers 404 enterprise-only feature"}
+- {kind: RgpPolicy, skip: "Vault Enterprise only (Sentinel): needs a Vault Enterprise license (KLIVE3); the open-source dev server answers 404 enterprise-only feature"}
+- {kind: ManagedKey, skip: "Vault Enterprise only (managed keys): needs a Vault Enterprise license (KLIVE3), and an HSM or cloud KMS for the key; the open-source dev server answers 404 enterprise-only feature"}
+- {kind: MfaDuo, skip: "Vault Enterprise only (step-up MFA, /sys/mfa): needs a Vault Enterprise license (KLIVE3); the open-source dev server answers 404 enterprise-only feature"}
+- {kind: MfaOkta, skip: "Vault Enterprise only (step-up MFA, /sys/mfa): needs a Vault Enterprise license (KLIVE3); the open-source dev server answers 404 enterprise-only feature"}
+- {kind: MfaPingid, skip: "Vault Enterprise only (step-up MFA, /sys/mfa): needs a Vault Enterprise license (KLIVE3); the open-source dev server answers 404 enterprise-only feature"}
+- {kind: MfaTotp, skip: "Vault Enterprise only (step-up MFA, /sys/mfa): needs a Vault Enterprise license (KLIVE3); the open-source dev server answers 404 enterprise-only feature"}
+- {kind: OauthResourceServerConfigProfile, skip: "Vault Enterprise only (OAuth resource server): needs a Vault Enterprise license (KLIVE3); the open-source dev server answers 404 enterprise-only feature"}
+- {kind: RaftSnapshotAgentConfig, skip: "Vault Enterprise only (automated Raft snapshots): needs a Vault Enterprise license (KLIVE3), and Integrated Storage; the open-source dev server answers 404 enterprise-only feature"}
+- {kind: IdentityTpm, skip: "Vault Enterprise only (TPM identity records): needs a Vault Enterprise license (KLIVE3); the open-source dev server answers 404 unsupported path"}
+- {kind: IdentityTpmGroup, skip: "Vault Enterprise only (TPM identity groups, Vault Enterprise 2.2.0 or later): needs a Vault Enterprise license (KLIVE3); the open-source dev server answers POST /identity/tpmgroup with 404 unsupported path"}
+- {kind: AgentRegistration, skip: "Vault Enterprise only (Agent Registry, Vault Enterprise 2.1.0 or later): needs a Vault Enterprise license (KLIVE3); the open-source dev server answers POST /agent-registry/register with 404 unsupported path"}
+- {kind: ScimClient, skip: "Vault Enterprise only (SCIM): needs a Vault Enterprise license (KLIVE3); the open-source dev server answers 404 unsupported path"}
+- {kind: SecretsSyncConfig, skip: &sync "Vault Enterprise only (secrets sync): needs a Vault Enterprise license (KLIVE3); the open-source dev server answers 404 unsupported path; a destination also needs a real account at the cloud or service it syncs to"}
+- {kind: SecretsSyncAwsDestination, skip: *sync}
+- {kind: SecretsSyncAzureDestination, skip: *sync}
+- {kind: SecretsSyncGcpDestination, skip: *sync}
+- {kind: SecretsSyncGhDestination, skip: *sync}
+- {kind: SecretsSyncGithubApp, skip: *sync}
+- {kind: SecretsSyncVercelDestination, skip: *sync}
+- {kind: KeymgmtKey, skip: &keymgmt "Vault Enterprise only (Key Management secrets engine): needs a Vault Enterprise license (KLIVE3); mounting keymgmt on the open-source dev server answers plugin not found in the catalog"}
+- {kind: KeymgmtKmsProvider, skip: "Vault Enterprise only (Key Management secrets engine): needs a Vault Enterprise license (KLIVE3), and real AWS, Azure or GCP KMS credentials for the provider; mounting keymgmt on the open-source dev server answers plugin not found in the catalog"}
+- {kind: KeymgmtDistributeKey, skip: "Vault Enterprise only (Key Management secrets engine): needs a Vault Enterprise license (KLIVE3), and a KMS provider with real cloud credentials to distribute to; mounting keymgmt on the open-source dev server answers plugin not found in the catalog"}
+- {kind: KmipSecretBackend, skip: &kmip "Vault Enterprise only (KMIP secrets engine): needs a Vault Enterprise license (KLIVE3); mounting kmip on the open-source dev server answers plugin not found in the catalog"}
+- {kind: KmipSecretListener, skip: *kmip}
+- {kind: KmipSecretRole, skip: *kmip}
+- {kind: KmipSecretScope, skip: *kmip}
+- {kind: OsSecretBackend, skip: &os "Vault Enterprise only (OS secrets engine): needs a Vault Enterprise license (KLIVE3); mounting os on the open-source dev server answers plugin not found in the catalog"}
+- {kind: OsSecretBackendHost, skip: *os}
+- {kind: OsSecretBackendAccount, skip: *os}
+- {kind: PkiExternalCaSecretBackendRole, skip: &pkiext "Vault Enterprise only (PKI External CA secrets engine): needs a Vault Enterprise license (KLIVE3); mounting pki-external-ca on the open-source dev server answers plugin not found in the catalog"}
+- {kind: PkiExternalCaSecretBackendDnsProviderAwsRoute53, skip: *pkiext}
+- {kind: PkiExternalCaSecretBackendDnsProviderAzure, skip: *pkiext}
+- {kind: PkiExternalCaSecretBackendDnsProviderGcp, skip: *pkiext}
+- {kind: PkiExternalCaSecretBackendDnsProviderRfc2136, skip: *pkiext}
+- {kind: PkiExternalCaSecretBackendAcmeAccount, skip: *pkiext}
+- {kind: PkiSecretBackendConfigCmpv2, skip: &pkient "Vault Enterprise only (PKI EST, CMPv2 and SCEP): needs a Vault Enterprise license (KLIVE3); the open-source pki engine answers 404 unsupported path"}
+- {kind: PkiSecretBackendConfigEst, skip: *pkient}
+- {kind: PkiSecretBackendConfigScep, skip: *pkient}
+- {kind: SpiffeSecretBackendConfig, skip: &spiffes "Vault Enterprise only (SPIFFE secrets engine): needs a Vault Enterprise license (KLIVE3); mounting spiffe on the open-source dev server answers plugin not found in the catalog"}
+- {kind: SpiffeSecretBackendRole, skip: *spiffes}
+- {kind: SpiffeAuthBackendConfig, skip: &spiffea "Vault Enterprise only (SPIFFE auth method): needs a Vault Enterprise license (KLIVE3); enabling spiffe auth on the open-source dev server answers plugin not found in the catalog"}
+- {kind: SpiffeAuthBackendRole, skip: *spiffea}
+- {kind: SamlAuthBackend, skip: &saml "Vault Enterprise only (SAML auth method): needs a Vault Enterprise license (KLIVE3); enabling saml auth on the open-source dev server answers plugin not found in the catalog"}
+- {kind: SamlAuthBackendRole, skip: *saml}
+- {kind: ScepAuthBackendRole, skip: "Vault Enterprise only (SCEP auth method): needs a Vault Enterprise license (KLIVE3); enabling scep auth on the open-source dev server answers plugin not found in the catalog"}
+- {kind: TpmAuthBackendConfig, skip: &tpm "Vault Enterprise only (TPM auth method): needs a Vault Enterprise license (KLIVE3); enabling tpm auth on the open-source dev server answers plugin not found in the catalog"}
+- {kind: TpmAuthBackendRole, skip: *tpm}
+- {kind: TransformAlphabet, skip: &transform "Vault Enterprise only (Transform secrets engine, Advanced Data Protection): needs a Vault Enterprise license (KLIVE3); mounting transform on the open-source dev server answers plugin not found in the catalog"}
+- {kind: TransformRole, skip: *transform}
+- {kind: TransformTemplate, skip: *transform}
+- {kind: TransformTransformation, skip: *transform}
+- {kind: TransformTransformationTokenization, skip: *transform}
+- {kind: TransformKeyConfiguration, skip: *transform}
+- {kind: TransformTransformationTokenizationStore, skip: "Vault Enterprise only (Transform secrets engine, Advanced Data Protection): needs a Vault Enterprise license (KLIVE3), and an external SQL database for the store; mounting transform on the open-source dev server answers plugin not found in the catalog"}
+- {kind: AwsSecretBackendStaticRole, skip: "needs real AWS credentials: creating a static role asks AWS IAM about the user it adopts and rotates its access key (on the dev server with none: 500 unable to get client to validate username)"}
+- {kind: AzureSecretBackendStaticRole, skip: "needs real Azure credentials: a static role manages an existing Azure application's password credentials; also, the azure plugin built into open-source Vault 2.2.2 (v0.25.1) has no static-roles path (404 unsupported path)"}
+- {kind: GcpkmsSecretBackendKey, skip: "needs real GCP credentials: writing a key creates it in Cloud KMS (on the dev server with none: 500 failed to get default token source: google: could not find default credentials)"}
+- {kind: LdapSecretBackendLibrarySet, skip: "needs a reachable LDAP server: a library set needs the engine's config (else 400 config must exist to create a library), and creating one connects to the directory (with an unreachable URL: 500 error connecting to host); the sandbox has none"}
+- {kind: RaftAutopilot, skip: "api: needs Integrated Storage (Raft); the sandbox is a dev server with in-memory storage, where /sys/storage/raft/autopilot/configuration answers 404 unsupported path"}
+- {kind: ActivationFlag, skip: "Vault Enterprise only (activation flags): needs a Vault Enterprise license (KLIVE3); the open-source dev server has no /sys/activation-flags"}
+- {kind: PkiSecretBackendExportKey, skip: "Vault Enterprise only (PKI key export): needs a Vault Enterprise license (KLIVE3)"}
+- {kind: KmipSecretCaGenerated, skip: *kmip}
+- {kind: KmipSecretCaImported, skip: *kmip}
+- {kind: PkiExternalCaSecretBackendOrder, skip: *pkiext}
+- {kind: SecretsSyncAssociation, skip: *sync}
+- {kind: PkiSecretBackendWrappedKeyImport, skip: "not yet tried: needs a key wrapped (RSA-OAEP and AES-KWP) with the mount's wrapping key, which no live.yaml call can compute"}
+- {kind: DatabaseSecretsMount, skip: "not yet tried: needs a database for its connections (or verify_connection false), and Vault reads a connection's connection_url and username back inside connection_details, which the set would not find as sent"}

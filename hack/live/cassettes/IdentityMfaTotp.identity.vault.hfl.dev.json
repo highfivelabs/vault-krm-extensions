@@ -1,0 +1,104 @@
+{
+  "recorded": "2026-11-22T20:07:18Z",
+  "target": "Vault dev server 2.2.2",
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/totp",
+      "body": "{\"algorithm\":\"SHA256\",\"digits\":6,\"issuer\":\"hfl-live\",\"method_name\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"819fa1a1-7032-d2d1-8f4b-dfdd47c1d2fb\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"method_id\":\"ba7d4655-9131-e657-d542-55a5266fab35\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/totp/ba7d4655-9131-e657-d542-55a5266fab35",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"8f0a9714-2df9-bce9-0e64-6e4b968c40c7\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"algorithm\":\"SHA256\",\"digits\":6,\"id\":\"ba7d4655-9131-e657-d542-55a5266fab35\",\"issuer\":\"hfl-live\",\"key_size\":20,\"max_validation_attempts\":5,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"period\":30,\"qr_size\":200,\"skew\":1,\"type\":\"totp\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/totp/ba7d4655-9131-e657-d542-55a5266fab35",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"87492d80-3e2f-f00d-483f-293df04f2807\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"algorithm\":\"SHA256\",\"digits\":6,\"id\":\"ba7d4655-9131-e657-d542-55a5266fab35\",\"issuer\":\"hfl-live\",\"key_size\":20,\"max_validation_attempts\":5,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"period\":30,\"qr_size\":200,\"skew\":1,\"type\":\"totp\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/totp/ba7d4655-9131-e657-d542-55a5266fab35",
+      "body": "{\"algorithm\":\"SHA256\",\"digits\":6,\"issuer\":\"hfl-live-2\",\"method_name\":\"{{name}}\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/totp/ba7d4655-9131-e657-d542-55a5266fab35",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"479c35d3-a7bd-55f8-40b0-cff82c081abc\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"algorithm\":\"SHA256\",\"digits\":6,\"id\":\"ba7d4655-9131-e657-d542-55a5266fab35\",\"issuer\":\"hfl-live-2\",\"key_size\":20,\"max_validation_attempts\":5,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"period\":30,\"qr_size\":200,\"skew\":1,\"type\":\"totp\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/totp/ba7d4655-9131-e657-d542-55a5266fab35",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"7eba7515-1879-eb13-e3ca-e91a70ef6541\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"algorithm\":\"SHA256\",\"digits\":6,\"id\":\"ba7d4655-9131-e657-d542-55a5266fab35\",\"issuer\":\"hfl-live-2\",\"key_size\":20,\"max_validation_attempts\":5,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"period\":30,\"qr_size\":200,\"skew\":1,\"type\":\"totp\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/totp/ba7d4655-9131-e657-d542-55a5266fab35",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"eddd5f04-1c4f-b3a1-ee74-1c9705810719\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"algorithm\":\"SHA256\",\"digits\":6,\"id\":\"ba7d4655-9131-e657-d542-55a5266fab35\",\"issuer\":\"hfl-live-2\",\"key_size\":20,\"max_validation_attempts\":5,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"period\":30,\"qr_size\":200,\"skew\":1,\"type\":\"totp\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/totp/ba7d4655-9131-e657-d542-55a5266fab35",
+      "body": "{\"algorithm\":\"SHA256\",\"digits\":6,\"id\":\"ba7d4655-9131-e657-d542-55a5266fab35\",\"issuer\":\"hfl-live-drift\",\"key_size\":20,\"max_validation_attempts\":5,\"method_name\":\"{{name}}\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"period\":30,\"qr_size\":200,\"skew\":1,\"type\":\"totp\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/totp/ba7d4655-9131-e657-d542-55a5266fab35",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"8d69a594-6dc0-ddf0-f13c-168555686d37\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"algorithm\":\"SHA256\",\"digits\":6,\"id\":\"ba7d4655-9131-e657-d542-55a5266fab35\",\"issuer\":\"hfl-live-drift\",\"key_size\":20,\"max_validation_attempts\":5,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"period\":30,\"qr_size\":200,\"skew\":1,\"type\":\"totp\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/totp/ba7d4655-9131-e657-d542-55a5266fab35",
+      "body": "{\"algorithm\":\"SHA256\",\"digits\":6,\"issuer\":\"hfl-live-2\",\"method_name\":\"{{name}}\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/totp/ba7d4655-9131-e657-d542-55a5266fab35",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"a3a906c8-ea86-961e-92e0-9362af50a0cd\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"algorithm\":\"SHA256\",\"digits\":6,\"id\":\"ba7d4655-9131-e657-d542-55a5266fab35\",\"issuer\":\"hfl-live-2\",\"key_size\":20,\"max_validation_attempts\":5,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"period\":30,\"qr_size\":200,\"skew\":1,\"type\":\"totp\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/totp/ba7d4655-9131-e657-d542-55a5266fab35",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"1e26a2a2-1b12-8213-2f2d-ea5821458125\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"algorithm\":\"SHA256\",\"digits\":6,\"id\":\"ba7d4655-9131-e657-d542-55a5266fab35\",\"issuer\":\"hfl-live-2\",\"key_size\":20,\"max_validation_attempts\":5,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"period\":30,\"qr_size\":200,\"skew\":1,\"type\":\"totp\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/identity/mfa/method/totp/ba7d4655-9131-e657-d542-55a5266fab35",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/totp/ba7d4655-9131-e657-d542-55a5266fab35",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[]}\n"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "recorded": "2026-11-22T20:07:18Z",
+  "target": "Vault dev server 2.2.2",
+  "vars": {
+    "issuer": "b2145452-73da-a16b-353f-8eeb465fb9be",
+    "key": "9f1c47da-2a22-4676-4b02-f6000a2184f9",
+    "mfa": "f3f83141-6a0d-ba15-5a8f-38b659d5cc4a",
+    "tag": "v1:noSQyMKvvgg=:r={{run}}-19:d=false:m=false:gXpjsFnRfjn0SwzqsluE/m/25kwAo+VIoEj2Blnb8mQ="
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/pingid",
+      "body": "{\"method_name\":\"{{name}}\",\"settings_file_base64\":\"dXNlX2Jhc2U2NF9rZXk9WUVTCnVzZV9zaWduYXR1cmU9dHJ1ZQp0b2tlbj1hR1pzTFd4cGRtVT0KaWRwX3VybD1odHRwczovL2lkcHhueWwzbS5waW5naWRlbnRpdHkuY29tL3BpbmdpZApvcmdfYWxpYXM9aGZsLWxpdmUKYWRtaW5fdXJsPWh0dHBzOi8vaWRweG55bDNtLnBpbmdpZGVudGl0eS5jb20vcGluZ2lkCmF1dGhlbnRpY2F0b3JfdXJsPWh0dHBzOi8vYXV0aGVudGljYXRvci5waW5nb25lLmNvbS9waW5naWQvcHBtCg==\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"0fdb7db3-a198-819b-0546-d338d85e65a6\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"method_id\":\"3af95030-8431-52e7-7f67-715b80cb9d54\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/pingid/3af95030-8431-52e7-7f67-715b80cb9d54",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"c8b67190-a1a0-6ea0-9928-4c0c318528a9\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"admin_url\":\"https://idpxnyl3m.pingidentity.com/pingid\",\"authenticator_url\":\"https://authenticator.pingone.com/pingid/ppm\",\"id\":\"3af95030-8431-52e7-7f67-715b80cb9d54\",\"idp_url\":\"https://idpxnyl3m.pingidentity.com/pingid\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"org_alias\":\"hfl-live\",\"type\":\"pingid\",\"use_signature\":true},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/pingid/3af95030-8431-52e7-7f67-715b80cb9d54",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"5a5ea4ba-9691-6a48-2a7e-d13e62a388ff\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"admin_url\":\"https://idpxnyl3m.pingidentity.com/pingid\",\"authenticator_url\":\"https://authenticator.pingone.com/pingid/ppm\",\"id\":\"3af95030-8431-52e7-7f67-715b80cb9d54\",\"idp_url\":\"https://idpxnyl3m.pingidentity.com/pingid\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"org_alias\":\"hfl-live\",\"type\":\"pingid\",\"use_signature\":true},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/mfa/method/pingid/3af95030-8431-52e7-7f67-715b80cb9d54",
+      "body": "{\"method_name\":\"{{name}}\",\"settings_file_base64\":\"dXNlX2Jhc2U2NF9rZXk9WUVTCnVzZV9zaWduYXR1cmU9dHJ1ZQp0b2tlbj1hR1pzTFd4cGRtVT0KaWRwX3VybD1odHRwczovL2lkcHhueWwzbS5waW5naWRlbnRpdHkuY29tL3BpbmdpZApvcmdfYWxpYXM9aGZsLWxpdmUtMgphZG1pbl91cmw9aHR0cHM6Ly9pZHB4bnlsM20ucGluZ2lkZW50aXR5LmNvbS9waW5naWQKYXV0aGVudGljYXRvcl91cmw9aHR0cHM6Ly9hdXRoZW50aWNhdG9yLnBpbmdvbmUuY29tL3BpbmdpZC9wcG0K\"}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/pingid/3af95030-8431-52e7-7f67-715b80cb9d54",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"65005fcb-299e-22ba-7825-7179a8340b46\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"admin_url\":\"https://idpxnyl3m.pingidentity.com/pingid\",\"authenticator_url\":\"https://authenticator.pingone.com/pingid/ppm\",\"id\":\"3af95030-8431-52e7-7f67-715b80cb9d54\",\"idp_url\":\"https://idpxnyl3m.pingidentity.com/pingid\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"org_alias\":\"hfl-live-2\",\"type\":\"pingid\",\"use_signature\":true},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/pingid/3af95030-8431-52e7-7f67-715b80cb9d54",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"876447fd-87d4-53ab-97df-e9d99533249a\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"admin_url\":\"https://idpxnyl3m.pingidentity.com/pingid\",\"authenticator_url\":\"https://authenticator.pingone.com/pingid/ppm\",\"id\":\"3af95030-8431-52e7-7f67-715b80cb9d54\",\"idp_url\":\"https://idpxnyl3m.pingidentity.com/pingid\",\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"namespace_path\":\"\",\"org_alias\":\"hfl-live-2\",\"type\":\"pingid\",\"use_signature\":true},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/identity/mfa/method/pingid/3af95030-8431-52e7-7f67-715b80cb9d54",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/mfa/method/pingid/3af95030-8431-52e7-7f67-715b80cb9d54",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"errors\":[]}\n"
+    }
+  ]
+}

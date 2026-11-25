@@ -1,0 +1,92 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "body": "{\"password\":\"{{redacted}}\",\"token_policies\":[\"default\"],\"token_ttl\":\"1h\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"password\":\"{{redacted}}\",\"token_policies\":[\"default\"],\"token_ttl\":\"1h\"}}"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"password\":\"{{redacted}}\",\"token_policies\":[\"default\"],\"token_ttl\":\"1h\"}}"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"password\":\"{{redacted}}\",\"token_policies\":[\"default\"],\"token_ttl\":\"1h\"}}"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "body": "{\"password\":\"{{redacted}}\",\"token_policies\":[\"default\",\"hfl-live\"],\"token_ttl\":\"1h\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"password\":\"{{redacted}}\",\"token_policies\":[\"default\",\"hfl-live\"],\"token_ttl\":\"1h\"}}"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"password\":\"{{redacted}}\",\"token_policies\":[\"default\",\"hfl-live\"],\"token_ttl\":\"1h\"}}"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "body": "{\"token_policies\":[\"hfl-live-drift\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"password\":\"{{redacted}}\",\"token_policies\":[\"hfl-live-drift\"],\"token_ttl\":\"1h\"}}"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"password\":\"{{redacted}}\",\"token_policies\":[\"hfl-live-drift\"],\"token_ttl\":\"1h\"}}"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "body": "{\"password\":\"{{redacted}}\",\"token_policies\":[\"default\",\"hfl-live\"],\"token_ttl\":\"1h\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"password\":\"{{redacted}}\",\"token_policies\":[\"default\",\"hfl-live\"],\"token_ttl\":\"1h\"}}"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"password\":\"{{redacted}}\",\"token_policies\":[\"default\",\"hfl-live\"],\"token_ttl\":\"1h\"}}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-userpass/users/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/config/certificate/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-aws/config/certificate/{{name}}",
+      "body": "{\"aws_public_cert\":\"-----BEGIN CERTIFICATE-----\\nMIIBaTCCARCgAwIBAgIUar1Uu3xwuBp1h1D87qJmWFcwKiIwCgYIKoZIzj0EAwIw\\nGzEZMBcGA1UEAwwQaGZsLWxpdmUuZXhhbXBsZTAeFw0yNjExMTUxNjQ3NTNaFw0z\\nNjExMTIxNjQ3NTNaMBsxGTAXBgNVBAMMEGhmbC1saXZlLmV4YW1wbGUwWTATBgcq\\nhkjOPQIBBggqhkjOPQMBBwNCAATo43xRYoNQoQG+jy0+eirO3Wiur1lBQnOpMn3z\\nyFeXCnghhvUrHUB3DyvuI/o+JlGKjn5ZDm/SyBD1C/RAUWC4ozIwMDAdBgNVHQ4E\\nFgQUp2REXlXVTMku0suEufC4w8iczGgwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjO\\nPQQDAgNHADBEAiAlrFm2Fp91usRhcSe2s7PqMQfb199DJLZ7MJoIWgByEQIgMVGt\\nkjkvkAOVk6S6fGJJibOn4cQLDQDpJfsX+FeRJrg=\\n-----END CERTIFICATE-----\\n\",\"type\":\"pkcs7\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"aws_public_cert\":\"-----BEGIN CERTIFICATE-----\\nMIIBaTCCARCgAwIBAgIUar1Uu3xwuBp1h1D87qJmWFcwKiIwCgYIKoZIzj0EAwIw\\nGzEZMBcGA1UEAwwQaGZsLWxpdmUuZXhhbXBsZTAeFw0yNjExMTUxNjQ3NTNaFw0z\\nNjExMTIxNjQ3NTNaMBsxGTAXBgNVBAMMEGhmbC1saXZlLmV4YW1wbGUwWTATBgcq\\nhkjOPQIBBggqhkjOPQMBBwNCAATo43xRYoNQoQG+jy0+eirO3Wiur1lBQnOpMn3z\\nyFeXCnghhvUrHUB3DyvuI/o+JlGKjn5ZDm/SyBD1C/RAUWC4ozIwMDAdBgNVHQ4E\\nFgQUp2REXlXVTMku0suEufC4w8iczGgwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjO\\nPQQDAgNHADBEAiAlrFm2Fp91usRhcSe2s7PqMQfb199DJLZ7MJoIWgByEQIgMVGt\\nkjkvkAOVk6S6fGJJibOn4cQLDQDpJfsX+FeRJrg=\\n-----END CERTIFICATE-----\\n\",\"type\":\"pkcs7\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/config/certificate/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"aws_public_cert\":\"-----BEGIN CERTIFICATE-----\\nMIIBaTCCARCgAwIBAgIUar1Uu3xwuBp1h1D87qJmWFcwKiIwCgYIKoZIzj0EAwIw\\nGzEZMBcGA1UEAwwQaGZsLWxpdmUuZXhhbXBsZTAeFw0yNjExMTUxNjQ3NTNaFw0z\\nNjExMTIxNjQ3NTNaMBsxGTAXBgNVBAMMEGhmbC1saXZlLmV4YW1wbGUwWTATBgcq\\nhkjOPQIBBggqhkjOPQMBBwNCAATo43xRYoNQoQG+jy0+eirO3Wiur1lBQnOpMn3z\\nyFeXCnghhvUrHUB3DyvuI/o+JlGKjn5ZDm/SyBD1C/RAUWC4ozIwMDAdBgNVHQ4E\\nFgQUp2REXlXVTMku0suEufC4w8iczGgwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjO\\nPQQDAgNHADBEAiAlrFm2Fp91usRhcSe2s7PqMQfb199DJLZ7MJoIWgByEQIgMVGt\\nkjkvkAOVk6S6fGJJibOn4cQLDQDpJfsX+FeRJrg=\\n-----END CERTIFICATE-----\\n\",\"type\":\"pkcs7\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/config/certificate/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"aws_public_cert\":\"-----BEGIN CERTIFICATE-----\\nMIIBaTCCARCgAwIBAgIUar1Uu3xwuBp1h1D87qJmWFcwKiIwCgYIKoZIzj0EAwIw\\nGzEZMBcGA1UEAwwQaGZsLWxpdmUuZXhhbXBsZTAeFw0yNjExMTUxNjQ3NTNaFw0z\\nNjExMTIxNjQ3NTNaMBsxGTAXBgNVBAMMEGhmbC1saXZlLmV4YW1wbGUwWTATBgcq\\nhkjOPQIBBggqhkjOPQMBBwNCAATo43xRYoNQoQG+jy0+eirO3Wiur1lBQnOpMn3z\\nyFeXCnghhvUrHUB3DyvuI/o+JlGKjn5ZDm/SyBD1C/RAUWC4ozIwMDAdBgNVHQ4E\\nFgQUp2REXlXVTMku0suEufC4w8iczGgwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjO\\nPQQDAgNHADBEAiAlrFm2Fp91usRhcSe2s7PqMQfb199DJLZ7MJoIWgByEQIgMVGt\\nkjkvkAOVk6S6fGJJibOn4cQLDQDpJfsX+FeRJrg=\\n-----END CERTIFICATE-----\\n\",\"type\":\"pkcs7\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-aws/config/certificate/{{name}}",
+      "body": "{\"aws_public_cert\":\"-----BEGIN CERTIFICATE-----\\nMIIBaTCCARCgAwIBAgIUar1Uu3xwuBp1h1D87qJmWFcwKiIwCgYIKoZIzj0EAwIw\\nGzEZMBcGA1UEAwwQaGZsLWxpdmUuZXhhbXBsZTAeFw0yNjExMTUxNjQ3NTNaFw0z\\nNjExMTIxNjQ3NTNaMBsxGTAXBgNVBAMMEGhmbC1saXZlLmV4YW1wbGUwWTATBgcq\\nhkjOPQIBBggqhkjOPQMBBwNCAATo43xRYoNQoQG+jy0+eirO3Wiur1lBQnOpMn3z\\nyFeXCnghhvUrHUB3DyvuI/o+JlGKjn5ZDm/SyBD1C/RAUWC4ozIwMDAdBgNVHQ4E\\nFgQUp2REXlXVTMku0suEufC4w8iczGgwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjO\\nPQQDAgNHADBEAiAlrFm2Fp91usRhcSe2s7PqMQfb199DJLZ7MJoIWgByEQIgMVGt\\nkjkvkAOVk6S6fGJJibOn4cQLDQDpJfsX+FeRJrg=\\n-----END CERTIFICATE-----\\n\",\"type\":\"identity\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"aws_public_cert\":\"-----BEGIN CERTIFICATE-----\\nMIIBaTCCARCgAwIBAgIUar1Uu3xwuBp1h1D87qJmWFcwKiIwCgYIKoZIzj0EAwIw\\nGzEZMBcGA1UEAwwQaGZsLWxpdmUuZXhhbXBsZTAeFw0yNjExMTUxNjQ3NTNaFw0z\\nNjExMTIxNjQ3NTNaMBsxGTAXBgNVBAMMEGhmbC1saXZlLmV4YW1wbGUwWTATBgcq\\nhkjOPQIBBggqhkjOPQMBBwNCAATo43xRYoNQoQG+jy0+eirO3Wiur1lBQnOpMn3z\\nyFeXCnghhvUrHUB3DyvuI/o+JlGKjn5ZDm/SyBD1C/RAUWC4ozIwMDAdBgNVHQ4E\\nFgQUp2REXlXVTMku0suEufC4w8iczGgwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjO\\nPQQDAgNHADBEAiAlrFm2Fp91usRhcSe2s7PqMQfb199DJLZ7MJoIWgByEQIgMVGt\\nkjkvkAOVk6S6fGJJibOn4cQLDQDpJfsX+FeRJrg=\\n-----END CERTIFICATE-----\\n\",\"type\":\"identity\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/config/certificate/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"aws_public_cert\":\"-----BEGIN CERTIFICATE-----\\nMIIBaTCCARCgAwIBAgIUar1Uu3xwuBp1h1D87qJmWFcwKiIwCgYIKoZIzj0EAwIw\\nGzEZMBcGA1UEAwwQaGZsLWxpdmUuZXhhbXBsZTAeFw0yNjExMTUxNjQ3NTNaFw0z\\nNjExMTIxNjQ3NTNaMBsxGTAXBgNVBAMMEGhmbC1saXZlLmV4YW1wbGUwWTATBgcq\\nhkjOPQIBBggqhkjOPQMBBwNCAATo43xRYoNQoQG+jy0+eirO3Wiur1lBQnOpMn3z\\nyFeXCnghhvUrHUB3DyvuI/o+JlGKjn5ZDm/SyBD1C/RAUWC4ozIwMDAdBgNVHQ4E\\nFgQUp2REXlXVTMku0suEufC4w8iczGgwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjO\\nPQQDAgNHADBEAiAlrFm2Fp91usRhcSe2s7PqMQfb199DJLZ7MJoIWgByEQIgMVGt\\nkjkvkAOVk6S6fGJJibOn4cQLDQDpJfsX+FeRJrg=\\n-----END CERTIFICATE-----\\n\",\"type\":\"identity\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/config/certificate/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"aws_public_cert\":\"-----BEGIN CERTIFICATE-----\\nMIIBaTCCARCgAwIBAgIUar1Uu3xwuBp1h1D87qJmWFcwKiIwCgYIKoZIzj0EAwIw\\nGzEZMBcGA1UEAwwQaGZsLWxpdmUuZXhhbXBsZTAeFw0yNjExMTUxNjQ3NTNaFw0z\\nNjExMTIxNjQ3NTNaMBsxGTAXBgNVBAMMEGhmbC1saXZlLmV4YW1wbGUwWTATBgcq\\nhkjOPQIBBggqhkjOPQMBBwNCAATo43xRYoNQoQG+jy0+eirO3Wiur1lBQnOpMn3z\\nyFeXCnghhvUrHUB3DyvuI/o+JlGKjn5ZDm/SyBD1C/RAUWC4ozIwMDAdBgNVHQ4E\\nFgQUp2REXlXVTMku0suEufC4w8iczGgwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjO\\nPQQDAgNHADBEAiAlrFm2Fp91usRhcSe2s7PqMQfb199DJLZ7MJoIWgByEQIgMVGt\\nkjkvkAOVk6S6fGJJibOn4cQLDQDpJfsX+FeRJrg=\\n-----END CERTIFICATE-----\\n\",\"type\":\"identity\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-aws/config/certificate/{{name}}",
+      "body": "{\"aws_public_cert\":\"-----BEGIN CERTIFICATE-----\\nMIIBaTCCARCgAwIBAgIUar1Uu3xwuBp1h1D87qJmWFcwKiIwCgYIKoZIzj0EAwIw\\nGzEZMBcGA1UEAwwQaGZsLWxpdmUuZXhhbXBsZTAeFw0yNjExMTUxNjQ3NTNaFw0z\\nNjExMTIxNjQ3NTNaMBsxGTAXBgNVBAMMEGhmbC1saXZlLmV4YW1wbGUwWTATBgcq\\nhkjOPQIBBggqhkjOPQMBBwNCAATo43xRYoNQoQG+jy0+eirO3Wiur1lBQnOpMn3z\\nyFeXCnghhvUrHUB3DyvuI/o+JlGKjn5ZDm/SyBD1C/RAUWC4ozIwMDAdBgNVHQ4E\\nFgQUp2REXlXVTMku0suEufC4w8iczGgwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjO\\nPQQDAgNHADBEAiAlrFm2Fp91usRhcSe2s7PqMQfb199DJLZ7MJoIWgByEQIgMVGt\\nkjkvkAOVk6S6fGJJibOn4cQLDQDpJfsX+FeRJrg=\\n-----END CERTIFICATE-----\\n\",\"type\":\"pkcs7\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"aws_public_cert\":\"-----BEGIN CERTIFICATE-----\\nMIIBaTCCARCgAwIBAgIUar1Uu3xwuBp1h1D87qJmWFcwKiIwCgYIKoZIzj0EAwIw\\nGzEZMBcGA1UEAwwQaGZsLWxpdmUuZXhhbXBsZTAeFw0yNjExMTUxNjQ3NTNaFw0z\\nNjExMTIxNjQ3NTNaMBsxGTAXBgNVBAMMEGhmbC1saXZlLmV4YW1wbGUwWTATBgcq\\nhkjOPQIBBggqhkjOPQMBBwNCAATo43xRYoNQoQG+jy0+eirO3Wiur1lBQnOpMn3z\\nyFeXCnghhvUrHUB3DyvuI/o+JlGKjn5ZDm/SyBD1C/RAUWC4ozIwMDAdBgNVHQ4E\\nFgQUp2REXlXVTMku0suEufC4w8iczGgwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjO\\nPQQDAgNHADBEAiAlrFm2Fp91usRhcSe2s7PqMQfb199DJLZ7MJoIWgByEQIgMVGt\\nkjkvkAOVk6S6fGJJibOn4cQLDQDpJfsX+FeRJrg=\\n-----END CERTIFICATE-----\\n\",\"type\":\"pkcs7\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/config/certificate/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"aws_public_cert\":\"-----BEGIN CERTIFICATE-----\\nMIIBaTCCARCgAwIBAgIUar1Uu3xwuBp1h1D87qJmWFcwKiIwCgYIKoZIzj0EAwIw\\nGzEZMBcGA1UEAwwQaGZsLWxpdmUuZXhhbXBsZTAeFw0yNjExMTUxNjQ3NTNaFw0z\\nNjExMTIxNjQ3NTNaMBsxGTAXBgNVBAMMEGhmbC1saXZlLmV4YW1wbGUwWTATBgcq\\nhkjOPQIBBggqhkjOPQMBBwNCAATo43xRYoNQoQG+jy0+eirO3Wiur1lBQnOpMn3z\\nyFeXCnghhvUrHUB3DyvuI/o+JlGKjn5ZDm/SyBD1C/RAUWC4ozIwMDAdBgNVHQ4E\\nFgQUp2REXlXVTMku0suEufC4w8iczGgwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjO\\nPQQDAgNHADBEAiAlrFm2Fp91usRhcSe2s7PqMQfb199DJLZ7MJoIWgByEQIgMVGt\\nkjkvkAOVk6S6fGJJibOn4cQLDQDpJfsX+FeRJrg=\\n-----END CERTIFICATE-----\\n\",\"type\":\"pkcs7\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/{{run}}-aws/config/certificate/{{name}}",
+      "body": "{\"aws_public_cert\":\"-----BEGIN CERTIFICATE-----\\nMIIBaTCCARCgAwIBAgIUar1Uu3xwuBp1h1D87qJmWFcwKiIwCgYIKoZIzj0EAwIw\\nGzEZMBcGA1UEAwwQaGZsLWxpdmUuZXhhbXBsZTAeFw0yNjExMTUxNjQ3NTNaFw0z\\nNjExMTIxNjQ3NTNaMBsxGTAXBgNVBAMMEGhmbC1saXZlLmV4YW1wbGUwWTATBgcq\\nhkjOPQIBBggqhkjOPQMBBwNCAATo43xRYoNQoQG+jy0+eirO3Wiur1lBQnOpMn3z\\nyFeXCnghhvUrHUB3DyvuI/o+JlGKjn5ZDm/SyBD1C/RAUWC4ozIwMDAdBgNVHQ4E\\nFgQUp2REXlXVTMku0suEufC4w8iczGgwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjO\\nPQQDAgNHADBEAiAlrFm2Fp91usRhcSe2s7PqMQfb199DJLZ7MJoIWgByEQIgMVGt\\nkjkvkAOVk6S6fGJJibOn4cQLDQDpJfsX+FeRJrg=\\n-----END CERTIFICATE-----\\n\",\"type\":\"identity\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"aws_public_cert\":\"-----BEGIN CERTIFICATE-----\\nMIIBaTCCARCgAwIBAgIUar1Uu3xwuBp1h1D87qJmWFcwKiIwCgYIKoZIzj0EAwIw\\nGzEZMBcGA1UEAwwQaGZsLWxpdmUuZXhhbXBsZTAeFw0yNjExMTUxNjQ3NTNaFw0z\\nNjExMTIxNjQ3NTNaMBsxGTAXBgNVBAMMEGhmbC1saXZlLmV4YW1wbGUwWTATBgcq\\nhkjOPQIBBggqhkjOPQMBBwNCAATo43xRYoNQoQG+jy0+eirO3Wiur1lBQnOpMn3z\\nyFeXCnghhvUrHUB3DyvuI/o+JlGKjn5ZDm/SyBD1C/RAUWC4ozIwMDAdBgNVHQ4E\\nFgQUp2REXlXVTMku0suEufC4w8iczGgwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjO\\nPQQDAgNHADBEAiAlrFm2Fp91usRhcSe2s7PqMQfb199DJLZ7MJoIWgByEQIgMVGt\\nkjkvkAOVk6S6fGJJibOn4cQLDQDpJfsX+FeRJrg=\\n-----END CERTIFICATE-----\\n\",\"type\":\"identity\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/config/certificate/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"aws_public_cert\":\"-----BEGIN CERTIFICATE-----\\nMIIBaTCCARCgAwIBAgIUar1Uu3xwuBp1h1D87qJmWFcwKiIwCgYIKoZIzj0EAwIw\\nGzEZMBcGA1UEAwwQaGZsLWxpdmUuZXhhbXBsZTAeFw0yNjExMTUxNjQ3NTNaFw0z\\nNjExMTIxNjQ3NTNaMBsxGTAXBgNVBAMMEGhmbC1saXZlLmV4YW1wbGUwWTATBgcq\\nhkjOPQIBBggqhkjOPQMBBwNCAATo43xRYoNQoQG+jy0+eirO3Wiur1lBQnOpMn3z\\nyFeXCnghhvUrHUB3DyvuI/o+JlGKjn5ZDm/SyBD1C/RAUWC4ozIwMDAdBgNVHQ4E\\nFgQUp2REXlXVTMku0suEufC4w8iczGgwDwYDVR0TAQH/BAUwAwEB/zAKBggqhkjO\\nPQQDAgNHADBEAiAlrFm2Fp91usRhcSe2s7PqMQfb199DJLZ7MJoIWgByEQIgMVGt\\nkjkvkAOVk6S6fGJJibOn4cQLDQDpJfsX+FeRJrg=\\n-----END CERTIFICATE-----\\n\",\"type\":\"identity\"}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/auth/{{run}}-aws/config/certificate/{{name}}",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/auth/{{run}}-aws/config/certificate/{{name}}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

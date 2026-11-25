@@ -1,0 +1,46 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "caCert": "rehearsal-caCert",
+    "csr": "rehearsal-csr",
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "signed": "rehearsal-signed",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/example-transform-mount-path/tokenization/keys/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"latest_version\":1,\"min_available_version\":1}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/example-transform-mount-path/tokenization/keys/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"latest_version\":1,\"min_available_version\":1}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/example-transform-mount-path/tokenization/keys/example-name",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"latest_version\":1,\"min_available_version\":1}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/example-transform-mount-path/tokenization/keys/example-name/config",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"latest_version\":1,\"min_available_version\":1}}\n"
+    }
+  ]
+}

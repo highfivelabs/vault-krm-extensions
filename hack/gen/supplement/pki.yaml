@@ -1,0 +1,160 @@
+openapi: 3.0.2
+info:
+  title: 'Vault PKI secrets engine: EST, CMPv2 and SCEP configuration (Vault Enterprise)'
+  version: 1.0.0
+  description: Hand-made supplement to the Vault OpenAPI document; see the comment at the top.
+paths:
+  /{pki_mount_path}/config/est:
+    parameters:
+    - name: pki_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: pki
+      required: true
+    get:
+      summary: Read the PKI engine's EST configuration.
+      operationId: read-pki-config-est
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create or update the PKI engine's EST configuration.
+      operationId: write-pki-config-est
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PkiConfigEstRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+  /{pki_mount_path}/config/cmp:
+    parameters:
+    - name: pki_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: pki
+      required: true
+    get:
+      summary: Read the PKI engine's CMPv2 configuration.
+      operationId: read-pki-config-cmp
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create or update the PKI engine's CMPv2 configuration.
+      operationId: write-pki-config-cmp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PkiConfigCmpRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+  /{pki_mount_path}/config/scep:
+    parameters:
+    - name: pki_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: pki
+      required: true
+    get:
+      summary: Read the PKI engine's SCEP configuration.
+      operationId: read-pki-config-scep
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create or update the PKI engine's SCEP configuration.
+      operationId: write-pki-config-scep
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PkiConfigScepRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+components:
+  schemas:
+    PkiConfigEstRequest:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Whether EST is enabled.
+        default_mount:
+          type: boolean
+        default_path_policy:
+          type: string
+        label_to_path_policy:
+          type: object
+          additionalProperties:
+            type: string
+        authenticators:
+          type: object
+        enable_sentinel_parsing:
+          type: boolean
+        audit_fields:
+          type: array
+          items:
+            type: string
+    PkiConfigCmpRequest:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        default_path_policy:
+          type: string
+        authenticators:
+          type: object
+        enable_sentinel_parsing:
+          type: boolean
+        audit_fields:
+          type: array
+          items:
+            type: string
+        disabled_validations:
+          type: array
+          items:
+            type: string
+    PkiConfigScepRequest:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Whether SCEP is enabled.
+        default_path_policy:
+          type: string
+        authenticators:
+          type: object
+        allowed_encryption_algorithms:
+          type: array
+          items:
+            type: string
+        allowed_digest_algorithms:
+          type: array
+          items:
+            type: string
+        restrict_ca_chain_to_issuer:
+          type: boolean
+        log_level:
+          type: string
+        external_validation:
+          type: object

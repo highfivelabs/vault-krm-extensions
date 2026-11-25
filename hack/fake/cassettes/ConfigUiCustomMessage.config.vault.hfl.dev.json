@@ -1,0 +1,96 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "caCert": "rehearsal-caCert",
+    "csr": "rehearsal-csr",
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "signed": "rehearsal-signed",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/sys/config/ui/custom-messages",
+      "body": "{\"message\":\"example-message\",\"start_time\":\"example-start-time\",\"title\":\"example-title\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"id\":270000013,\"message\":\"example-message\",\"start_time\":\"example-start-time\",\"title\":\"example-title\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/custom-messages/270000013",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"id\":270000013,\"message\":\"example-message\",\"start_time\":\"example-start-time\",\"title\":\"example-title\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/custom-messages/270000013",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"id\":270000013,\"message\":\"example-message\",\"start_time\":\"example-start-time\",\"title\":\"example-title\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/ui/custom-messages/270000013",
+      "body": "{\"message\":\"changed-message\",\"start_time\":\"example-start-time\",\"title\":\"example-title\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"id\":270000013,\"message\":\"changed-message\",\"start_time\":\"example-start-time\",\"title\":\"example-title\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/custom-messages/270000013",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"id\":270000013,\"message\":\"changed-message\",\"start_time\":\"example-start-time\",\"title\":\"example-title\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/ui/custom-messages/270000013",
+      "body": "{\"message\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"id\":270000013,\"message\":\"hfl-live-drift\",\"start_time\":\"example-start-time\",\"title\":\"example-title\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/custom-messages/270000013",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"id\":270000013,\"message\":\"hfl-live-drift\",\"start_time\":\"example-start-time\",\"title\":\"example-title\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/ui/custom-messages/270000013",
+      "body": "{\"message\":\"changed-message\",\"start_time\":\"example-start-time\",\"title\":\"example-title\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"id\":270000013,\"message\":\"changed-message\",\"start_time\":\"example-start-time\",\"title\":\"example-title\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/custom-messages/270000013",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"id\":270000013,\"message\":\"changed-message\",\"start_time\":\"example-start-time\",\"title\":\"example-title\"}}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/config/ui/custom-messages/270000013",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/ui/custom-messages/270000013",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

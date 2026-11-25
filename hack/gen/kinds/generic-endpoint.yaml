@@ -1,0 +1,13 @@
+terraform: [vault_generic_endpoint]
+kind: GenericEndpoint
+shape: upsert
+params:
+  path: {type: string}
+fields: {}
+anyBody: true
+compareReturnedOnly: true
+envelope: data
+sample: {path: auth/userpass/users/example, token_ttl: 1h, token_policies: [default]}
+read: {method: GET, path: "/{+path}"}
+update: {method: POST, path: "/{+path}"}
+delete: {method: DELETE, path: "/{+path}"}

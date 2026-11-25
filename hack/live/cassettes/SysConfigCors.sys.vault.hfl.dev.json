@@ -1,0 +1,103 @@
+{
+  "recorded": "2026-11-22T20:07:18Z",
+  "target": "Vault dev server 2.2.2",
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/sys/config/cors",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":false,\"request_id\":\"1915b32c-2c92-b97b-7afa-f1ec5a485769\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"enabled\":false},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/cors",
+      "body": "{\"allowed_origins\":[\"https://hfl-live.example\"],\"enable\":true}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/cors",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_headers\":[\"Content-Type\",\"X-Requested-With\",\"X-Vault-AWS-IAM-Server-ID\",\"X-Vault-MFA\",\"X-Vault-No-Request-Forwarding\",\"X-Vault-Wrap-Format\",\"X-Vault-Wrap-TTL\",\"X-Vault-Policy-Override\",\"Authorization\",\"X-Vault-Token\"],\"enabled\":true,\"allowed_origins\":[\"https://hfl-live.example\"],\"request_id\":\"4d82fd3b-7bf5-d9cb-255d-1ee7dd2869c6\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"allowed_headers\":[\"Content-Type\",\"X-Requested-With\",\"X-Vault-AWS-IAM-Server-ID\",\"X-Vault-MFA\",\"X-Vault-No-Request-Forwarding\",\"X-Vault-Wrap-Format\",\"X-Vault-Wrap-TTL\",\"X-Vault-Policy-Override\",\"Authorization\",\"X-Vault-Token\"],\"allowed_origins\":[\"https://hfl-live.example\"],\"enabled\":true},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/cors",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_headers\":[\"Content-Type\",\"X-Requested-With\",\"X-Vault-AWS-IAM-Server-ID\",\"X-Vault-MFA\",\"X-Vault-No-Request-Forwarding\",\"X-Vault-Wrap-Format\",\"X-Vault-Wrap-TTL\",\"X-Vault-Policy-Override\",\"Authorization\",\"X-Vault-Token\"],\"enabled\":true,\"allowed_origins\":[\"https://hfl-live.example\"],\"request_id\":\"09537f5f-d55e-2198-a63c-a1802d85edd2\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"allowed_headers\":[\"Content-Type\",\"X-Requested-With\",\"X-Vault-AWS-IAM-Server-ID\",\"X-Vault-MFA\",\"X-Vault-No-Request-Forwarding\",\"X-Vault-Wrap-Format\",\"X-Vault-Wrap-TTL\",\"X-Vault-Policy-Override\",\"Authorization\",\"X-Vault-Token\"],\"allowed_origins\":[\"https://hfl-live.example\"],\"enabled\":true},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/cors",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":true,\"allowed_origins\":[\"https://hfl-live.example\"],\"allowed_headers\":[\"Content-Type\",\"X-Requested-With\",\"X-Vault-AWS-IAM-Server-ID\",\"X-Vault-MFA\",\"X-Vault-No-Request-Forwarding\",\"X-Vault-Wrap-Format\",\"X-Vault-Wrap-TTL\",\"X-Vault-Policy-Override\",\"Authorization\",\"X-Vault-Token\"],\"request_id\":\"49f4cbe3-212a-5378-7dd5-b14f4437a9c3\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"allowed_headers\":[\"Content-Type\",\"X-Requested-With\",\"X-Vault-AWS-IAM-Server-ID\",\"X-Vault-MFA\",\"X-Vault-No-Request-Forwarding\",\"X-Vault-Wrap-Format\",\"X-Vault-Wrap-TTL\",\"X-Vault-Policy-Override\",\"Authorization\",\"X-Vault-Token\"],\"allowed_origins\":[\"https://hfl-live.example\"],\"enabled\":true},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/cors",
+      "body": "{\"allowed_origins\":[\"https://hfl-live-2.example\"],\"enable\":true}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/cors",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"allowed_origins\":[\"https://hfl-live-2.example\"],\"allowed_headers\":[\"Content-Type\",\"X-Requested-With\",\"X-Vault-AWS-IAM-Server-ID\",\"X-Vault-MFA\",\"X-Vault-No-Request-Forwarding\",\"X-Vault-Wrap-Format\",\"X-Vault-Wrap-TTL\",\"X-Vault-Policy-Override\",\"Authorization\",\"X-Vault-Token\"],\"enabled\":true,\"request_id\":\"bdc4ee3e-c25d-ba1b-689d-7ca17a70088a\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"allowed_headers\":[\"Content-Type\",\"X-Requested-With\",\"X-Vault-AWS-IAM-Server-ID\",\"X-Vault-MFA\",\"X-Vault-No-Request-Forwarding\",\"X-Vault-Wrap-Format\",\"X-Vault-Wrap-TTL\",\"X-Vault-Policy-Override\",\"Authorization\",\"X-Vault-Token\"],\"allowed_origins\":[\"https://hfl-live-2.example\"],\"enabled\":true},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/cors",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":true,\"allowed_origins\":[\"https://hfl-live-2.example\"],\"allowed_headers\":[\"Content-Type\",\"X-Requested-With\",\"X-Vault-AWS-IAM-Server-ID\",\"X-Vault-MFA\",\"X-Vault-No-Request-Forwarding\",\"X-Vault-Wrap-Format\",\"X-Vault-Wrap-TTL\",\"X-Vault-Policy-Override\",\"Authorization\",\"X-Vault-Token\"],\"request_id\":\"8b287cfc-48d8-67a6-b02d-97205958f235\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"allowed_headers\":[\"Content-Type\",\"X-Requested-With\",\"X-Vault-AWS-IAM-Server-ID\",\"X-Vault-MFA\",\"X-Vault-No-Request-Forwarding\",\"X-Vault-Wrap-Format\",\"X-Vault-Wrap-TTL\",\"X-Vault-Policy-Override\",\"Authorization\",\"X-Vault-Token\"],\"allowed_origins\":[\"https://hfl-live-2.example\"],\"enabled\":true},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/cors",
+      "body": "{\"allowed_origins\":[\"https://drift.example\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/cors",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":true,\"allowed_origins\":[\"https://drift.example\"],\"allowed_headers\":[\"Content-Type\",\"X-Requested-With\",\"X-Vault-AWS-IAM-Server-ID\",\"X-Vault-MFA\",\"X-Vault-No-Request-Forwarding\",\"X-Vault-Wrap-Format\",\"X-Vault-Wrap-TTL\",\"X-Vault-Policy-Override\",\"Authorization\",\"X-Vault-Token\"],\"request_id\":\"8527fb48-1240-f050-0f21-df45a1e2d7c5\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"allowed_headers\":[\"Content-Type\",\"X-Requested-With\",\"X-Vault-AWS-IAM-Server-ID\",\"X-Vault-MFA\",\"X-Vault-No-Request-Forwarding\",\"X-Vault-Wrap-Format\",\"X-Vault-Wrap-TTL\",\"X-Vault-Policy-Override\",\"Authorization\",\"X-Vault-Token\"],\"allowed_origins\":[\"https://drift.example\"],\"enabled\":true},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/sys/config/cors",
+      "body": "{\"allowed_origins\":[\"https://hfl-live-2.example\"],\"enable\":true}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/cors",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":true,\"allowed_origins\":[\"https://hfl-live-2.example\"],\"allowed_headers\":[\"Content-Type\",\"X-Requested-With\",\"X-Vault-AWS-IAM-Server-ID\",\"X-Vault-MFA\",\"X-Vault-No-Request-Forwarding\",\"X-Vault-Wrap-Format\",\"X-Vault-Wrap-TTL\",\"X-Vault-Policy-Override\",\"Authorization\",\"X-Vault-Token\"],\"request_id\":\"507f16a5-5f2d-e361-87e2-64041cc8bd9d\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"allowed_headers\":[\"Content-Type\",\"X-Requested-With\",\"X-Vault-AWS-IAM-Server-ID\",\"X-Vault-MFA\",\"X-Vault-No-Request-Forwarding\",\"X-Vault-Wrap-Format\",\"X-Vault-Wrap-TTL\",\"X-Vault-Policy-Override\",\"Authorization\",\"X-Vault-Token\"],\"allowed_origins\":[\"https://hfl-live-2.example\"],\"enabled\":true},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/sys/config/cors",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":true,\"allowed_origins\":[\"https://hfl-live-2.example\"],\"allowed_headers\":[\"Content-Type\",\"X-Requested-With\",\"X-Vault-AWS-IAM-Server-ID\",\"X-Vault-MFA\",\"X-Vault-No-Request-Forwarding\",\"X-Vault-Wrap-Format\",\"X-Vault-Wrap-TTL\",\"X-Vault-Policy-Override\",\"Authorization\",\"X-Vault-Token\"],\"request_id\":\"9f40bb1a-d623-0bc8-3f1c-843c524ddbe2\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"allowed_headers\":[\"Content-Type\",\"X-Requested-With\",\"X-Vault-AWS-IAM-Server-ID\",\"X-Vault-MFA\",\"X-Vault-No-Request-Forwarding\",\"X-Vault-Wrap-Format\",\"X-Vault-Wrap-TTL\",\"X-Vault-Policy-Override\",\"Authorization\",\"X-Vault-Token\"],\"allowed_origins\":[\"https://hfl-live-2.example\"],\"enabled\":true},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"system\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/sys/config/cors",
+      "status": 204,
+      "contentType": "application/json"
+    }
+  ]
+}

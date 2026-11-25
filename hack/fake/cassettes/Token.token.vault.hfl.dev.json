@@ -1,0 +1,46 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "entity": "rehearsal-entity",
+    "group": "rehearsal-group",
+    "issuer": "rehearsal-issuer",
+    "key": "rehearsal-key",
+    "mfa": "rehearsal-mfa",
+    "tag": "rehearsal-tag"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/auth/token/create",
+      "body": "{\"display_name\":\"{{name}}\",\"meta\":{\"run\":\"hfl-live\"},\"policies\":[\"default\"],\"renewable\":true,\"ttl\":\"1h\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"auth\":{\"accessor\":\"{{redacted}}\",\"creation_time\":1523979354,\"creation_ttl\":2764800,\"expire_time\":\"2018-05-19T11:35:54.466476215-04:00\",\"meta\":{\"run\":\"hfl-live\"},\"orphan\":false,\"path\":\"auth/token/create\",\"renewable\":true}}"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/token/lookup-accessor",
+      "body": "{\"accessor\":\"{{redacted}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"data\":{\"accessor\":\"{{redacted}}\",\"creation_time\":1523979354,\"creation_ttl\":2764800,\"expire_time\":\"2018-05-19T11:35:54.466476215-04:00\",\"meta\":{\"run\":\"hfl-live\"},\"orphan\":false,\"path\":\"auth/token/create\",\"renewable\":true}}"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/token/revoke-accessor",
+      "body": "{\"accessor\":\"{{redacted}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{}"
+    },
+    {
+      "method": "POST",
+      "path": "/auth/token/lookup-accessor",
+      "body": "{\"accessor\":\"{{redacted}}\"}",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "recorded": "2026-11-22T20:07:18Z",
+  "target": "Vault dev server 2.2.2",
+  "vars": {
+    "entity": "824161f1-5a83-bf5d-2111-78ef4eabffba",
+    "group": "bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+    "issuer": "b2145452-73da-a16b-353f-8eeb465fb9be",
+    "key": "9f1c47da-2a22-4676-4b02-f6000a2184f9",
+    "mfa": "f3f83141-6a0d-ba15-5a8f-38b659d5cc4a",
+    "tag": "v1:noSQyMKvvgg=:r={{run}}-19:d=false:m=false:gXpjsFnRfjn0SwzqsluE/m/25kwAo+VIoEj2Blnb8mQ="
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/identity/group",
+      "body": "{\"name\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"920fda45-e359-751c-01d4-51bc29a892ca\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"id\":\"bd9e53b5-2f24-4833-6b0b-e21aaf1860c9\",\"name\":\"{{name}}\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/entity",
+      "body": "{\"name\":\"{{name}}\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"61048329-a175-b21e-3d73-0b3577ca5a15\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"aliases\":null,\"id\":\"824161f1-5a83-bf5d-2111-78ef4eabffba\",\"name\":\"{{name}}\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/group/id/bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"5c1ef712-bb4b-c1bd-dfc3-af238447a509\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"alias\":{},\"creation_time\":\"2026-11-22T20:07:18.766245106Z\",\"id\":\"bd9e53b5-2f24-4833-6b0b-e21aaf1860c9\",\"last_update_time\":\"2026-11-22T20:07:18.766245106Z\",\"member_entity_ids\":null,\"member_group_ids\":null,\"metadata\":null,\"modify_index\":1,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"parent_group_ids\":null,\"policies\":null,\"scim_client_id\":\"\",\"type\":\"internal\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/group/id/bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"1f1deb44-bc93-5bee-d882-780ff1aefb56\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"alias\":{},\"creation_time\":\"2026-11-22T20:07:18.766245106Z\",\"id\":\"bd9e53b5-2f24-4833-6b0b-e21aaf1860c9\",\"last_update_time\":\"2026-11-22T20:07:18.766245106Z\",\"member_entity_ids\":null,\"member_group_ids\":null,\"metadata\":null,\"modify_index\":1,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"parent_group_ids\":null,\"policies\":null,\"scim_client_id\":\"\",\"type\":\"internal\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/identity/group/id/bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+      "body": "{\"member_entity_ids\":[\"824161f1-5a83-bf5d-2111-78ef4eabffba\"],\"policies\":[\"default\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/group/id/bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"fd4a79b7-9c0b-2892-ef6b-18c46e6efddf\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"alias\":{},\"creation_time\":\"2026-11-22T20:07:18.766245106Z\",\"id\":\"bd9e53b5-2f24-4833-6b0b-e21aaf1860c9\",\"last_update_time\":\"2026-11-22T20:07:18.770753559Z\",\"member_entity_ids\":[\"824161f1-5a83-bf5d-2111-78ef4eabffba\"],\"member_group_ids\":null,\"metadata\":null,\"modify_index\":2,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"parent_group_ids\":null,\"policies\":[\"default\"],\"scim_client_id\":\"\",\"type\":\"internal\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/group/id/bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"b9c17e43-89a3-3140-4a51-7a43f1ed73d2\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"alias\":{},\"creation_time\":\"2026-11-22T20:07:18.766245106Z\",\"id\":\"bd9e53b5-2f24-4833-6b0b-e21aaf1860c9\",\"last_update_time\":\"2026-11-22T20:07:18.770753559Z\",\"member_entity_ids\":[\"824161f1-5a83-bf5d-2111-78ef4eabffba\"],\"member_group_ids\":null,\"metadata\":null,\"modify_index\":2,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"parent_group_ids\":null,\"policies\":[\"default\"],\"scim_client_id\":\"\",\"type\":\"internal\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/group/id/bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"b3618936-2074-f711-3ab1-36e43e892ecd\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"alias\":{},\"creation_time\":\"2026-11-22T20:07:18.766245106Z\",\"id\":\"bd9e53b5-2f24-4833-6b0b-e21aaf1860c9\",\"last_update_time\":\"2026-11-22T20:07:18.770753559Z\",\"member_entity_ids\":[\"824161f1-5a83-bf5d-2111-78ef4eabffba\"],\"member_group_ids\":null,\"metadata\":null,\"modify_index\":2,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"parent_group_ids\":null,\"policies\":[\"default\"],\"scim_client_id\":\"\",\"type\":\"internal\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/identity/group/id/bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+      "body": "{\"member_entity_ids\":[\"824161f1-5a83-bf5d-2111-78ef4eabffba\"],\"policies\":[\"default\",\"hfl-live\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/group/id/bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"3bf533d1-9492-5764-aee5-b8880f3de6f4\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"alias\":{},\"creation_time\":\"2026-11-22T20:07:18.766245106Z\",\"id\":\"bd9e53b5-2f24-4833-6b0b-e21aaf1860c9\",\"last_update_time\":\"2026-11-22T20:07:18.774456198Z\",\"member_entity_ids\":[\"824161f1-5a83-bf5d-2111-78ef4eabffba\"],\"member_group_ids\":null,\"metadata\":null,\"modify_index\":3,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"parent_group_ids\":null,\"policies\":[\"default\",\"hfl-live\"],\"scim_client_id\":\"\",\"type\":\"internal\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/group/id/bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"5c0524b1-90d8-2281-c097-9d0926dd2127\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"alias\":{},\"creation_time\":\"2026-11-22T20:07:18.766245106Z\",\"id\":\"bd9e53b5-2f24-4833-6b0b-e21aaf1860c9\",\"last_update_time\":\"2026-11-22T20:07:18.774456198Z\",\"member_entity_ids\":[\"824161f1-5a83-bf5d-2111-78ef4eabffba\"],\"member_group_ids\":null,\"metadata\":null,\"modify_index\":3,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"parent_group_ids\":null,\"policies\":[\"default\",\"hfl-live\"],\"scim_client_id\":\"\",\"type\":\"internal\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/identity/group/id/bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+      "body": "{\"policies\":[\"hfl-live-drift\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/group/id/bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"cdc90d4e-9c5b-7cb1-a3e6-801af9febd2d\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"alias\":{},\"creation_time\":\"2026-11-22T20:07:18.766245106Z\",\"id\":\"bd9e53b5-2f24-4833-6b0b-e21aaf1860c9\",\"last_update_time\":\"2026-11-22T20:07:18.77820636Z\",\"member_entity_ids\":[\"824161f1-5a83-bf5d-2111-78ef4eabffba\"],\"member_group_ids\":null,\"metadata\":null,\"modify_index\":4,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"parent_group_ids\":null,\"policies\":[\"hfl-live-drift\"],\"scim_client_id\":\"\",\"type\":\"internal\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/identity/group/id/bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+      "body": "{\"member_entity_ids\":[\"824161f1-5a83-bf5d-2111-78ef4eabffba\"],\"policies\":[\"default\",\"hfl-live\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/group/id/bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"884558f6-8e90-a377-8e8b-110d1172289b\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"alias\":{},\"creation_time\":\"2026-11-22T20:07:18.766245106Z\",\"id\":\"bd9e53b5-2f24-4833-6b0b-e21aaf1860c9\",\"last_update_time\":\"2026-11-22T20:07:18.779654984Z\",\"member_entity_ids\":[\"824161f1-5a83-bf5d-2111-78ef4eabffba\"],\"member_group_ids\":null,\"metadata\":null,\"modify_index\":5,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"parent_group_ids\":null,\"policies\":[\"default\",\"hfl-live\"],\"scim_client_id\":\"\",\"type\":\"internal\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/group/id/bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"753426a3-978a-74e9-edf9-9060a3fad850\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"alias\":{},\"creation_time\":\"2026-11-22T20:07:18.766245106Z\",\"id\":\"bd9e53b5-2f24-4833-6b0b-e21aaf1860c9\",\"last_update_time\":\"2026-11-22T20:07:18.779654984Z\",\"member_entity_ids\":[\"824161f1-5a83-bf5d-2111-78ef4eabffba\"],\"member_group_ids\":null,\"metadata\":null,\"modify_index\":5,\"name\":\"{{name}}\",\"namespace_id\":\"root\",\"parent_group_ids\":null,\"policies\":[\"default\",\"hfl-live\"],\"scim_client_id\":\"\",\"type\":\"internal\"},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/identity/group/id/bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+      "body": "{\"member_entity_ids\":null,\"policies\":null}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "DELETE",
+      "path": "/identity/group/id/bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "DELETE",
+      "path": "/identity/entity/id/824161f1-5a83-bf5d-2111-78ef4eabffba",
+      "status": 204,
+      "contentType": "application/json"
+    }
+  ]
+}

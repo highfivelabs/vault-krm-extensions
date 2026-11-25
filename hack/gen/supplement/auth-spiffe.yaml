@@ -1,0 +1,145 @@
+openapi: 3.0.2
+info:
+  title: Vault SPIFFE auth method (Vault Enterprise)
+  version: 1.0.0
+  description: Hand-made supplement to the Vault OpenAPI document; see the comment at the top.
+paths:
+  /auth/{spiffe_mount_path}/config:
+    parameters:
+    - name: spiffe_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: spiffe
+      required: true
+    get:
+      summary: Read the SPIFFE auth method's configuration.
+      operationId: read-spiffe-auth-config
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create or update the SPIFFE auth method's configuration.
+      operationId: write-spiffe-auth-config
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SpiffeAuthConfigRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+  /auth/{spiffe_mount_path}/role/{name}:
+    parameters:
+    - name: spiffe_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: spiffe
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a SPIFFE auth role.
+      operationId: read-spiffe-auth-role
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create or update a SPIFFE auth role.
+      operationId: write-spiffe-auth-role
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SpiffeAuthRoleRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a SPIFFE auth role.
+      operationId: delete-spiffe-auth-role
+      responses:
+        '204':
+          description: empty body
+components:
+  schemas:
+    SpiffeAuthConfigRequest:
+      type: object
+      properties:
+        trust_domain:
+          type: string
+        profile:
+          type: string
+          enum:
+          - https_spiffe_bundle
+          - https_web_bundle
+          - https_web_pem
+          - static
+        audience:
+          type: array
+          items:
+            type: string
+        defer_bundle_fetch:
+          type: boolean
+        bundle:
+          type: string
+        endpoint_url:
+          type: string
+        endpoint_root_ca_truststore_pem:
+          type: string
+        endpoint_spiffe_id:
+          type: string
+      required:
+      - trust_domain
+      - profile
+    SpiffeAuthRoleRequest:
+      type: object
+      properties:
+        display_name:
+          type: string
+        workload_id_patterns:
+          type: array
+          items:
+            type: string
+        token_ttl:
+          type: string
+          format: duration
+          description: The initial ttl of the token to generate.
+        token_max_ttl:
+          type: string
+          format: duration
+          description: The maximum lifetime of the generated token.
+        token_policies:
+          type: array
+          items:
+            type: string
+        token_bound_cidrs:
+          type: array
+          items:
+            type: string
+        token_explicit_max_ttl:
+          type: string
+          format: duration
+        token_no_default_policy:
+          type: boolean
+        token_num_uses:
+          type: integer
+        token_period:
+          type: string
+          format: duration
+        token_type:
+          type: string
+      required:
+      - workload_id_patterns

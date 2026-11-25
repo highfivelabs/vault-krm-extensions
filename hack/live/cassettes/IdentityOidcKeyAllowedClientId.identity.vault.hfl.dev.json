@@ -1,0 +1,72 @@
+{
+  "recorded": "2026-11-22T20:07:19Z",
+  "target": "Vault dev server 2.2.2",
+  "vars": {
+    "caCert": "-----BEGIN CERTIFICATE-----\nMIIBuDCCAV+gAwIBAgIUPVD7DR7+RnVKxJIw4PnTVBhI1cIwCgYIKoZIzj0EAwIw\nGzEZMBcGA1UEAxMQaGZsLWxpdmUuZXhhbXBsZTAeFw0yNjExMjIyMDA2NDlaFw0y\nNjEyMjQyMDA3MTlaMBsxGTAXBgNVBAMTEGhmbC1saXZlLmV4YW1wbGUwWTATBgcq\nhkjOPQIBBggqhkjOPQMBBwNCAARmLq9aIzEnjDp+ez6gGOQMIAdotjAaS+Yih9TR\nX3RcKfc4Uw7QMQHMsQMhKUEtZHBZ8nJDyxOw3izPVAXe9ojTo4GAMH4wDgYDVR0P\nAQH/BAQDAgEGMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFN5KLQKp830GRvg+\nbv2GG1LJUHDEMB8GA1UdIwQYMBaAFN5KLQKp830GRvg+bv2GG1LJUHDEMBsGA1Ud\nEQQUMBKCEGhmbC1saXZlLmV4YW1wbGUwCgYIKoZIzj0EAwIDRwAwRAIgMM/mogu0\nMpuNSvpZTzRwDz2LLhCNbH4TclOvqgpa0sICIBIyHLPIES3uv07I8lTmEDf+qc79\nOiUigOocYNd4tYp8\n-----END CERTIFICATE-----",
+    "csr": "-----BEGIN CERTIFICATE REQUEST-----\nMIIBDDCBswIBADAfMR0wGwYDVQQDExRoZmwtbGl2ZS1pbnQuZXhhbXBsZTBZMBMG\nByqGSM49AgEGCCqGSM49AwEHA0IABH/pKqJtOk6pFigwx2YVAWVS2sWfgEyvZFMY\nRK/kC4D9hcBxTG/G3vxIkfkhUSiM8vukgxj4Yz6r9klpTBHB+IKgMjAwBgkqhkiG\n9w0BCQ4xIzAhMB8GA1UdEQQYMBaCFGhmbC1saXZlLWludC5leGFtcGxlMAoGCCqG\nSM49BAMCA0gAMEUCIGU+1hjQJEhNmF6b8cRk+zKkly7XZvFL4wdT1QVoQqqWAiEA\n7vRCPYm7C8eNH/rxubllpfisOunxwzJwh1+jswdNSTk=\n-----END CERTIFICATE REQUEST-----",
+    "entity": "824161f1-5a83-bf5d-2111-78ef4eabffba",
+    "group": "bd9e53b5-2f24-4833-6b0b-e21aaf1860c9",
+    "issuer": "b2145452-73da-a16b-353f-8eeb465fb9be",
+    "key": "9f1c47da-2a22-4676-4b02-f6000a2184f9",
+    "mfa": "f3f83141-6a0d-ba15-5a8f-38b659d5cc4a",
+    "signed": "-----BEGIN CERTIFICATE-----\nMIIBwTCCAWigAwIBAgIUakDoh8riQ0vQPdX2x1vT4oDXMgEwCgYIKoZIzj0EAwIw\nGzEZMBcGA1UEAxMQaGZsLWxpdmUuZXhhbXBsZTAeFw0yNjExMjIyMDA2NDlaFw0y\nNjEyMjQyMDA3MTlaMB8xHTAbBgNVBAMTFGhmbC1saXZlLWludC5leGFtcGxlMFkw\nEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEf+kqom06TqkWKDDHZhUBZVLaxZ+ATK9k\nUxhEr+QLgP2FwHFMb8be/EiR+SFRKIzy+6SDGPhjPqv2SWlMEcH4gqOBhTCBgjAO\nBgNVHQ8BAf8EBAMCAQYwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUiW1HER+v\n5cnF6VJQJaAcO2YO7yYwHwYDVR0jBBgwFoAUZnBIk0VnoBbVH2XYMMD5Q3LllA4w\nHwYDVR0RBBgwFoIUaGZsLWxpdmUtaW50LmV4YW1wbGUwCgYIKoZIzj0EAwIDRwAw\nRAIgR4+tCf6dAJl3FLl+2YREh7r72k7WAQvHRiB7m0v651UCICGooGmRoH/j3MSF\nDquweQSqQsycLAJMAdNhunCXlT56\n-----END CERTIFICATE-----",
+    "tag": "v1:noSQyMKvvgg=:r={{run}}-19:d=false:m=false:gXpjsFnRfjn0SwzqsluE/m/25kwAo+VIoEj2Blnb8mQ="
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/identity/oidc/key/{{name}}",
+      "body": "{\"algorithm\":\"ES256\",\"allowed_client_ids\":[\"{{name}}-other\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/oidc/key/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"1038621a-396f-a93f-2da6-126656419947\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"algorithm\":\"ES256\",\"allowed_client_ids\":[\"{{name}}-other\"],\"rotation_period\":86400,\"verification_ttl\":86400},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/oidc/key/{{name}}",
+      "body": "{\"allowed_client_ids\":[\"{{name}}-other\",\"{{name}}-client\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/oidc/key/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"65b069db-8f2b-622a-6da3-b9f613052e80\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"algorithm\":\"ES256\",\"allowed_client_ids\":[\"{{name}}-other\",\"{{name}}-client\"],\"rotation_period\":86400,\"verification_ttl\":86400},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/oidc/key/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"38eb3e07-a368-a211-b8b6-243c3f247584\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"algorithm\":\"ES256\",\"allowed_client_ids\":[\"{{name}}-other\",\"{{name}}-client\"],\"rotation_period\":86400,\"verification_ttl\":86400},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/identity/oidc/key/{{name}}",
+      "body": "{\"allowed_client_ids\":[\"{{name}}-other\"]}",
+      "status": 204,
+      "contentType": "application/json"
+    },
+    {
+      "method": "GET",
+      "path": "/identity/oidc/key/{{name}}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"request_id\":\"ee7bc65d-7733-a672-31ca-06bde6377e44\",\"lease_id\":\"\",\"renewable\":false,\"lease_duration\":0,\"data\":{\"algorithm\":\"ES256\",\"allowed_client_ids\":[\"{{name}}-other\"],\"rotation_period\":86400,\"verification_ttl\":86400},\"wrap_info\":null,\"warnings\":null,\"auth\":null,\"mount_type\":\"identity\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/identity/oidc/key/{{name}}",
+      "status": 204,
+      "contentType": "application/json"
+    }
+  ]
+}

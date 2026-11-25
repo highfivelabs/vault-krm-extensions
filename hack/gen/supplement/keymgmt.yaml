@@ -1,0 +1,242 @@
+openapi: 3.0.2
+info:
+  title: Vault Key Management secrets engine (Vault Enterprise)
+  version: 1.0.0
+  description: Hand-made supplement to the Vault OpenAPI document; see the comment at the top.
+paths:
+  /{keymgmt_mount_path}/key/{name}:
+    parameters:
+    - name: keymgmt_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: keymgmt
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a Key Management key.
+      operationId: read-keymgmt-key
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeymgmtKeyResponse'
+    post:
+      summary: Create or update a Key Management key.
+      operationId: write-keymgmt-key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KeymgmtKeyRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a Key Management key.
+      operationId: delete-keymgmt-key
+      responses:
+        '204':
+          description: empty body
+  /{keymgmt_mount_path}/kms/{name}:
+    parameters:
+    - name: keymgmt_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: keymgmt
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read a Key Management KMS provider.
+      operationId: read-keymgmt-kms
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeymgmtKmsResponse'
+    post:
+      summary: Create or update a Key Management KMS provider.
+      operationId: write-keymgmt-kms
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KeymgmtKmsRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete a Key Management KMS provider.
+      operationId: delete-keymgmt-kms
+      responses:
+        '204':
+          description: empty body
+  /{keymgmt_mount_path}/kms/{name}/key/{key_name}:
+    parameters:
+    - name: keymgmt_mount_path
+      description: Path that the backend was mounted at
+      in: path
+      schema:
+        type: string
+        default: keymgmt
+      required: true
+    - name: name
+      in: path
+      schema:
+        type: string
+      required: true
+    - name: key_name
+      in: path
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Read the distribution of a Key Management key to a KMS provider.
+      operationId: read-keymgmt-kms-key
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeymgmtKmsKeyResponse'
+    post:
+      summary: Create or update the distribution of a Key Management key to a KMS provider.
+      operationId: write-keymgmt-kms-key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KeymgmtKmsKeyRequest'
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: empty body
+    delete:
+      summary: Delete the distribution of a Key Management key to a KMS provider.
+      operationId: delete-keymgmt-kms-key
+      responses:
+        '204':
+          description: empty body
+components:
+  schemas:
+    KeymgmtKeyRequest:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - aes256-gcm96
+          - rsa-2048
+          - rsa-3072
+          - rsa-4096
+          - ecdsa-p256
+          - ecdsa-p384
+          - ecdsa-p521
+        replica_regions:
+          type: array
+          items:
+            type: string
+        deletion_allowed:
+          type: boolean
+        min_enabled_version:
+          type: integer
+    KeymgmtKeyResponse:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - aes256-gcm96
+          - rsa-2048
+          - rsa-3072
+          - rsa-4096
+          - ecdsa-p256
+          - ecdsa-p384
+          - ecdsa-p521
+        replica_regions:
+          type: array
+          items:
+            type: string
+        deletion_allowed:
+          type: boolean
+        min_enabled_version:
+          type: integer
+    KeymgmtKmsRequest:
+      type: object
+      properties:
+        provider:
+          type: string
+          enum:
+          - azurekeyvault
+          - awskms
+          - gcpckms
+        key_collection:
+          type: string
+        credentials:
+          type: object
+          additionalProperties:
+            type: string
+      required:
+      - provider
+      - key_collection
+    KeymgmtKmsResponse:
+      type: object
+      properties:
+        provider:
+          type: string
+          enum:
+          - azurekeyvault
+          - awskms
+          - gcpckms
+        key_collection:
+          type: string
+    KeymgmtKmsKeyRequest:
+      type: object
+      properties:
+        purpose:
+          type: array
+          items:
+            type: string
+        protection:
+          type: string
+          enum:
+          - hsm
+          - software
+      required:
+      - purpose
+    KeymgmtKmsKeyResponse:
+      type: object
+      properties:
+        purpose:
+          type: array
+          items:
+            type: string
+        protection:
+          type: string
+          enum:
+          - hsm
+          - software
