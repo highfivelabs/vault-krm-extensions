@@ -2,15 +2,15 @@
 # Copyright 2026 High Five Labs
 # SPDX-License-Identifier: Apache-2.0
 #
-# Everything CI checks, in one place: .github/workflows/ci.yml runs this
-# script, and so does anyone opening a pull request. Until CI runs on every
-# pull request, each one carries the --report output in its description.
+# Everything CI checks, in one place: the hermetic check of
+# .github/workflows/hfl-ci.yml (krm-ci's krm-ci.yml) runs this script, and so
+# can anyone before opening a pull request.
 #
 #   hack/ci.sh            run the checks
 #   hack/ci.sh --report   run them and print a Markdown proof for the PR
 #
-# RUNTIME is a krm-rest-runtime checkout. CI checks it out at the ref pinned
-# in ci.yml. Locally, unset, the script makes a temporary worktree of
+# RUNTIME is a krm-rest-runtime checkout. CI checks it out at hfl-ci.yml's
+# sibling-ref. Locally, unset, the script makes a temporary worktree of
 # ../krm-rest-runtime at that same ref, so the generator matches CI's.
 set -uo pipefail
 
@@ -19,7 +19,7 @@ cd "$root"
 report=false
 [[ ${1:-} == --report ]] && report=true
 
-pinned=$(sed -n 's/^ *ref: *\([0-9a-f]\{40\}\).*/\1/p' .github/workflows/ci.yml | head -1)
+pinned=$(sed -n 's/^ *sibling-ref: *"\{0,1\}\([0-9a-f]\{40\}\).*/\1/p' .github/workflows/hfl-ci.yml | head -1)
 cleanup=()
 trap 'for c in "${cleanup[@]}"; do eval "$c"; done' EXIT
 
@@ -74,7 +74,7 @@ if $report; then
     if ((failed)); then echo "**Result: ❌ failed**"; else echo "**Result: ✅ all checks passed**"; fi
     echo
     echo "- Commit: \`$sha\`$( ((dirty)) && echo " **plus $dirty uncommitted change(s)**" || echo " (clean tree)")"
-    echo "- Runtime: \`highfivelabs/krm-rest-runtime@$pinned\` (pinned in ci.yml)"
+    echo "- Runtime: \`highfivelabs/krm-rest-runtime@$pinned\` (hfl-ci.yml's sibling-ref)"
     echo "- Toolchain: $(go version | cut -d' ' -f3-), Python $(python3 -c 'import sys;print(sys.version.split()[0])'), PyYAML $(python3 -c 'import yaml;print(yaml.__version__)' 2>/dev/null || echo missing)"
     echo "- Ran: $(date -u +%Y-%m-%dT%H:%M:%SZ) on $(uname -sm), $((SECONDS - start))s, via \`hack/ci.sh --report\`"
     echo

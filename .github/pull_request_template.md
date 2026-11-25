@@ -2,10 +2,9 @@
 
 <!-- One or two sentences. Link the Linear issue (HFL-123). -->
 
-## Local CI
+## Testing
 
 <!--
-Required. Commit everything, run `hack/ci.sh --report`, and paste the whole
-output here. Run it again after every push: it must name this PR's head commit
-and a clean tree.
+The `ci` check runs hack/ci.sh on this pull request. Note anything it does not
+cover, such as a live run (a maintainer starts one with /ok-to-test-live).
 -->

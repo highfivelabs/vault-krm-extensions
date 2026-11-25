@@ -1,18 +1,14 @@
 # Rules for every change
 
-**Run CI locally and prove it in the pull request.** Until this repository
-is public and CI runs on every pull request, nobody can see CI results for
-your change unless you show them. Before you open or update a pull request:
+**CI runs on every pull request; run it locally first.** The `ci` check
+(`.github/workflows/hfl-ci.yml`, which calls highfivelabs/krm-ci) must pass
+before a merge. Its hermetic check is `hack/ci.sh`, so run that before you
+push: a local pass means the same checks. Add new checks to `hack/ci.sh`;
+the `hfl-*.yml` workflows and `.github/dependabot.yml` are rendered by
+krm-ci (`task krm:sync` there), so don't edit them here.
 
-1. Commit everything, then run `hack/ci.sh --report` from the repository root.
-2. Paste its whole output into the pull request description, under
-   "Local CI". It records the commit it tested, the toolchain, and each
-   step's result.
-3. Do not open, mark ready, or merge a pull request whose "Local CI" section
-   is missing, failed, tested an older commit than the head, or reports
-   uncommitted changes. After you push new commits, run it again and
-   replace the section.
-
-`hack/ci.sh` is the same script `.github/workflows/ci.yml` runs, so a local
-pass means the same checks as CI. Add new checks to `hack/ci.sh`, not to
-ci.yml.
+Claude reviews each pull request (`hfl/security-review`, and an advisory
+first pass in one comment): members' on push, anyone else's once a
+maintainer comments `/review`. Live tests against the real account run only
+after a maintainer's `/ok-to-test-live sha=<head>`, a passing review of that
+commit, and the `live` environment's approval.
