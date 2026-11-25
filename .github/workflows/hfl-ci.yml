@@ -21,11 +21,11 @@ concurrency:
 
 jobs:
   krm:
-    uses: highfivelabs/krm-ci/.github/workflows/krm-ci.yml@43eb967d93c5565abc05b2d6927073ccf3315b98 # v1.1.0
+    uses: highfivelabs/krm-ci/.github/workflows/krm-ci.yml@ee055464ad3278a1293efc921fe668f055a12b72 # v1.2.0
     permissions:
       contents: read
     with:
-      ci-ref: 43eb967d93c5565abc05b2d6927073ccf3315b98
+      ci-ref: ee055464ad3278a1293efc921fe668f055a12b72
       setup-command: ""
       check-command: "python3 -m venv \"${RUNNER_TEMP}/py\" && \"${RUNNER_TEMP}/py/bin/pip\" install -q pyyaml==6.0.3 && export PATH=\"${RUNNER_TEMP}/py/bin:${PATH}\" && RUNTIME=\"${PWD}/../krm-rest-runtime\" hack/ci.sh"
       e2e-command: ""
@@ -33,3 +33,4 @@ jobs:
       timeout-minutes: 30
       sibling-repo: "krm-rest-runtime"
       sibling-ref: "fad382d05df5a1b0a7c339f174ecd6a3abb06721"
+      licenses-packages: "./..."

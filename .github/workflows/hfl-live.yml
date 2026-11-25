@@ -24,7 +24,7 @@ jobs:
       vars.HFL_LIVE_ENABLED == 'true' &&
       github.event.issue.pull_request &&
       startsWith(github.event.comment.body, '/ok-to-test-live')
-    uses: highfivelabs/krm-ci/.github/workflows/krm-live.yml@43eb967d93c5565abc05b2d6927073ccf3315b98 # v1.1.0
+    uses: highfivelabs/krm-ci/.github/workflows/krm-live.yml@ee055464ad3278a1293efc921fe668f055a12b72 # v1.2.0
     permissions:
       actions: read
       contents: read
@@ -32,7 +32,7 @@ jobs:
       pull-requests: write
       statuses: write
     with:
-      ci-ref: 43eb967d93c5565abc05b2d6927073ccf3315b98
+      ci-ref: ee055464ad3278a1293efc921fe668f055a12b72
       environment: live
       setup-command: ""
       live-command: "task live:sandbox:vault && task live:vault"
