@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "vault-krm": {
+      "command": "go",
+      "args": ["run", "./cmd/mcp"]
+    }
+  }
+}

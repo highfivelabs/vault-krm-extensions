@@ -1,0 +1,37 @@
+# Copyright 2026 High Five Labs
+# SPDX-License-Identifier: Apache-2.0
+#
+# Only the live:* tasks reach a Vault server, and none of the other tasks
+# calls them. Live code is compiled only with -tags live (live_test.go).
+version: "3"
+
+env:
+  GOTOOLCHAIN: go1.25.0+auto
+
+tasks:
+  check:
+    desc: Format, vet, every kind on the fake, every CRD through apiserver validation (no live code)
+    cmds:
+      - test -z "$(gofmt -l .)"
+      - go vet ./...
+      - go test ./...
+
+  live:sandbox:vault:
+    desc: Start a Vault dev server in kind (cluster hfl-live-vault, 127.0.0.1:18200, root token "hfl-live-dev-root-7c1e") with the samples' mounts
+    cmds:
+      - hack/live/vault-sandbox.sh up
+
+  live:sandbox:vault:down:
+    desc: Delete the Vault sandbox's kind cluster
+    cmds:
+      - hack/live/vault-sandbox.sh down
+
+  live:vault:
+    desc: Run every kind in hack/live/live.yaml against the sandbox (starts it if needed); writes hack/live/records.json
+    cmds:
+      - hack/live/vault-sandbox.sh run {{.CLI_ARGS}}
+
+  live:sweep:
+    desc: Delete every live-test leftover in the sandbox
+    cmds:
+      - KRM_LIVE=1 KRM_LIVE_SWEEP=1 KRM_LIVE_CREDS="$(hack/live/vault-sandbox.sh creds)" go test -tags live -run '^TestLiveSweep$' -count=1 -v .

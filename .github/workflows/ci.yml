@@ -1,0 +1,42 @@
+# Copyright 2026 High Five Labs
+# SPDX-License-Identifier: Apache-2.0
+# Build, vet, the every-kind test on the fake API, and a check that the
+# generated files match the pinned specs. No Vault credentials reach CI.
+name: ci
+
+on:
+  # GitHub Actions is not used for these repos: each PR carries its own
+  # hack/ci.sh --report (AGENTS.md). Run this by hand if Actions is ever on.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: vault-krm-extensions
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: highfivelabs/krm-rest-runtime
+          ref: fad382d05df5a1b0a7c339f174ecd6a3abb06721  # krm-rest-runtime main
+          path: krm-rest-runtime
+          persist-credentials: false
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: vault-krm-extensions/go.mod
+          cache-dependency-path: vault-krm-extensions/go.sum
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+      - run: pip install pyyaml==6.0.3
+      - name: hack/ci.sh (the checks people run locally before opening a PR)
+        working-directory: vault-krm-extensions
+        env:
+          RUNTIME: ${{ github.workspace }}/krm-rest-runtime
+        run: hack/ci.sh
