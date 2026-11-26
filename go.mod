@@ -1,6 +1,8 @@
 module github.com/highfivelabs/vault-krm-extensions
 
-go 1.25.0
+go 1.27.0
+
+toolchain go1.27.4
 
 require github.com/highfivelabs/krm-rest-runtime v0.0.0-20261125153350-fad382d05df5
 
