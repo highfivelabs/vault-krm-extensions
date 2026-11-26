@@ -1,0 +1,42 @@
+# Copyright 2026 High Five Labs
+# SPDX-License-Identifier: Apache-2.0
+#
+# How krm-registry (registry.highfivelabs.dev) shows this provider. Its build
+# reads this file from main (krm-registry config.py has the format).
+#
+# install: the provider page's Install card, one entry per variant. A variant
+# with oci: names where the chart is published on cr.highfivelabs.dev; the
+# registry shows it only once that chart is published, at the newest
+# release-shaped tag there ({version}). Until then the page has no card.
+schema: 1
+install:
+  - name: High Five Labs chart
+    oci: charts/vault-krm-extensions
+    note: >-
+      Installs the CRDs and the manager in vault-krm-extensions-system. Then, in each namespace that manages
+      Vault, a Secret (token) and a Connection named default, as below;
+      objects use it unless spec.connectionRef.name names another.
+    steps: |
+      helm install vault-krm-extensions oci://cr.highfivelabs.dev/charts/vault-krm-extensions \
+        --version {version} \
+        --namespace vault-krm-extensions-system --create-namespace
+
+      kubectl apply -f - <<'EOF'
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: vault-credentials
+        namespace: team-a
+      stringData:
+        token: <token>
+      ---
+      apiVersion: core.vault.hfl.dev/v1alpha1
+      kind: Connection
+      metadata:
+        name: default
+        namespace: team-a
+      spec:
+        baseURL: https://vault.example.com:8200/v1
+        secretRef:
+          name: vault-credentials
+      EOF
