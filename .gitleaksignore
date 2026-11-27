@@ -1,0 +1,45 @@
+# gitleaks false positives, by fingerprint (commit:file:rule:line); krm-ci's
+# gitleaks.toml asks for them here rather than a disabled rule. Each one was
+# read and is not a credential: example values from the vendor's API spec,
+# made-up test inputs, or generated IDs (HFL-815).
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/fake/cassettes/IdentityMfaPingid.identity.vault.hfl.dev.json:generic-api-key:14
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/fake/cassettes/IdentityMfaPingid.identity.vault.hfl.dev.json:generic-api-key:17
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/fake/cassettes/IdentityMfaPingid.identity.vault.hfl.dev.json:generic-api-key:24
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/fake/cassettes/IdentityMfaPingid.identity.vault.hfl.dev.json:generic-api-key:31
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/fake/cassettes/IdentityMfaPingid.identity.vault.hfl.dev.json:generic-api-key:36
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/fake/cassettes/IdentityMfaPingid.identity.vault.hfl.dev.json:generic-api-key:39
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/fake/cassettes/IdentityMfaPingid.identity.vault.hfl.dev.json:generic-api-key:46
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/_after.json:generic-api-key:10
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/AlicloudSecretBackend.alicloud.vault.hfl.dev.json:generic-api-key:8
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/AlicloudSecretBackendRole.alicloud.vault.hfl.dev.json:generic-api-key:8
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/ApproleAuthBackendRoleCustomSecretId.approle.vault.hfl.dev.json:generic-api-key:8
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/ApproleAuthBackendRoleSecretId.approle.vault.hfl.dev.json:generic-api-key:8
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/AwsAuthBackendCert.aws.vault.hfl.dev.json:generic-api-key:6
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/AwsAuthBackendRoletagBlacklist.aws.vault.hfl.dev.json:generic-api-key:6
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/GcpkmsSecretBackend.gcpkms.vault.hfl.dev.json:generic-api-key:8
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/GenericEndpoint.generic.vault.hfl.dev.json:generic-api-key:8
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/IdentityEntityAssignment.identity.vault.hfl.dev.json:generic-api-key:7
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/IdentityGroupAssignment.identity.vault.hfl.dev.json:generic-api-key:8
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/IdentityMfaDuo.identity.vault.hfl.dev.json:generic-api-key:6
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/IdentityMfaOkta.identity.vault.hfl.dev.json:generic-api-key:6
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/IdentityMfaPingid.identity.vault.hfl.dev.json:generic-api-key:14
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/IdentityMfaPingid.identity.vault.hfl.dev.json:generic-api-key:36
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/IdentityMfaPingid.identity.vault.hfl.dev.json:generic-api-key:6
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/IdentityOidcKeyAllowedClientId.identity.vault.hfl.dev.json:generic-api-key:10
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/KvSecretBackendV2.kv.vault.hfl.dev.json:generic-api-key:6
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/LdapAuthBackendUser.ldap.vault.hfl.dev.json:generic-api-key:8
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/OktaAuthBackendUser.okta.vault.hfl.dev.json:generic-api-key:8
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/PkiSecretBackendAcmeEab.pki.vault.hfl.dev.json:generic-api-key:8
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/PkiSecretBackendConfigCa.pki.vault.hfl.dev.json:generic-api-key:9
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/PkiSecretBackendConfigIssuers.pki.vault.hfl.dev.json:generic-api-key:6
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/PkiSecretBackendIntermediateCertRequest.pki.vault.hfl.dev.json:generic-api-key:8
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/PkiSecretBackendIntermediateSetSigned.pki.vault.hfl.dev.json:generic-api-key:10
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/PkiSecretBackendKey.pki.vault.hfl.dev.json:generic-api-key:5
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/PkiSecretBackendRootCert.pki.vault.hfl.dev.json:generic-api-key:8
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/Plugin.plugin.vault.hfl.dev.json:generic-api-key:6
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/PluginPinnedVersion.plugin.vault.hfl.dev.json:generic-api-key:6
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/PluginRuntime.plugin.vault.hfl.dev.json:generic-api-key:6
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/RadiusAuthBackendUser.radius.vault.hfl.dev.json:generic-api-key:8
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/cassettes/Token.token.vault.hfl.dev.json:generic-api-key:8
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/live.yaml:generic-api-key:200
+3638e1b6be5c1c7b8a2a74b454173fb6f014625a:hack/live/live.yaml:generic-api-key:201
