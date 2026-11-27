@@ -1,0 +1,2368 @@
+{
+ "formatVersion": 1,
+ "generatedBy": "factory upjet sync (upjet/README.md in highfivelabs/factory)",
+ "provider": {
+  "repo": "upbound/provider-vault",
+  "tag": "v4.1.0",
+  "commit": "a9976d21e9c6071faded8abb251ba761e99f34f5",
+  "commitDate": "2026-10-21T08:16:51Z",
+  "licence": "Apache-2.0"
+ },
+ "join": "types.yaml terraform",
+ "counts": {
+  "ours": 117,
+  "matched": 49,
+  "references": 38,
+  "referencesOur": 8,
+  "handExamples": 7,
+  "notTested": 0
+ },
+ "entries": [
+  {
+   "ours": {
+    "kind": "ApproleAuthBackendRoleCustomSecretId",
+    "group": "approle.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_approle_auth_backend_role_secret_id",
+    "group": "approle.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "AuthBackendRoleSecretID",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:25"
+    },
+    "references": [
+     {
+      "field": "backend",
+      "target": "vault_auth_backend",
+      "targetKind": "auth.vault.upbound.io/Backend",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/approle/v1alpha1/zz_authbackendrolesecretid_types.go:166"
+     },
+     {
+      "field": "role_name",
+      "target": "vault_approle_auth_backend_role",
+      "targetKind": "approle.vault.upbound.io/AuthBackendRole",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"role_name\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/approle/v1alpha1/zz_authbackendrolesecretid_types.go:206"
+     }
+    ],
+    "examples": [
+     {
+      "id": "approle/v1alpha1/authbackendrolesecretid",
+      "at": "examples-generated/cluster/approle/v1alpha1/authbackendrolesecretid.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_approle_auth_backend_role",
+       "vault_auth_backend"
+      ],
+      "fields": [
+       "metadata"
+      ],
+      "refFields": [
+       "backend",
+       "role_name"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ApproleAuthBackendRoleSecretId",
+    "group": "approle.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_approle_auth_backend_role_secret_id",
+    "group": "approle.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "AuthBackendRoleSecretID",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:25"
+    },
+    "references": [
+     {
+      "field": "backend",
+      "target": "vault_auth_backend",
+      "targetKind": "auth.vault.upbound.io/Backend",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/approle/v1alpha1/zz_authbackendrolesecretid_types.go:166"
+     },
+     {
+      "field": "role_name",
+      "target": "vault_approle_auth_backend_role",
+      "targetKind": "approle.vault.upbound.io/AuthBackendRole",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"role_name\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/approle/v1alpha1/zz_authbackendrolesecretid_types.go:206"
+     }
+    ],
+    "examples": [
+     {
+      "id": "approle/v1alpha1/authbackendrolesecretid",
+      "at": "examples-generated/cluster/approle/v1alpha1/authbackendrolesecretid.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_approle_auth_backend_role",
+       "vault_auth_backend"
+      ],
+      "fields": [
+       "metadata"
+      ],
+      "refFields": [
+       "backend",
+       "role_name"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "AwsAuthBackendCert",
+    "group": "aws.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_aws_auth_backend_cert",
+    "group": "aws.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "AuthBackendCert",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:29"
+    },
+    "references": [
+     {
+      "field": "backend",
+      "target": "vault_auth_backend",
+      "targetKind": "auth.vault.upbound.io/Backend",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/aws/v1alpha1/zz_authbackendcert_types.go:108"
+     }
+    ],
+    "examples": [
+     {
+      "id": "aws/v1alpha1/authbackendcert",
+      "at": "examples-generated/cluster/aws/v1alpha1/authbackendcert.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_auth_backend"
+      ],
+      "fields": [
+       "aws_public_cert",
+       "cert_name"
+      ],
+      "refFields": [
+       "backend"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "AwsAuthBackendIdentityWhitelist",
+    "group": "aws.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_aws_auth_backend_identity_whitelist",
+    "group": "aws.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "AuthBackendIdentityWhitelist",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:32"
+    },
+    "references": [
+     {
+      "field": "backend",
+      "target": "vault_auth_backend",
+      "targetKind": "auth.vault.upbound.io/Backend",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/aws/v1alpha1/zz_authbackendidentitywhitelist_types.go:85"
+     }
+    ],
+    "examples": [
+     {
+      "id": "aws/v1alpha1/authbackendidentitywhitelist",
+      "at": "examples-generated/cluster/aws/v1alpha1/authbackendidentitywhitelist.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_auth_backend"
+      ],
+      "fields": [
+       "safety_buffer"
+      ],
+      "refFields": [
+       "backend"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "AwsAuthBackendRoletagBlacklist",
+    "group": "aws.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_aws_auth_backend_roletag_blacklist",
+    "group": "aws.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "AuthBackendRoletagBlacklist",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:36"
+    },
+    "references": [
+     {
+      "field": "backend",
+      "target": "vault_auth_backend",
+      "targetKind": "auth.vault.upbound.io/Backend",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/aws/v1alpha1/zz_authbackendroletagblacklist_types.go:88"
+     }
+    ],
+    "examples": [
+     {
+      "id": "aws/v1alpha1/authbackendroletagblacklist",
+      "at": "examples-generated/cluster/aws/v1alpha1/authbackendroletagblacklist.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_auth_backend"
+      ],
+      "fields": [
+       "safety_buffer"
+      ],
+      "refFields": [
+       "backend"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "AwsAuthBackendStsRole",
+    "group": "aws.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_aws_auth_backend_sts_role",
+    "group": "aws.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "AuthBackendStsRole",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:37"
+    },
+    "references": [
+     {
+      "field": "backend",
+      "target": "vault_auth_backend",
+      "targetKind": "auth.vault.upbound.io/Backend",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/aws/v1alpha1/zz_authbackendstsrole_types.go:97"
+     }
+    ],
+    "examples": [
+     {
+      "id": "aws/v1alpha1/authbackendstsrole",
+      "at": "examples-generated/cluster/aws/v1alpha1/authbackendstsrole.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_auth_backend"
+      ],
+      "fields": [
+       "account_id",
+       "sts_role"
+      ],
+      "refFields": [
+       "backend"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "DatabaseSecretsMount",
+    "group": "database.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_database_secrets_mount",
+    "group": "database.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "SecretsMount",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:50"
+    },
+    "examples": [
+     {
+      "id": "database/v1alpha1/secretsmount",
+      "at": "examples-generated/cluster/database/v1alpha1/secretsmount.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_database_secret_backend_role"
+      ],
+      "fields": [
+       "mssql",
+       "mssql.allowed_roles",
+       "mssql.connection_url",
+       "mssql.name",
+       "mssql.password_policy",
+       "mssql.plugin_version",
+       "mssql.rotation_schedule",
+       "mssql.rotation_window",
+       "mssql.skip_static_role_import_rotation",
+       "mssql.username",
+       "path",
+       "postgresql",
+       "postgresql.allowed_roles",
+       "postgresql.connection_url",
+       "postgresql.name",
+       "postgresql.password_policy",
+       "postgresql.plugin_version",
+       "postgresql.rotation_schedule",
+       "postgresql.rotation_window",
+       "postgresql.skip_static_role_import_rotation",
+       "postgresql.username",
+       "postgresql.verify_connection"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "EgpPolicy",
+    "group": "egp.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_egp_policy",
+    "group": "egp.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Policy",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:51"
+    },
+    "examples": [
+     {
+      "id": "egp/v1alpha1/policy",
+      "at": "examples-generated/cluster/egp/v1alpha1/policy.yaml",
+      "origin": "generated",
+      "fields": [
+       "enforcement_level",
+       "name",
+       "paths",
+       "policy"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "GcpSecretImpersonatedAccount",
+    "group": "gcp.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_gcp_secret_impersonated_account",
+    "group": "gcp.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "SecretImpersonatedAccount",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:55"
+    },
+    "references": [
+     {
+      "field": "backend",
+      "target": "vault_gcp_secret_backend",
+      "targetKind": "gcp.vault.upbound.io/SecretBackend",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/gcp/v1alpha1/zz_secretimpersonatedaccount_types.go:95"
+     }
+    ],
+    "examples": [
+     {
+      "id": "gcp/v1alpha1/secretimpersonatedaccount",
+      "at": "examples-generated/cluster/gcp/v1alpha1/secretimpersonatedaccount.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_gcp_secret_backend"
+      ],
+      "fields": [
+       "impersonated_account",
+       "service_account_email",
+       "token_scopes"
+      ],
+      "refFields": [
+       "backend"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "GenericEndpoint",
+    "group": "generic.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_generic_endpoint",
+    "group": "generic.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Endpoint",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:58"
+    },
+    "examples": [
+     {
+      "id": "generic/v1alpha1/endpoint",
+      "at": "examples-generated/cluster/generic/v1alpha1/endpoint.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_auth_backend"
+      ],
+      "fields": [
+       "ignore_absent_fields",
+       "path"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "IdentityEntityAssignment",
+    "group": "identity.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_identity_entity_policies",
+    "group": "identity.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "EntityPolicies",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:65"
+    },
+    "references": [
+     {
+      "field": "entity_id",
+      "target": "vault_identity_entity",
+      "targetKind": "identity.vault.upbound.io/Entity",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()",
+      "source": "inferred",
+      "at": "apis/cluster/identity/v1alpha1/zz_entitypolicies_types.go:85"
+     }
+    ],
+    "examples": [
+     {
+      "id": "identity/v1alpha1/entitypolicies",
+      "at": "examples-generated/cluster/identity/v1alpha1/entitypolicies.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_identity_entity"
+      ],
+      "fields": [
+       "exclusive",
+       "policies"
+      ],
+      "refFields": [
+       "entity_id"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "IdentityGroupAssignment",
+    "group": "identity.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_identity_group_member_entity_ids",
+    "group": "identity.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "GroupMemberEntityIds",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:68"
+    },
+    "references": [
+     {
+      "field": "group_id",
+      "target": "vault_identity_group",
+      "targetKind": "identity.vault.upbound.io/Group",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()",
+      "source": "inferred",
+      "at": "apis/cluster/identity/v1alpha1/zz_groupmemberentityids_types.go:99"
+     },
+     {
+      "field": "member_entity_ids",
+      "target": "vault_identity_entity",
+      "targetKind": "identity.vault.upbound.io/Entity",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()",
+      "source": "inferred",
+      "at": "apis/cluster/identity/v1alpha1/zz_groupmemberentityids_types.go:115"
+     }
+    ],
+    "examples": [
+     {
+      "id": "identity/v1alpha1/groupmemberentityids",
+      "at": "examples-generated/cluster/identity/v1alpha1/groupmemberentityids.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_identity_entity",
+       "vault_identity_group"
+      ],
+      "fields": [
+       "exclusive"
+      ],
+      "refFields": [
+       "group_id",
+       "member_entity_ids"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "IdentityGroupAssignment",
+    "group": "identity.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_identity_group_member_group_ids",
+    "group": "identity.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "GroupMemberGroupIds",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:69"
+    },
+    "references": [
+     {
+      "field": "group_id",
+      "target": "vault_identity_group",
+      "targetKind": "identity.vault.upbound.io/Group",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()",
+      "source": "inferred",
+      "at": "apis/cluster/identity/v1alpha1/zz_groupmembergroupids_types.go:99"
+     },
+     {
+      "field": "member_group_ids",
+      "target": "vault_identity_group",
+      "targetKind": "identity.vault.upbound.io/Group",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()",
+      "source": "inferred",
+      "at": "apis/cluster/identity/v1alpha1/zz_groupmembergroupids_types.go:115"
+     }
+    ],
+    "examples": [
+     {
+      "id": "identity/v1alpha1/groupmembergroupids",
+      "at": "examples-generated/cluster/identity/v1alpha1/groupmembergroupids.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_identity_group"
+      ],
+      "fields": [
+       "exclusive"
+      ],
+      "refFields": [
+       "group_id",
+       "member_group_ids"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "IdentityGroupAssignment",
+    "group": "identity.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_identity_group_policies",
+    "group": "identity.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "GroupPolicies",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:70"
+    },
+    "references": [
+     {
+      "field": "group_id",
+      "target": "vault_identity_group",
+      "targetKind": "identity.vault.upbound.io/Group",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractResourceID()",
+      "source": "inferred",
+      "at": "apis/cluster/identity/v1alpha1/zz_grouppolicies_types.go:90"
+     }
+    ],
+    "examples": [
+     {
+      "id": "identity/v1alpha1/grouppolicies",
+      "at": "examples-generated/cluster/identity/v1alpha1/grouppolicies.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_identity_group"
+      ],
+      "fields": [
+       "exclusive",
+       "policies"
+      ],
+      "refFields": [
+       "group_id"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "IdentityMfaDuo",
+    "group": "identity.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_identity_mfa_duo",
+    "group": "identity.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "MfaDuo",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:71"
+    },
+    "examples": [
+     {
+      "id": "identity/v1alpha1/mfaduo",
+      "at": "examples-generated/cluster/identity/v1alpha1/mfaduo.yaml",
+      "origin": "generated",
+      "fields": [
+       "api_hostname"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "IdentityMfaLoginEnforcement",
+    "group": "identity.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_identity_mfa_login_enforcement",
+    "group": "identity.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "MfaLoginEnforcement",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:72"
+    },
+    "references": [
+     {
+      "field": "mfa_method_ids",
+      "target": "vault_identity_mfa_duo",
+      "targetKind": "identity.vault.upbound.io/MfaDuo",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"method_id\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/identity/v1alpha1/zz_mfaloginenforcement_types.go:144"
+     }
+    ],
+    "examples": [
+     {
+      "id": "identity/v1alpha1/mfaloginenforcement",
+      "at": "examples-generated/cluster/identity/v1alpha1/mfaloginenforcement.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_identity_mfa_duo"
+      ],
+      "fields": [
+       "name"
+      ],
+      "refFields": [
+       "mfa_method_ids"
+      ]
+     }
+    ]
+   },
+   "targetsOurs": {
+    "vault_identity_mfa_duo": [
+     "identity.vault.hfl.dev/IdentityMfaDuo"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "IdentityMfaOkta",
+    "group": "identity.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_identity_mfa_okta",
+    "group": "identity.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "MfaOkta",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:73"
+    },
+    "examples": [
+     {
+      "id": "identity/v1alpha1/mfaokta",
+      "at": "examples-generated/cluster/identity/v1alpha1/mfaokta.yaml",
+      "origin": "generated",
+      "fields": [
+       "base_url",
+       "org_name"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "IdentityMfaPingid",
+    "group": "identity.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_identity_mfa_pingid",
+    "group": "identity.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "MfaPingid",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:74"
+    },
+    "examples": [
+     {
+      "id": "identity/v1alpha1/mfapingid",
+      "at": "examples-generated/cluster/identity/v1alpha1/mfapingid.yaml",
+      "origin": "generated",
+      "fields": [
+       "settings_file_base64"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "IdentityMfaTotp",
+    "group": "identity.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_identity_mfa_totp",
+    "group": "identity.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "MfaTotp",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:75"
+    },
+    "examples": [
+     {
+      "id": "identity/v1alpha1/mfatotp",
+      "at": "examples-generated/cluster/identity/v1alpha1/mfatotp.yaml",
+      "origin": "generated",
+      "fields": [
+       "issuer"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "IdentityOidcKeyAllowedClientId",
+    "group": "identity.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_identity_oidc_key_allowed_client_id",
+    "group": "identity.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "OidcKeyAllowedClientID",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:80"
+    },
+    "references": [
+     {
+      "field": "allowed_client_id",
+      "target": "vault_identity_oidc_role",
+      "targetKind": "identity.vault.upbound.io/OidcRole",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"client_id\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/identity/v1alpha1/zz_oidckeyallowedclientid_types.go:81"
+     },
+     {
+      "field": "key_name",
+      "target": "vault_identity_oidc_key",
+      "targetKind": "identity.vault.upbound.io/OidcKey",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"name\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/identity/v1alpha1/zz_oidckeyallowedclientid_types.go:96"
+     }
+    ],
+    "examples": [
+     {
+      "id": "identity/v1alpha1/oidckeyallowedclientid",
+      "at": "examples-generated/cluster/identity/v1alpha1/oidckeyallowedclientid.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_identity_oidc_key",
+       "vault_identity_oidc_role"
+      ],
+      "refFields": [
+       "allowed_client_id",
+       "key_name"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "KmipSecretBackend",
+    "group": "kmip.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_kmip_secret_backend",
+    "group": "kmip.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "SecretBackend",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:86"
+    },
+    "examples": [
+     {
+      "id": "kmip/v1alpha1/secretbackend",
+      "at": "examples-generated/cluster/kmip/v1alpha1/secretbackend.yaml",
+      "origin": "generated",
+      "fields": [
+       "default_tls_client_key_bits",
+       "default_tls_client_key_type",
+       "default_tls_client_ttl",
+       "description",
+       "listen_addrs",
+       "path",
+       "tls_ca_key_bits",
+       "tls_ca_key_type"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "KmipSecretRole",
+    "group": "kmip.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_kmip_secret_role",
+    "group": "kmip.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "SecretRole",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:87"
+    },
+    "references": [
+     {
+      "field": "path",
+      "target": "vault_kmip_secret_scope",
+      "targetKind": "kmip.vault.upbound.io/SecretScope",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/kmip/v1alpha1/zz_secretrole_types.go:498"
+     },
+     {
+      "field": "scope",
+      "target": "vault_kmip_secret_scope",
+      "targetKind": "kmip.vault.upbound.io/SecretScope",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"scope\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/kmip/v1alpha1/zz_secretrole_types.go:518"
+     }
+    ],
+    "examples": [
+     {
+      "id": "kmip/v1alpha1/secretrole",
+      "at": "examples-generated/cluster/kmip/v1alpha1/secretrole.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_kmip_secret_backend",
+       "vault_kmip_secret_scope"
+      ],
+      "fields": [
+       "operation_activate",
+       "operation_create",
+       "operation_destroy",
+       "operation_get",
+       "operation_get_attributes",
+       "role",
+       "tls_client_key_bits",
+       "tls_client_key_type"
+      ],
+      "refFields": [
+       "path",
+       "scope"
+      ]
+     }
+    ]
+   },
+   "targetsOurs": {
+    "vault_kmip_secret_scope": [
+     "kmip.vault.hfl.dev/KmipSecretScope"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "KmipSecretScope",
+    "group": "kmip.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_kmip_secret_scope",
+    "group": "kmip.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "SecretScope",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:88"
+    },
+    "references": [
+     {
+      "field": "path",
+      "target": "vault_kmip_secret_backend",
+      "targetKind": "kmip.vault.upbound.io/SecretBackend",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/kmip/v1alpha1/zz_secretscope_types.go:95"
+     }
+    ],
+    "examples": [
+     {
+      "id": "kmip/v1alpha1/secretscope",
+      "at": "examples-generated/cluster/kmip/v1alpha1/secretscope.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_kmip_secret_backend"
+      ],
+      "fields": [
+       "force",
+       "scope"
+      ],
+      "refFields": [
+       "path"
+      ]
+     }
+    ]
+   },
+   "targetsOurs": {
+    "vault_kmip_secret_backend": [
+     "kmip.vault.hfl.dev/KmipSecretBackend"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "KvSecret",
+    "group": "kv.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_generic_secret",
+    "group": "generic.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Secret",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:59"
+    },
+    "examples": [
+     {
+      "id": "generic/v1alpha1/secret",
+      "at": "examples-generated/cluster/generic/v1alpha1/secret.yaml",
+      "origin": "generated",
+      "fields": [
+       "path"
+      ]
+     },
+     {
+      "id": "generic/v1alpha1/secret",
+      "at": "examples/cluster/genericsecret/genericsecret.yaml",
+      "origin": "hand",
+      "with": [
+       "vault_mount"
+      ],
+      "fields": [
+       "path"
+      ],
+      "values": {
+       "path": "generic/vault-creds"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "KvSecret",
+    "group": "kv.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_kv_secret",
+    "group": "kv.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Secret",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:93"
+    },
+    "examples": [
+     {
+      "id": "kv/v1alpha1/secret",
+      "at": "examples-generated/cluster/kv/v1alpha1/secret.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_mount"
+      ],
+      "fields": [
+       "path"
+      ]
+     },
+     {
+      "id": "kv/v1alpha1/secret",
+      "at": "examples/cluster/kvsecret/kvsecret.yaml",
+      "origin": "hand",
+      "with": [
+       "vault_mount"
+      ],
+      "fields": [
+       "path"
+      ],
+      "values": {
+       "path": "kvv1/vault-creds"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "KvSecretBackendV2",
+    "group": "kv.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_kv_secret_backend_v2",
+    "group": "kv.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "SecretBackendV2",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:94"
+    },
+    "references": [
+     {
+      "field": "mount",
+      "target": "vault_mount",
+      "targetKind": "vault.vault.upbound.io/Mount",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/kv/v1alpha1/zz_secretbackendv2_types.go:108"
+     }
+    ],
+    "examples": [
+     {
+      "id": "kv/v1alpha1/secretbackendv2",
+      "at": "examples-generated/cluster/kv/v1alpha1/secretbackendv2.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_mount"
+      ],
+      "fields": [
+       "cas_required",
+       "delete_version_after",
+       "max_versions"
+      ],
+      "refFields": [
+       "mount"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "LdapAuthBackendUser",
+    "group": "ldap.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_ldap_auth_backend_user",
+    "group": "ldap.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "AuthBackendUser",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:98"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "LdapSecretBackendLibrarySet",
+    "group": "ldap.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_ad_secret_backend_library",
+    "tested": true,
+    "generated": false,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:20"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "ManagedKey",
+    "group": "managed.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_managed_keys",
+    "group": "managed.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Keys",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:99"
+    },
+    "examples": [
+     {
+      "id": "managed/v1alpha1/keys",
+      "at": "examples-generated/cluster/managed/v1alpha1/keys.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_mount"
+      ],
+      "fields": [
+       "aws",
+       "aws.access_key",
+       "aws.key_bits",
+       "aws.key_type",
+       "aws.kms_key",
+       "aws.name",
+       "aws.secret_key"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "MfaDuo",
+    "group": "mfa.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_mfa_duo",
+    "group": "mfa.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Duo",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:100"
+    },
+    "references": [
+     {
+      "field": "mount_accessor",
+      "target": "vault_auth_backend",
+      "targetKind": "auth.vault.upbound.io/Backend",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"accessor\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/mfa/v1alpha1/zz_duo_types.go:113"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mfa/v1alpha1/duo",
+      "at": "examples-generated/cluster/mfa/v1alpha1/duo.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_auth_backend"
+      ],
+      "fields": [
+       "api_hostname",
+       "name"
+      ],
+      "refFields": [
+       "mount_accessor"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "MfaOkta",
+    "group": "mfa.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_mfa_okta",
+    "group": "mfa.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Okta",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:101"
+    },
+    "references": [
+     {
+      "field": "mount_accessor",
+      "target": "vault_auth_backend",
+      "targetKind": "auth.vault.upbound.io/Backend",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"accessor\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/mfa/v1alpha1/zz_okta_types.go:129"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mfa/v1alpha1/okta",
+      "at": "examples-generated/cluster/mfa/v1alpha1/okta.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_auth_backend"
+      ],
+      "fields": [
+       "name",
+       "org_name",
+       "username_format"
+      ],
+      "refFields": [
+       "mount_accessor"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "MfaPingid",
+    "group": "mfa.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_mfa_pingid",
+    "group": "mfa.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Pingid",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:102"
+    },
+    "references": [
+     {
+      "field": "mount_accessor",
+      "target": "vault_auth_backend",
+      "targetKind": "auth.vault.upbound.io/Backend",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"accessor\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/mfa/v1alpha1/zz_pingid_types.go:125"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mfa/v1alpha1/pingid",
+      "at": "examples-generated/cluster/mfa/v1alpha1/pingid.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_auth_backend"
+      ],
+      "fields": [
+       "name",
+       "settings_file_base64",
+       "username_format"
+      ],
+      "refFields": [
+       "mount_accessor"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "MfaTotp",
+    "group": "mfa.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_mfa_totp",
+    "group": "mfa.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Totp",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:103"
+    },
+    "examples": [
+     {
+      "id": "mfa/v1alpha1/totp",
+      "at": "examples-generated/cluster/mfa/v1alpha1/totp.yaml",
+      "origin": "generated",
+      "fields": [
+       "algorithm",
+       "digits",
+       "issuer",
+       "key_size",
+       "name",
+       "period"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "OktaAuthBackendUser",
+    "group": "okta.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_okta_auth_backend_user",
+    "group": "okta.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "AuthBackendUser",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:112"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "PkiSecretBackendConfigCa",
+    "group": "pki.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_pki_secret_backend_config_ca",
+    "group": "pki.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "SecretBackendConfigCA",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:114"
+    },
+    "references": [
+     {
+      "field": "backend",
+      "target": "vault_mount",
+      "targetKind": "vault.vault.upbound.io/Mount",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/pki/v1alpha1/zz_secretbackendconfigca_types.go:67"
+     }
+    ],
+    "examples": [
+     {
+      "id": "pki/v1alpha1/secretbackendconfigca",
+      "at": "examples-generated/cluster/pki/v1alpha1/secretbackendconfigca.yaml",
+      "origin": "generated",
+      "refFields": [
+       "backend"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "PkiSecretBackendCrlConfig",
+    "group": "pki.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_pki_secret_backend_crl_config",
+    "group": "pki.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "SecretBackendCrlConfig",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:116"
+    },
+    "references": [
+     {
+      "field": "backend",
+      "target": "vault_mount",
+      "targetKind": "vault.vault.upbound.io/Mount",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/pki/v1alpha1/zz_secretbackendcrlconfig_types.go:177"
+     }
+    ],
+    "examples": [
+     {
+      "id": "pki/v1alpha1/secretbackendcrlconfig",
+      "at": "examples-generated/cluster/pki/v1alpha1/secretbackendcrlconfig.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_mount"
+      ],
+      "fields": [
+       "disable",
+       "expiry"
+      ],
+      "refFields": [
+       "backend"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "PkiSecretBackendIntermediateCertRequest",
+    "group": "pki.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_pki_secret_backend_intermediate_cert_request",
+    "group": "pki.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "SecretBackendIntermediateCertRequest",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:117"
+    },
+    "references": [
+     {
+      "field": "backend",
+      "target": "vault_mount",
+      "targetKind": "vault.vault.upbound.io/Mount",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/pki/v1alpha1/zz_secretbackendintermediatecertrequest_types.go:312"
+     }
+    ],
+    "examples": [
+     {
+      "id": "pki/v1alpha1/secretbackendintermediatecertrequest",
+      "at": "examples-generated/cluster/pki/v1alpha1/secretbackendintermediatecertrequest.yaml",
+      "origin": "generated",
+      "fields": [
+       "common_name",
+       "type"
+      ],
+      "refFields": [
+       "backend"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "PkiSecretBackendIntermediateSetSigned",
+    "group": "pki.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_pki_secret_backend_intermediate_set_signed",
+    "group": "pki.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "SecretBackendIntermediateSetSigned",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:118"
+    },
+    "references": [
+     {
+      "field": "backend",
+      "target": "vault_mount",
+      "targetKind": "vault.vault.upbound.io/Mount",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/pki/v1alpha1/zz_secretbackendintermediatesetsigned_types.go:94"
+     },
+     {
+      "field": "certificate",
+      "target": "vault_pki_secret_backend_root_sign_intermediate",
+      "targetKind": "pki.vault.upbound.io/SecretBackendRootSignIntermediate",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"certificate\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/pki/v1alpha1/zz_secretbackendintermediatesetsigned_types.go:111"
+     }
+    ],
+    "examples": [
+     {
+      "id": "pki/v1alpha1/secretbackendintermediatesetsigned",
+      "at": "examples-generated/cluster/pki/v1alpha1/secretbackendintermediatesetsigned.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_mount",
+       "vault_pki_secret_backend_intermediate_cert_request",
+       "vault_pki_secret_backend_root_cert"
+      ],
+      "refFields": [
+       "backend",
+       "certificate"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "PkiSecretBackendRootCert",
+    "group": "pki.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_pki_secret_backend_root_cert",
+    "group": "pki.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "SecretBackendRootCert",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:120"
+    },
+    "references": [
+     {
+      "field": "backend",
+      "target": "vault_mount",
+      "targetKind": "vault.vault.upbound.io/Mount",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/pki/v1alpha1/zz_secretbackendrootcert_types.go:404"
+     }
+    ],
+    "examples": [
+     {
+      "id": "pki/v1alpha1/secretbackendrootcert",
+      "at": "examples-generated/cluster/pki/v1alpha1/secretbackendrootcert.yaml",
+      "origin": "generated",
+      "fields": [
+       "common_name",
+       "exclude_cn_from_sans",
+       "format",
+       "key_bits",
+       "key_type",
+       "organization",
+       "ou",
+       "private_key_format",
+       "ttl",
+       "type"
+      ],
+      "refFields": [
+       "backend"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "Plugin",
+    "group": "plugin.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_plugin",
+    "group": "plugin.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Plugin",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:126"
+    },
+    "examples": [
+     {
+      "id": "plugin/v1alpha1/plugin",
+      "at": "examples-generated/cluster/plugin/v1alpha1/plugin.yaml",
+      "origin": "generated",
+      "fields": [
+       "name",
+       "type",
+       "version"
+      ]
+     },
+     {
+      "id": "plugin/v1alpha1/plugin",
+      "at": "examples/cluster/plugin/plugin.yaml",
+      "origin": "hand",
+      "fields": [
+       "command",
+       "name",
+       "sha256",
+       "type",
+       "version"
+      ],
+      "values": {
+       "command": "vault-plugin-auth-jwt",
+       "name": "jwt-external",
+       "sha256": "dd2a0d360563d480e472c268196140799c5d57282fce9ccd4b44dec0314b300c",
+       "type": "auth",
+       "version": "v0.26.4"
+      }
+     }
+    ],
+    "renamed": {
+     "shortGroup": "plugin",
+     "at": "config/plugin/config.go:12"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "PluginPinnedVersion",
+    "group": "plugin.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_plugin_pinned_version",
+    "group": "plugin.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "PinnedVersion",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:127"
+    },
+    "references": [
+     {
+      "field": "name",
+      "target": "vault_plugin",
+      "targetKind": "plugin.vault.upbound.io/Plugin",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"name\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/plugin/v1alpha1/zz_pinnedversion_types.go:84"
+     },
+     {
+      "field": "type",
+      "target": "vault_plugin",
+      "targetKind": "plugin.vault.upbound.io/Plugin",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"type\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/plugin/v1alpha1/zz_pinnedversion_types.go:99"
+     },
+     {
+      "field": "version",
+      "target": "vault_plugin",
+      "targetKind": "plugin.vault.upbound.io/Plugin",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"version\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/plugin/v1alpha1/zz_pinnedversion_types.go:114"
+     }
+    ],
+    "examples": [
+     {
+      "id": "plugin/v1alpha1/pinnedversion",
+      "at": "examples-generated/cluster/plugin/v1alpha1/pinnedversion.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_auth_backend",
+       "vault_plugin"
+      ],
+      "refFields": [
+       "name",
+       "type",
+       "version"
+      ]
+     },
+     {
+      "id": "plugin/v1alpha1/pinnedversion",
+      "at": "examples/cluster/plugin/pinnedversion.yaml",
+      "origin": "hand",
+      "with": [
+       "vault_plugin"
+      ],
+      "refFields": [
+       "name",
+       "type",
+       "version"
+      ]
+     }
+    ]
+   },
+   "targetsOurs": {
+    "vault_plugin": [
+     "plugin.vault.hfl.dev/Plugin"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "PluginRuntime",
+    "group": "plugin.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_plugin_runtime",
+    "group": "plugin.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Runtime",
+    "framework": true,
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "template",
+     "template": "{{ .parameters.type }}/{{ .parameters.name }}",
+     "expr": "config.TemplatedStringAsIdentifier(\"\", \"{{ .parameters.type }}/{{ .parameters.name }}\")",
+     "at": "config/externalname.go:152"
+    },
+    "examples": [
+     {
+      "id": "plugin/v1alpha1/runtime",
+      "at": "examples-generated/cluster/plugin/v1alpha1/runtime.yaml",
+      "origin": "generated",
+      "fields": [
+       "name",
+       "oci_runtime",
+       "rootless",
+       "type"
+      ]
+     },
+     {
+      "id": "plugin/v1alpha1/runtime",
+      "at": "examples/cluster/plugin/runtime.yaml",
+      "origin": "hand",
+      "fields": [
+       "cpu_nanos",
+       "memory_bytes",
+       "name",
+       "oci_runtime",
+       "rootless",
+       "type"
+      ],
+      "values": {
+       "cpu_nanos": 1000000000,
+       "memory_bytes": 536870912,
+       "name": "gvisor",
+       "oci_runtime": "runsc",
+       "rootless": true,
+       "type": "container"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "RaftAutopilot",
+    "group": "raft.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_raft_autopilot",
+    "group": "raft.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Autopilot",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:130"
+    },
+    "examples": [
+     {
+      "id": "raft/v1alpha1/autopilot",
+      "at": "examples-generated/cluster/raft/v1alpha1/autopilot.yaml",
+      "origin": "generated",
+      "fields": [
+       "cleanup_dead_servers",
+       "dead_server_last_contact_threshold",
+       "last_contact_threshold",
+       "max_trailing_logs",
+       "min_quorum",
+       "server_stabilization_time"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "RaftSnapshotAgentConfig",
+    "group": "raft.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_raft_snapshot_agent_config",
+    "group": "raft.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "SnapshotAgentConfig",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:131"
+    },
+    "schemaOverrides": [
+     {
+      "field": "?",
+      "property": "Sensitive",
+      "value": "true",
+      "at": "config/vault/config.go:24"
+     }
+    ],
+    "examples": [
+     {
+      "id": "raft/v1alpha1/snapshotagentconfig",
+      "at": "examples-generated/cluster/raft/v1alpha1/snapshotagentconfig.yaml",
+      "origin": "generated",
+      "fields": [
+       "interval_seconds",
+       "local_max_space",
+       "name",
+       "path_prefix",
+       "retain",
+       "storage_type"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "RgpPolicy",
+    "group": "rgp.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_rgp_policy",
+    "group": "rgp.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Policy",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:132"
+    },
+    "examples": [
+     {
+      "id": "rgp/v1alpha1/policy",
+      "at": "examples-generated/cluster/rgp/v1alpha1/policy.yaml",
+      "origin": "generated",
+      "fields": [
+       "enforcement_level",
+       "name",
+       "policy"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "Token",
+    "group": "token.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_token",
+    "group": "vault.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Token",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:138"
+    },
+    "examples": [
+     {
+      "id": "vault/v1alpha1/token",
+      "at": "examples-generated/cluster/vault/v1alpha1/token.yaml",
+      "origin": "generated",
+      "fields": [
+       "metadata",
+       "policies",
+       "renew_increment",
+       "renew_min_lease",
+       "renewable",
+       "role_name",
+       "ttl"
+      ]
+     },
+     {
+      "id": "vault/v1alpha1/token",
+      "at": "examples/cluster/token/token.yaml",
+      "origin": "hand",
+      "with": [
+       "vault_token_auth_backend_role"
+      ],
+      "fields": [
+       "renew_increment",
+       "renew_min_lease",
+       "role_name",
+       "ttl"
+      ],
+      "values": {
+       "renew_increment": 86400,
+       "renew_min_lease": 43200,
+       "role_name": "app",
+       "ttl": "24h"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "TokenAuthBackendRole",
+    "group": "token.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_token_auth_backend_role",
+    "group": "token.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "AuthBackendRole",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:139"
+    },
+    "examples": [
+     {
+      "id": "token/v1alpha1/authbackendrole",
+      "at": "examples-generated/cluster/token/v1alpha1/authbackendrole.yaml",
+      "origin": "generated",
+      "fields": [
+       "allowed_entity_aliases",
+       "allowed_policies",
+       "disallowed_policies",
+       "orphan",
+       "path_suffix",
+       "renewable",
+       "role_name",
+       "token_explicit_max_ttl",
+       "token_period"
+      ]
+     },
+     {
+      "id": "token/v1alpha1/authbackendrole",
+      "at": "examples/cluster/tokenauthbackendrole/tokenauthbackendrole.yaml",
+      "origin": "hand",
+      "fields": [
+       "role_name"
+      ],
+      "values": {
+       "role_name": "app"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "TransformAlphabet",
+    "group": "transform.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_transform_alphabet",
+    "group": "transform.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Alphabet",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:140"
+    },
+    "references": [
+     {
+      "field": "path",
+      "target": "vault_mount",
+      "targetKind": "vault.vault.upbound.io/Mount",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/transform/v1alpha1/zz_alphabet_types.go:97"
+     }
+    ],
+    "examples": [
+     {
+      "id": "transform/v1alpha1/alphabet",
+      "at": "examples-generated/cluster/transform/v1alpha1/alphabet.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_mount"
+      ],
+      "fields": [
+       "alphabet",
+       "name"
+      ],
+      "refFields": [
+       "path"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "TransformRole",
+    "group": "transform.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_transform_role",
+    "group": "transform.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Role",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:141"
+    },
+    "references": [
+     {
+      "field": "path",
+      "target": "vault_mount",
+      "targetKind": "vault.vault.upbound.io/Mount",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/transform/v1alpha1/zz_role_types.go:91"
+     }
+    ],
+    "examples": [
+     {
+      "id": "transform/v1alpha1/role",
+      "at": "examples-generated/cluster/transform/v1alpha1/role.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_mount"
+      ],
+      "fields": [
+       "name",
+       "transformations"
+      ],
+      "refFields": [
+       "path"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "TransformTemplate",
+    "group": "transform.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_transform_template",
+    "group": "transform.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Template",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:142"
+    },
+    "references": [
+     {
+      "field": "path",
+      "target": "vault_transform_alphabet",
+      "targetKind": "transform.vault.upbound.io/Alphabet",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/transform/v1alpha1/zz_template_types.go:154"
+     }
+    ],
+    "examples": [
+     {
+      "id": "transform/v1alpha1/template",
+      "at": "examples-generated/cluster/transform/v1alpha1/template.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_mount",
+       "vault_transform_alphabet"
+      ],
+      "fields": [
+       "alphabet",
+       "decode_formats",
+       "encode_format",
+       "name",
+       "pattern",
+       "type"
+      ],
+      "refFields": [
+       "path"
+      ]
+     }
+    ]
+   },
+   "targetsOurs": {
+    "vault_transform_alphabet": [
+     "transform.vault.hfl.dev/TransformAlphabet"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "TransformTransformation",
+    "group": "transform.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_transform_transformation",
+    "group": "transform.vault.upbound.io",
+    "version": "v1alpha1",
+    "kind": "Transformation",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:143"
+    },
+    "references": [
+     {
+      "field": "path",
+      "target": "vault_mount",
+      "targetKind": "vault.vault.upbound.io/Mount",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"path\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/transform/v1alpha1/zz_transformation_types.go:161"
+     }
+    ],
+    "examples": [
+     {
+      "id": "transform/v1alpha1/transformation",
+      "at": "examples-generated/cluster/transform/v1alpha1/transformation.yaml",
+      "origin": "generated",
+      "with": [
+       "vault_mount"
+      ],
+      "fields": [
+       "allowed_roles",
+       "name",
+       "template",
+       "tweak_source",
+       "type"
+      ],
+      "refFields": [
+       "path"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "TransitSecretBackendCacheConfig",
+    "group": "transit.vault.hfl.dev"
+   },
+   "facts": {
+    "terraform": "vault_transit_secret_backend_cache_config",
+    "tested": true,
+    "generated": false,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/externalname.go:144"
+    }
+   }
+  }
+ ],
+ "noUpjet": [
+  "activation.vault.hfl.dev/ActivationFlag",
+  "agent.vault.hfl.dev/AgentRegistration",
+  "alicloud.vault.hfl.dev/AlicloudSecretBackend",
+  "alicloud.vault.hfl.dev/AlicloudSecretBackendRole",
+  "aws.vault.hfl.dev/AwsSecretBackendStaticRole",
+  "azure.vault.hfl.dev/AzureSecretBackendStaticRole",
+  "config.vault.hfl.dev/ConfigControlGroup",
+  "config.vault.hfl.dev/ConfigGroupPolicyApplication",
+  "config.vault.hfl.dev/ConfigUiCustomMessage",
+  "config.vault.hfl.dev/ConfigUiDefaultAuth",
+  "config.vault.hfl.dev/ConfigUiHeader",
+  "gcpkms.vault.hfl.dev/GcpkmsSecretBackend",
+  "gcpkms.vault.hfl.dev/GcpkmsSecretBackendKey",
+  "identity.vault.hfl.dev/IdentityTpm",
+  "identity.vault.hfl.dev/IdentityTpmGroup",
+  "keymgmt.vault.hfl.dev/KeymgmtDistributeKey",
+  "keymgmt.vault.hfl.dev/KeymgmtKey",
+  "keymgmt.vault.hfl.dev/KeymgmtKmsProvider",
+  "kmip.vault.hfl.dev/KmipSecretCaGenerated",
+  "kmip.vault.hfl.dev/KmipSecretCaImported",
+  "kmip.vault.hfl.dev/KmipSecretListener",
+  "oauth.vault.hfl.dev/OauthResourceServerConfigProfile",
+  "os.vault.hfl.dev/OsSecretBackend",
+  "os.vault.hfl.dev/OsSecretBackendAccount",
+  "os.vault.hfl.dev/OsSecretBackendHost",
+  "pki.vault.hfl.dev/PkiExternalCaSecretBackendAcmeAccount",
+  "pki.vault.hfl.dev/PkiExternalCaSecretBackendDnsProviderAwsRoute53",
+  "pki.vault.hfl.dev/PkiExternalCaSecretBackendDnsProviderAzure",
+  "pki.vault.hfl.dev/PkiExternalCaSecretBackendDnsProviderGcp",
+  "pki.vault.hfl.dev/PkiExternalCaSecretBackendDnsProviderRfc2136",
+  "pki.vault.hfl.dev/PkiExternalCaSecretBackendOrder",
+  "pki.vault.hfl.dev/PkiExternalCaSecretBackendRole",
+  "pki.vault.hfl.dev/PkiSecretBackendAcmeEab",
+  "pki.vault.hfl.dev/PkiSecretBackendConfigAcme",
+  "pki.vault.hfl.dev/PkiSecretBackendConfigAutoTidy",
+  "pki.vault.hfl.dev/PkiSecretBackendConfigCluster",
+  "pki.vault.hfl.dev/PkiSecretBackendConfigCmpv2",
+  "pki.vault.hfl.dev/PkiSecretBackendConfigEst",
+  "pki.vault.hfl.dev/PkiSecretBackendConfigIssuers",
+  "pki.vault.hfl.dev/PkiSecretBackendConfigScep",
+  "pki.vault.hfl.dev/PkiSecretBackendExportKey",
+  "pki.vault.hfl.dev/PkiSecretBackendIssuer",
+  "pki.vault.hfl.dev/PkiSecretBackendKey",
+  "pki.vault.hfl.dev/PkiSecretBackendWrappedKeyImport",
+  "radius.vault.hfl.dev/RadiusAuthBackendUser",
+  "saml.vault.hfl.dev/SamlAuthBackend",
+  "saml.vault.hfl.dev/SamlAuthBackendRole",
+  "scep.vault.hfl.dev/ScepAuthBackendRole",
+  "scim.vault.hfl.dev/ScimClient",
+  "secrets.vault.hfl.dev/SecretsSyncAssociation",
+  "secrets.vault.hfl.dev/SecretsSyncAwsDestination",
+  "secrets.vault.hfl.dev/SecretsSyncAzureDestination",
+  "secrets.vault.hfl.dev/SecretsSyncConfig",
+  "secrets.vault.hfl.dev/SecretsSyncGcpDestination",
+  "secrets.vault.hfl.dev/SecretsSyncGhDestination",
+  "secrets.vault.hfl.dev/SecretsSyncGithubApp",
+  "secrets.vault.hfl.dev/SecretsSyncVercelDestination",
+  "spiffe.vault.hfl.dev/SpiffeAuthBackendConfig",
+  "spiffe.vault.hfl.dev/SpiffeAuthBackendRole",
+  "spiffe.vault.hfl.dev/SpiffeSecretBackendConfig",
+  "spiffe.vault.hfl.dev/SpiffeSecretBackendRole",
+  "sys.vault.hfl.dev/SysConfigCors",
+  "tpm.vault.hfl.dev/TpmAuthBackendConfig",
+  "tpm.vault.hfl.dev/TpmAuthBackendRole",
+  "transform.vault.hfl.dev/TransformKeyConfiguration",
+  "transform.vault.hfl.dev/TransformTransformationTokenization",
+  "transform.vault.hfl.dev/TransformTransformationTokenizationStore",
+  "userpass.vault.hfl.dev/UserpassAuthBackendUser"
+ ]
+}
